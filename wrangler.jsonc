@@ -1,0 +1,10 @@
+// Cloudflare settings for this site.
+// It tells Cloudflare: "this is a plain website, the files are in the public folder".
+{
+  "name": "maday-student",
+  "compatibility_date": "2026-10-01",
+  "assets": {
+    "directory": "./public",
+    "not_found_handling": "single-page-application"
+  }
+}

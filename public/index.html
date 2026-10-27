@@ -1,0 +1,387 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ildi Haraszi · Career Coaching for University Students</title>
+  <meta name="description" content="Career coaching for university students using DISC personality profiling. Understand how you work, what drives you, and which career paths actually fit.">
+  <meta property="og:title" content="Ildi Haraszi · Career Coaching for University Students">
+  <meta property="og:description" content="Stop guessing your career. Use DISC to understand how you work and what motivates you, then choose with confidence.">
+  <meta property="og:image" content="images/ildi.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #faf7f2;
+      --bg-alt: #f1ebe1;
+      --ink: #2a2522;
+      --muted: #6b625a;
+      --line: #e2d9cc;
+      --accent: #8a5a3c;
+      --accent-ink: #ffffff;
+      --d: #c2553f;
+      --i: #d9a12b;
+      --s: #5d8f6a;
+      --c: #3f6f9a;
+      --radius: 14px;
+      --max: 1080px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font: 17px/1.65 "DM Sans", system-ui, sans-serif;
+    }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; }
+    h1, h2, h3 { font-family: "Fraunces", Georgia, serif; font-weight: 600; line-height: 1.15; margin: 0 0 .5em; }
+    h1 { font-size: clamp(2.2rem, 5vw, 3.6rem); letter-spacing: -.01em; }
+    h2 { font-size: clamp(1.7rem, 3.4vw, 2.4rem); }
+    h3 { font-size: 1.25rem; }
+    p { margin: 0 0 1em; }
+    .wrap { max-width: var(--max); margin: 0 auto; padding: 0 20px; }
+    section { padding: 88px 0; }
+    .alt { background: var(--bg-alt); }
+    .eyebrow { text-transform: uppercase; letter-spacing: .14em; font-size: .78rem; font-weight: 700; color: var(--accent); margin-bottom: 14px; }
+    .lead { font-size: 1.2rem; color: var(--muted); max-width: 40ch; }
+    .btn {
+      display: inline-block; background: var(--accent); color: var(--accent-ink);
+      padding: 15px 28px; border-radius: 999px; text-decoration: none; font-weight: 700;
+      transition: transform .15s ease, background .15s ease;
+    }
+    .btn:hover { transform: translateY(-1px); background: #74482d; }
+    .btn-ghost { background: transparent; color: var(--ink); border: 1.5px solid var(--ink); }
+    .btn-ghost:hover { background: var(--ink); color: var(--bg); }
+
+    /* Header */
+    header { position: sticky; top: 0; z-index: 10; background: rgba(250,247,242,.92); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
+    header .wrap { display: flex; align-items: center; justify-content: space-between; height: 68px; }
+    .brand { font-family: "Fraunces", serif; font-weight: 600; font-size: 1.2rem; text-decoration: none; }
+    .brand span { color: var(--muted); font-family: "DM Sans", sans-serif; font-weight: 400; font-size: .9rem; margin-left: 8px; }
+    nav a { text-decoration: none; margin-left: 26px; font-size: .95rem; color: var(--muted); }
+    nav a:hover { color: var(--ink); }
+    nav .btn { color: var(--accent-ink); padding: 10px 20px; margin-left: 26px; }
+
+    /* Hero */
+    .hero { padding: 64px 0 88px; }
+    .hero .wrap { display: grid; grid-template-columns: 1.1fr .9fr; gap: 56px; align-items: center; }
+    .hero-photo { position: relative; }
+    .hero-photo img { border-radius: 24px; aspect-ratio: 4/5; object-fit: cover; object-position: 50% 20%; width: 100%; }
+    .disc-dots { display: flex; gap: 8px; margin: 26px 0 30px; }
+    .disc-dots i { width: 12px; height: 12px; border-radius: 50%; display: block; }
+    .hero-cta { display: flex; gap: 14px; flex-wrap: wrap; }
+
+    /* Problem */
+    .problem .wrap { max-width: 760px; }
+    .problem p { font-size: 1.12rem; }
+    .quote-list { list-style: none; padding: 0; margin: 28px 0; display: grid; gap: 12px; }
+    .quote-list li { background: var(--bg); border-left: 4px solid var(--accent); padding: 14px 18px; border-radius: 0 10px 10px 0; font-style: italic; }
+
+    /* DISC */
+    .disc-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; margin-top: 40px; }
+    .disc-card { background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 26px 22px; border-top: 6px solid var(--clr); }
+    .disc-card .letter { font-family: "Fraunces", serif; font-size: 2.6rem; color: var(--clr); line-height: 1; margin-bottom: 6px; }
+    .disc-card p { color: var(--muted); font-size: .97rem; margin: 0; }
+    .note { margin-top: 30px; color: var(--muted); max-width: 70ch; }
+
+    /* Steps */
+    .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; margin-top: 40px; counter-reset: step; }
+    .step { position: relative; padding-top: 58px; }
+    .step::before {
+      counter-increment: step; content: counter(step);
+      position: absolute; top: 0; left: 0; width: 42px; height: 42px; border-radius: 50%;
+      background: var(--accent); color: #fff; display: grid; place-items: center;
+      font-family: "Fraunces", serif; font-size: 1.2rem;
+    }
+    .step p { color: var(--muted); }
+
+    /* Outcomes */
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; }
+    .checks { list-style: none; padding: 0; margin: 0; }
+    .checks li { padding: 14px 0 14px 36px; border-bottom: 1px solid var(--line); position: relative; }
+    .checks li::before { content: "✓"; position: absolute; left: 0; top: 13px; color: var(--accent); font-weight: 700; font-size: 1.1rem; }
+
+    /* Placeholders: remove the class once you add real content */
+    .placeholder { border: 2px dashed #c9a98f; background: #fffaf3; border-radius: var(--radius); padding: 26px; color: var(--muted); }
+    .placeholder strong { color: var(--accent); display: block; margin-bottom: 6px; font-size: .8rem; letter-spacing: .1em; text-transform: uppercase; }
+
+    /* About */
+    .about .wrap { display: grid; grid-template-columns: .8fr 1.2fr; gap: 56px; align-items: start; }
+    .about img { border-radius: 20px; aspect-ratio: 4/5; object-fit: cover; object-position: 50% 15%; position: sticky; top: 96px; }
+    .about h3 { margin-top: 1.6em; }
+    .about .btn { margin-top: 12px; }
+    .trust { font-size: .95rem; color: var(--muted); border-left: 3px solid var(--accent); padding-left: 14px; margin-top: 4px; }
+
+    /* Credentials */
+    .creds { list-style: none; padding: 0; margin: 36px 0 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .creds li { background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 20px 22px; font-weight: 500; }
+    .clients { margin-top: 32px; color: var(--muted); }
+    .clients strong { color: var(--ink); font-weight: 500; }
+
+    /* Proof */
+    .proof-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 36px; }
+
+    /* FAQ */
+    .faq { max-width: 760px; }
+    details { border-bottom: 1px solid var(--line); padding: 18px 0; }
+    summary { cursor: pointer; font-weight: 700; list-style: none; display: flex; justify-content: space-between; gap: 20px; }
+    summary::-webkit-details-marker { display: none; }
+    summary::after { content: "+"; font-size: 1.4rem; line-height: 1; color: var(--accent); }
+    details[open] summary::after { content: "–"; }
+    details p { margin: 12px 0 0; color: var(--muted); }
+
+    /* CTA */
+    .cta { background: var(--ink); color: var(--bg); text-align: center; }
+    .cta .lead { color: #cfc6bb; margin: 0 auto 32px; }
+    .cta .btn { background: var(--bg); color: var(--ink); }
+    .cta .btn:hover { background: #fff; }
+
+    footer { padding: 32px 0; font-size: .88rem; color: var(--muted); }
+    footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+
+    @media (max-width: 860px) {
+      section { padding: 64px 0; }
+      nav a:not(.btn) { display: none; }
+      .hero .wrap, .two-col, .about .wrap { grid-template-columns: 1fr; gap: 36px; }
+      .hero-photo { order: -1; max-width: 420px; }
+      .disc-grid { grid-template-columns: 1fr 1fr; }
+      .steps, .proof-grid, .creds { grid-template-columns: 1fr; }
+      .about img { position: static; max-width: 420px; }
+    }
+    @media (max-width: 480px) {
+      .disc-grid { grid-template-columns: 1fr; }
+      .brand span { display: none; }
+      nav .btn { margin-left: 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="wrap">
+      <a class="brand" href="#top">Ildi Haraszi <span>Career Coach</span></a>
+      <nav>
+        <a href="#disc">What is DISC?</a>
+        <a href="#how">How it works</a>
+        <a href="#about">About</a>
+        <a class="btn" href="https://cal.com/ildiko-haraszi-lc4hy4" target="_blank" rel="noopener">Book a call</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="wrap">
+        <div>
+          <p class="eyebrow">Career coaching for university students</p>
+          <h1>You don't need to have it all figured out. You need to know yourself.</h1>
+          <p class="lead">I help students choose a career path that fits how they actually think, work and feel motivated, using DISC personality profiling instead of guesswork.</p>
+          <p class="trust">DISC certified consultant and executive coach · 20+ years coaching leaders and teams across three continents</p>
+          <div class="disc-dots" aria-hidden="true">
+            <i style="background:var(--d)"></i><i style="background:var(--i)"></i><i style="background:var(--s)"></i><i style="background:var(--c)"></i>
+          </div>
+          <div class="hero-cta">
+            <a class="btn" href="https://cal.com/ildiko-haraszi-lc4hy4" target="_blank" rel="noopener">Book a free intro call</a>
+            <a class="btn btn-ghost" href="#how">See how it works</a>
+          </div>
+        </div>
+        <div class="hero-photo">
+          <img src="images/ildi.jpg" alt="Ildi Haraszi, career coach, smiling in a cream blazer" width="1024" height="1024">
+        </div>
+      </div>
+    </section>
+
+    <!-- PROBLEM -->
+    <section class="problem alt">
+      <div class="wrap">
+        <p class="eyebrow">Sound familiar?</p>
+        <h2>Most students pick a career based on what they're told, not on who they are.</h2>
+        <p>I hear the same things from students again and again:</p>
+        <ul class="quote-list">
+          <li>"Everyone else seems to know what they want. I don't."</li>
+          <li>"I chose my degree, but I'm not sure it's really me."</li>
+          <li>"I'm good at a lot of things. How do I pick one?"</li>
+          <li>"My parents have one idea, my friends have another, and I'm stuck in the middle."</li>
+        </ul>
+        <p>None of this means something is wrong with you. It usually means nobody has helped you look at the most important piece of the puzzle: <strong>you</strong>. How you make decisions, how you like to work with people, what pace suits you, and what genuinely drives you.</p>
+        <p>That's where I start.</p>
+      </div>
+    </section>
+
+    <!-- DISC -->
+    <section id="disc">
+      <div class="wrap">
+        <p class="eyebrow">The tool I use</p>
+        <h2>What is DISC, and why does it help?</h2>
+        <p class="lead">DISC is a well-established behavioural profile. It describes how you tend to act, communicate and respond to challenges, and what motivates you. It doesn't put you in a box. It gives you a language for yourself.</p>
+        <div class="disc-grid">
+          <div class="disc-card" style="--clr:var(--d)">
+            <div class="letter">D</div>
+            <h3>Dominance</h3>
+            <p>Driven by results and challenge. Likes to decide, lead and move fast.</p>
+          </div>
+          <div class="disc-card" style="--clr:var(--i)">
+            <div class="letter">I</div>
+            <h3>Influence</h3>
+            <p>Energised by people and ideas. Persuades, inspires and builds connections.</p>
+          </div>
+          <div class="disc-card" style="--clr:var(--s)">
+            <div class="letter">S</div>
+            <h3>Steadiness</h3>
+            <p>Values trust, stability and teamwork. Patient, loyal and a great supporter.</p>
+          </div>
+          <div class="disc-card" style="--clr:var(--c)">
+            <div class="letter">C</div>
+            <h3>Conscientiousness</h3>
+            <p>Loves accuracy, quality and logic. Thinks things through and gets them right.</p>
+          </div>
+        </div>
+        <p class="note">Everyone is a blend of all four. Your particular mix says a lot about the work environments where you'll thrive, and the ones that will quietly drain you. That is exactly what we use to make better career decisions.</p>
+      </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section id="how" class="alt">
+      <div class="wrap">
+        <p class="eyebrow">How it works</p>
+        <h2>Three steps from "I don't know" to a clear direction</h2>
+        <div class="steps">
+          <div class="step">
+            <h3>Discover your profile</h3>
+            <p>You complete a short online DISC assessment in your own time. It takes around 15–20 minutes, and there are no right or wrong answers.</p>
+          </div>
+          <div class="step">
+            <h3>Make sense of it together</h3>
+            <p>We meet one-to-one and go through your results in plain language: your strengths, your blind spots, and what really motivates you.</p>
+          </div>
+          <div class="step">
+            <h3>Turn insight into choices</h3>
+            <p>We connect your profile to real career paths, study options and next steps, so you leave with a direction you actually believe in.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- OUTCOMES -->
+    <section>
+      <div class="wrap two-col">
+        <div>
+          <p class="eyebrow">What you walk away with</p>
+          <h2>Clarity you can use, not just a report you file away</h2>
+          <p class="lead">My goal is simple: that you make your next career decision with confidence, because it's based on who you really are.</p>
+        </div>
+        <ul class="checks">
+          <li>Your personal DISC profile, explained so it makes sense to you</li>
+          <li>A clear picture of your natural strengths and what motivates you</li>
+          <li>Career paths and work environments that suit your style</li>
+          <li>Words to describe yourself confidently in CVs and interviews</li>
+          <li>Concrete next steps: courses, internships, people to talk to</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="about alt">
+      <div class="wrap">
+        <img src="images/ildi.jpg" alt="Portrait of Ildi Haraszi" width="1024" height="1024" loading="lazy">
+        <div>
+          <p class="eyebrow">About me</p>
+          <h2>Hi, I'm Ildi.</h2>
+          <p>I've spent two decades helping people through the hardest part of any change: the human part. I started in Hungary, built my career across the UK, Germany, Hong Kong, Switzerland and the Middle East, and I now live in Abu Dhabi. I hold British and Hungarian citizenship, speak English, German and Hungarian fluently, and I'm learning Arabic. My accent in all of them is a work in progress.</p>
+
+          <h3>Where my experience comes from</h3>
+          <p>I've worked with global names like GSK, Barclays Capital, Cathay Pacific, Sandvik, Workday and Al Tayer Group. At GSK, I led 20 senior change managers and a community of 250 change agents across a rollout that reached 100,000 people in 60 countries.</p>
+          <p>Why does that matter to a student? Because every one of those projects came down to the same question: do people understand themselves and each other well enough to work together? DISC answers it faster than anything else I've used.</p>
+
+          <h3>Why I coach students with DISC</h3>
+          <p>Most students choose a career by asking what they're good at. I ask a better question: how do you <em>naturally operate</em>? Do you push for results or protect quality? Do you energise a room or recharge away from it? DISC gives you a language for those answers. Think of it as a compass. It won't pick your destination, but it makes sure you stop walking in circles.</p>
+
+          <h3>How I coach</h3>
+          <p>I keep it honest, practical and warm. I'll tell you the truth even when it stings, I'll make you laugh at least once, and you'll leave with a clear picture of your style and next steps you can act on this week.</p>
+
+          <a class="btn btn-ghost" href="https://www.linkedin.com/in/ildikoharaszi/" target="_blank" rel="noopener">Want the full story? Connect on LinkedIn</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- CREDENTIALS -->
+    <section id="credentials">
+      <div class="wrap">
+        <p class="eyebrow">What I bring to your session</p>
+        <h2>Two decades of experience, now on your side</h2>
+        <ul class="creds">
+          <li>DISC certified</li>
+          <li>Executive coach and NLP Practitioner, trained at Coaching Academy London</li>
+          <li>MSc in Business Administration, Budapest University of Economics</li>
+          <li>Member of the Association of Change Management Professionals and the Change Management Institute</li>
+          <li>Fearless Culture™ Implementation Consultant</li>
+          <li>CliftonStrengths top 5: Achiever, Activator, Restorative, Positivity and Ideation</li>
+        </ul>
+        <p class="clients">Worked with <strong>GSK</strong> · <strong>Barclays Capital</strong> · <strong>Cathay Pacific</strong> · <strong>Sandvik</strong> · <strong>Workday</strong> · <strong>Al Tayer Group</strong></p>
+      </div>
+    </section>
+
+    <!-- PROOF -->
+    <section id="proof">
+      <div class="wrap">
+        <p class="eyebrow">What students say</p>
+        <h2>Real stories, real decisions</h2>
+        <!-- REPLACE: swap each box for a testimonial (quote, first name, course/university) -->
+        <div class="proof-grid">
+          <div class="placeholder"><strong>Testimonial 1</strong>A short quote from a student, with their first name and what they study.</div>
+          <div class="placeholder"><strong>Testimonial 2</strong>A short quote from a student, with their first name and what they study.</div>
+          <div class="placeholder"><strong>Testimonial 3</strong>A short quote from a student, with their first name and what they study.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="alt">
+      <div class="wrap faq">
+        <p class="eyebrow">Questions</p>
+        <h2>Things students often ask me</h2>
+        <details>
+          <summary>Is DISC a personality test I can pass or fail?</summary>
+          <p>Not at all. There are no good or bad profiles. DISC simply describes your natural style, and every style has its own strengths.</p>
+        </details>
+        <details>
+          <summary>Will it tell me exactly which job to do?</summary>
+          <p>No tool can do that, and I'd be wary of any that claims to. What DISC does is show you which kinds of roles and environments suit you, so your choices become much clearer. The decision stays yours.</p>
+        </details>
+        <details>
+          <summary>I'm in my final year. Is it too late?</summary>
+          <p>Never. Whether you're choosing a degree, a master's, your first job or a change of direction, knowing yourself better helps at every stage.</p>
+        </details>
+        <details>
+          <summary>Do we meet in person or online?</summary>
+          <p>Sessions are held online, so you can join from wherever you're studying.</p>
+        </details>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section id="book" class="cta">
+      <div class="wrap">
+        <h2>Ready to stop guessing?</h2>
+        <p class="lead">Book a free, no-pressure intro call. We'll talk about where you are now and whether DISC coaching is right for you.</p>
+        <a class="btn" href="https://cal.com/ildiko-haraszi-lc4hy4" target="_blank" rel="noopener">Book your free intro call</a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <span>© <span id="yr">2026</span> Ildi Haraszi · Career Coaching</span>
+      <span>DISC-based career guidance for university students</span>
+    </div>
+  </footer>
+
+  <script>document.getElementById("yr").textContent = new Date().getFullYear();</script>
+</body>
+</html>
