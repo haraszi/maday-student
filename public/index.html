@@ -157,12 +157,14 @@ p { margin: 0; }
 .gets { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
 .gets li { display: flex; gap: 14px; align-items: flex-start; font-weight: 500; font-size: 1.15rem; }
 .gets li::before { content: ""; flex: none; width: 22px; height: 22px; margin-top: 4px; background: var(--yellow); border: 3px solid var(--ink); border-radius: 7px; transform: rotate(8deg); }
-.steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin: 0; padding: 0; list-style: none; }
+.steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; margin: 0; padding: 0; list-style: none; }
 .steps li { border: 3px solid var(--ink); border-radius: 22px; padding: 22px; background: var(--card); display: flex; flex-direction: column; gap: 10px; box-shadow: 5px 5px 0 var(--ink); min-width: 0; }
 .steps .n { width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center; font-family: var(--font-display); font-weight: 800; font-size: 1.3rem; border: 3px solid var(--ink); }
 .steps li:nth-child(1) .n { background: var(--yellow); color: var(--on-yellow); }
 .steps li:nth-child(2) .n { background: var(--pink); color: var(--on-pink); }
 .steps li:nth-child(3) .n { background: var(--red); color: var(--on-red); }
+.steps li:nth-child(4) .n { background: var(--c); color: var(--on-c); }
+@media (max-width: 1000px) and (min-width: 761px) { .steps { grid-template-columns: 1fr 1fr; } }
 .softband { background: var(--surface); border-block: 3px solid var(--ink); }
 .photo { aspect-ratio: 4 / 5; max-width: 340px; width: 100%; object-fit: cover; object-position: 50% 15%; border: 3px solid var(--ink); border-radius: 28px; background: var(--card); box-shadow: 6px 6px 0 var(--ink); transform: rotate(-2deg); }
 .quotes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
@@ -260,6 +262,7 @@ p { margin: 0; }
     <div class="inner band">
       <div class="copy stack-lg">
         <span class="eyebrow chip">Free DISC quiz &middot; 3 minutes</span>
+        <span class="eyebrow" style="margin-bottom:-18px">Step 1 of the SURE Method</span>
         <h1 id="home-h1" tabindex="-1">The Career <span class="mark">Style Compass</span></h1>
         <p class="lede">The 3-minute DISC quiz that shows whether you're a Driver, Spark, Anchor or Architect, and which careers fit that style.</p>
         <div class="cta-row">
@@ -324,11 +327,16 @@ p { margin: 0; }
 
   <section class="softband band">
     <div class="inner stack-lg">
-      <h2>How it works</h2>
+      <div class="stack">
+        <span class="eyebrow">How it works</span>
+        <h2>The SURE Method</h2>
+        <p class="lede"><b>From guessing to SURE,</b> in four steps.</p>
+      </div>
       <ol class="steps">
-        <li><span class="n">1</span><h3>Take the quiz</h3><p>12 quick questions. No wrong answers.</p></li>
-        <li><span class="n">2</span><h3>See your result</h3><p>Your style, in a clear chart.</p></li>
-        <li><span class="n">3</span><h3>Go deeper if you want</h3><p>Your deep dive shows careers that fit you.</p></li>
+        <li><span class="n">S</span><h3>Spot your style</h3><p>Take the free 12-question Career Style Compass quiz. Three minutes, no wrong answers.</p></li>
+        <li><span class="n">U</span><h3>Understand what drives you</h3><p>See your style mix in a clear chart, then go further with your full DISC profile.</p></li>
+        <li><span class="n">R</span><h3>Reveal the careers that fit</h3><p>Your deep dive report shows the careers and work environments that suit your style.</p></li>
+        <li><span class="n">E</span><h3>Engage your next steps</h3><p>A one-to-one debrief turns it into steps you can act on this week, and words to use with your parents.</p></li>
       </ol>
     </div>
   </section>
@@ -375,6 +383,7 @@ p { margin: 0; }
   <section class="finalcta band">
     <div class="inner">
       <h2>Stop guessing your career. Start with you.</h2>
+      <p class="lede" style="color:var(--on-red)"><b>From guessing to SURE.</b> Step 1 takes three minutes.</p>
       <button class="btn yellow" data-start>Find my style: free 12 question quiz</button>
     </div>
   </section>
