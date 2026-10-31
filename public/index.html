@@ -122,8 +122,8 @@ p { margin: 0; }
 .site-header { position: sticky; top: 0; z-index: 20; background: var(--bg); border-bottom: 2px solid var(--ink); }
 .site-header .inner { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-block: 10px; }
 .brand { background: none; border: 0; padding: 0; cursor: pointer; text-align: left; color: var(--ink); font-family: var(--font-display); display: flex; flex-direction: column; line-height: 1.05; }
-.brand b { font-size: 1.5rem; font-weight: 800; letter-spacing: -0.03em; }
-.brand b i { font-style: normal; color: var(--red); }
+.brand { gap: 3px; }
+.brand img { height: 36px; width: auto; }
 .brand span { font-family: var(--font-body); font-size: .75rem; color: var(--muted); }
 .site-header .btn { font-size: .95rem; min-height: 44px; padding: 8px 18px; border-width: 2px; box-shadow: 3px 3px 0 var(--ink); }
 
@@ -254,7 +254,7 @@ p { margin: 0; }
 <header class="site-header">
   <div class="inner">
     <button class="brand" id="brand" aria-label="maday.ae home">
-      <b>maday<i>.ae</i></b>
+      <img src="images/maday-logo.png" alt="maday" width="124" height="39">
       <span>with Ildi Haraszi</span>
     </button>
     <button class="btn" id="hdr-cta" data-start>Start the free quiz</button>
