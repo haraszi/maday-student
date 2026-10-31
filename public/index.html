@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>maday.ae · Free career style quiz for students, with Ildi Haraszi</title>
-<meta name="description" content="Stop guessing your career. Take a free 3 minute DISC-style quiz and see how you think, work and get things done. With career coach Ildi Haraszi.">
-<meta property="og:title" content="maday.ae · Stop guessing your career. Start with you.">
-<meta property="og:description" content="A free 3 minute quiz that shows how you think, work and get things done.">
+<title>The Career Style Compass · maday.ae with Ildi Haraszi</title>
+<meta name="description" content="The 3-minute DISC quiz that shows whether you're a Driver, Spark, Anchor or Architect, and which careers fit that style. Free, with career coach Ildi Haraszi.">
+<meta property="og:title" content="The Career Style Compass · maday.ae">
+<meta property="og:description" content="The 3-minute DISC quiz that shows whether you're a Driver, Spark, Anchor or Architect, and which careers fit that style.">
 <meta property="og:image" content="images/ildi.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -135,8 +135,9 @@ p { margin: 0; }
 .mark { background: linear-gradient(transparent 58%, var(--pink) 58%, var(--pink) 92%, transparent 92%); padding: 0 .08em; }
 .hero .lede { color: var(--on-yellow); }
 .cta-row { display: flex; flex-direction: column; gap: 12px; align-items: flex-start; }
-.tiles { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; max-width: 340px; justify-self: center; width: 100%; }
-.tile { aspect-ratio: 1; border: 3px solid var(--ink); border-radius: 22px; display: flex; flex-direction: column; align-items: center; justify-content: center; font-family: var(--font-display); font-weight: 800; box-shadow: 5px 5px 0 var(--ink); }
+.tiles { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; max-width: 380px; justify-self: center; width: 100%; margin: 0; padding: 0; list-style: none; }
+.tile { min-height: 150px; padding: 16px 10px; text-align: center; border: 3px solid var(--ink); border-radius: 22px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; font-family: var(--font-display); font-weight: 800; box-shadow: 5px 5px 0 var(--ink); }
+.tile em { font-style: normal; font-family: var(--font-body); font-weight: 500; font-size: .85rem; line-height: 1.25; margin-top: 4px; }
 .tile b { font-size: clamp(2.6rem, 8vw, 4rem); line-height: 1; }
 .tile span { font-size: .8rem; font-family: var(--font-body); font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
 .tile.d { background: var(--d); color: var(--on-d); transform: rotate(-4deg); }
@@ -231,7 +232,7 @@ p { margin: 0; }
 
 @media (max-width: 760px) {
   .hero .inner, .split, .steps, .quotes, .two, .tiers { grid-template-columns: 1fr; }
-  .tiles { max-width: 260px; }
+  .tiles { max-width: 360px; }
   .photo { max-width: 260px; }
   .tier { margin-top: 10px; }
 }
@@ -258,24 +259,33 @@ p { margin: 0; }
   <section class="hero">
     <div class="inner band">
       <div class="copy stack-lg">
-        <span class="eyebrow chip">Free quiz &middot; 3 minutes</span>
-        <h1 id="home-h1" tabindex="-1">Stop guessing your career. <span class="mark">Start with you.</span></h1>
-        <p class="lede">A free 3 minute quiz that shows how you think, work and get things done.</p>
+        <span class="eyebrow chip">Free DISC quiz &middot; 3 minutes</span>
+        <h1 id="home-h1" tabindex="-1">The Career <span class="mark">Style Compass</span></h1>
+        <p class="lede">The 3-minute DISC quiz that shows whether you're a Driver, Spark, Anchor or Architect, and which careers fit that style.</p>
         <div class="cta-row">
-          <button class="btn" data-start>Start my free 12 question quiz</button>
+          <button class="btn" data-start>Find my style: free 12 question quiz</button>
           <p style="font-weight:500">Free. No sign up. Your result in minutes.</p>
         </div>
       </div>
-      <div class="tiles" aria-hidden="true">
-        <div class="tile d"><b>D</b><span>Driver</span></div>
-        <div class="tile i"><b>I</b><span>Spark</span></div>
-        <div class="tile s"><b>S</b><span>Anchor</span></div>
-        <div class="tile c"><b>C</b><span>Architect</span></div>
-      </div>
+      <ul class="tiles" aria-label="The four styles">
+        <li class="tile d"><b>D</b><span>Driver</span><em>Decides fast, loves results</em></li>
+        <li class="tile i"><b>I</b><span>Spark</span><em>Lights up people and ideas</em></li>
+        <li class="tile s"><b>S</b><span>Anchor</span><em>Calm, loyal, steady</em></li>
+        <li class="tile c"><b>C</b><span>Architect</span><em>Careful, logical, precise</em></li>
+      </ul>
     </div>
   </section>
 
   <section class="band">
+    <div class="inner stack">
+      <h2>Not another &ldquo;which job suits you&rdquo; quiz.</h2>
+      <p class="lede">You've probably done those quizzes already. They gave you a long list of careers and no reason to trust it.</p>
+      <p class="lede">The Career Style Compass starts somewhere else: with how you naturally decide, work and handle pressure. It's built on DISC, the behavioural model I've used with leaders and teams across three continents.</p>
+      <p class="lede"><b>Twelve questions, three minutes, and you'll know your style and why it matters more than your grades.</b></p>
+    </div>
+  </section>
+
+  <section class="band softband">
     <div class="inner stack-lg">
       <h2>What if you pick wrong?</h2>
       <p class="lede">That question keeps a lot of students awake.</p>
@@ -364,8 +374,8 @@ p { margin: 0; }
 
   <section class="finalcta band">
     <div class="inner">
-      <h2>Scared of choosing wrong? Start with you.</h2>
-      <button class="btn yellow" data-start>Start my free 12 question quiz</button>
+      <h2>Stop guessing your career. Start with you.</h2>
+      <button class="btn yellow" data-start>Find my style: free 12 question quiz</button>
     </div>
   </section>
 </div>
@@ -426,8 +436,14 @@ p { margin: 0; }
   <section class="dd band" id="deepdive">
     <div class="inner stack-lg">
       <div class="stack">
-        <h2>Want to feel even surer?</h2>
-        <p class="lede">Your deep dive is the full professional DISC report, with the careers, work environments and next steps that suit your style. Available in English or Arabic.</p>
+        <h2>Go deeper with the full Career Style Compass</h2>
+        <p class="lede">Your free result is the taster. The deep dive adds:</p>
+        <ul class="gets">
+          <li>Your full professional DISC report, from a DISC certified coach</li>
+          <li>The careers and work environments that fit your style</li>
+          <li>A one-to-one debrief that turns it into next steps</li>
+          <li>All of it in English or Arabic, your choice</li>
+        </ul>
       </div>
       <div class="tiers">
         <div class="tier">
@@ -705,7 +721,7 @@ p { margin: 0; }
 
   function shareNote() {
     var top = STYLES[lastResult.ranked[0].k];
-    return "Hi! I took a free style quiz on maday.ae. My main style is " + top.name + ": " + top.head.toLowerCase() + " " + top.strength + " It helps me think about my future, and I'd love to talk it through with you.";
+    return "Hi! I took the free Career Style Compass quiz on maday.ae. My main style is " + top.name + ": " + top.head.toLowerCase() + " " + top.strength + " It helps me think about my future, and I'd love to talk it through with you.";
   }
 
   document.querySelectorAll("[data-start]").forEach(function (b) { b.addEventListener("click", startQuiz); });
