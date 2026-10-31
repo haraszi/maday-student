@@ -172,11 +172,12 @@ p { margin: 0; }
 .quote:nth-child(1) { background: var(--yellow); color: var(--on-yellow); }
 .quote p { font-family: var(--font-display); font-weight: 700; font-size: 1.3rem; line-height: 1.2; }
 .quote cite { font-style: normal; font-size: .9rem; font-weight: 700; }
-.logos { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 12px; margin: 0 0 12px; padding: 0; list-style: none; }
+.logo-block { align-items: center; text-align: center; }
+.logos { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; width: 100%; margin: 0 0 12px; padding: 0; list-style: none; }
 /* Logos keep their brand colours, so tiles stay white in dark mode too */
-.logo { border: 2px solid var(--ink); border-radius: 14px; background: #fff; height: 84px; padding: 14px 18px; display: grid; place-items: center; }
+.logo { flex: 0 0 160px; border-radius: 14px; background: #fff; height: 84px; padding: 14px 18px; display: grid; place-items: center; }
 .logo img { height: 44px; width: 100%; object-fit: contain; }
-@media (max-width: 420px) { .logos { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 420px) { .logo { flex-basis: calc(50% - 6px); } }
 .finalcta { background: var(--red); color: var(--on-red); border-top: 3px solid var(--ink); text-align: center; }
 .finalcta .inner { display: flex; flex-direction: column; align-items: center; gap: 28px; }
 .footer { padding-block: 28px; font-size: .9rem; color: var(--muted); }
@@ -374,14 +375,13 @@ p { margin: 0; }
         <figure class="quote"><p>&ldquo;Finally someone understands me.&rdquo;</p><cite>Angelina Teg</cite></figure>
         <figure class="quote"><p>&ldquo;I want to show this to my parents.&rdquo;</p><cite>Ahmed AlDhaheri</cite></figure>
       </div>
-      <div class="stack">
+      <div class="stack logo-block">
         <h3>Where I've led change</h3>
         <span class="eyebrow muted">Here in the UAE</span>
         <ul class="logos">
           <li class="logo"><img src="images/logos/taqa.svg" alt="TAQA Water Solutions" loading="lazy"></li>
           <li class="logo"><img src="images/logos/dewa.png" alt="DEWA, Dubai Electricity and Water Authority" loading="lazy"></li>
           <li class="logo"><img src="images/logos/al-tayer.png" alt="Al Tayer Group" loading="lazy"></li>
-          <li class="logo"><img src="images/logos/abb.svg" alt="ABB" loading="lazy"></li>
         </ul>
         <span class="eyebrow muted">Around the world</span>
         <ul class="logos">
@@ -395,6 +395,7 @@ p { margin: 0; }
           <li class="logo"><img src="images/logos/tfl.svg" alt="Transport for London" loading="lazy"></li>
           <li class="logo"><img src="images/logos/diageo.svg" alt="Diageo" loading="lazy"></li>
           <li class="logo"><img src="images/logos/syngenta.svg" alt="Syngenta" loading="lazy"></li>
+          <li class="logo"><img src="images/logos/abb.svg" alt="ABB" loading="lazy"></li>
         </ul>
       </div>
     </div>
