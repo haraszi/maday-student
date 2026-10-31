@@ -175,7 +175,9 @@ p { margin: 0; }
 .logo-block { align-items: center; text-align: center; }
 .logos { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; width: 100%; margin: 0 0 12px; padding: 0; list-style: none; }
 /* Logos keep their brand colours, so tiles stay white in dark mode too */
-.logo { flex: 0 0 160px; border-radius: 14px; background: #fff; height: 84px; padding: 14px 18px; display: grid; place-items: center; }
+.logo { flex: 0 0 160px; border-radius: 14px; background: #fff; height: 84px; }
+.logo a { display: grid; place-items: center; height: 100%; padding: 14px 18px; border-radius: inherit; transition: transform .12s ease, box-shadow .12s ease; }
+.logo a:hover { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(30, 16, 51, .12); }
 .logo img { height: 44px; width: 100%; object-fit: contain; }
 @media (max-width: 420px) { .logo { flex-basis: calc(50% - 6px); } }
 .finalcta { background: var(--red); color: var(--on-red); border-top: 3px solid var(--ink); text-align: center; }
@@ -379,23 +381,33 @@ p { margin: 0; }
         <h3>Where I've led change</h3>
         <span class="eyebrow muted">Here in the UAE</span>
         <ul class="logos">
-          <li class="logo"><img src="images/logos/taqa.svg" alt="TAQA Water Solutions" loading="lazy"></li>
-          <li class="logo"><img src="images/logos/dewa.png" alt="DEWA, Dubai Electricity and Water Authority" loading="lazy"></li>
-          <li class="logo"><img src="images/logos/al-tayer.png" alt="Al Tayer Group" loading="lazy"></li>
+          <li class="logo"><a href="https://www.taqa.com/water" target="_blank" rel="noopener"><img src="images/logos/taqa.svg" alt="TAQA Water Solutions" loading="lazy"></a></li>
+          <li class="logo"><a href="https://www.dewa.gov.ae" target="_blank" rel="noopener"><img src="images/logos/dewa.png" alt="DEWA, Dubai Electricity and Water Authority" loading="lazy"></a></li>
+          <li class="logo"><a href="https://www.altayer.com" target="_blank" rel="noopener"><img src="images/logos/al-tayer.png" alt="Al Tayer Group" loading="lazy"></a></li>
         </ul>
         <span class="eyebrow muted">Around the world</span>
         <ul class="logos">
-          <li class="logo"><img src="images/logos/gsk.png" alt="GSK" loading="lazy"></li>
-          <li class="logo"><img src="images/logos/barclays.svg" alt="Barclays" loading="lazy"></li>
-          <li class="logo"><img src="images/logos/cathay-pacific.svg" alt="Cathay Pacific" loading="lazy"></li>
-          <li class="logo"><img src="images/logos/workday.svg" alt="Workday" loading="lazy"></li>
-          <li class="logo"><img src="images/logos/sandvik.svg" alt="Sandvik" loading="lazy"></li>
-          <li class="logo"><img src="images/logos/vodafone.svg" alt="Vodafone" loading="lazy"></li>
-          <li class="logo"><img src="images/logos/marks-spencer.svg" alt="Marks &amp; Spencer" loading="lazy"></li>
-          <li class="logo"><img src="images/logos/tfl.svg" alt="Transport for London" loading="lazy"></li>
-          <li class="logo"><img src="images/logos/diageo.svg" alt="Diageo" loading="lazy"></li>
-          <li class="logo"><img src="images/logos/syngenta.svg" alt="Syngenta" loading="lazy"></li>
-          <li class="logo"><img src="images/logos/abb.svg" alt="ABB" loading="lazy"></li>
+          <li class="logo"><a href="https://www.gsk.com" target="_blank" rel="noopener"><img src="images/logos/gsk.png" alt="GSK" loading="lazy"></a></li>
+          <li class="logo"><a href="https://home.barclays" target="_blank" rel="noopener"><img src="images/logos/barclays.svg" alt="Barclays" loading="lazy"></a></li>
+          <li class="logo"><a href="https://www.cathaypacific.com" target="_blank" rel="noopener"><img src="images/logos/cathay-pacific.svg" alt="Cathay Pacific" loading="lazy"></a></li>
+          <li class="logo"><a href="https://www.workday.com" target="_blank" rel="noopener"><img src="images/logos/workday.svg" alt="Workday" loading="lazy"></a></li>
+          <li class="logo"><a href="https://www.home.sandvik" target="_blank" rel="noopener"><img src="images/logos/sandvik.svg" alt="Sandvik" loading="lazy"></a></li>
+          <li class="logo"><a href="https://www.vodafone.com" target="_blank" rel="noopener"><img src="images/logos/vodafone.svg" alt="Vodafone" loading="lazy"></a></li>
+          <li class="logo"><a href="https://www.marksandspencer.com" target="_blank" rel="noopener"><img src="images/logos/marks-spencer.svg" alt="Marks &amp; Spencer" loading="lazy"></a></li>
+          <li class="logo"><a href="https://tfl.gov.uk" target="_blank" rel="noopener"><img src="images/logos/tfl.svg" alt="Transport for London" loading="lazy"></a></li>
+          <li class="logo"><a href="https://www.diageo.com" target="_blank" rel="noopener"><img src="images/logos/diageo.svg" alt="Diageo" loading="lazy"></a></li>
+          <li class="logo"><a href="https://www.syngentagroup.com" target="_blank" rel="noopener"><img src="images/logos/syngenta.svg" alt="Syngenta" loading="lazy"></a></li>
+          <li class="logo"><a href="https://global.abb" target="_blank" rel="noopener"><img src="images/logos/abb.svg" alt="ABB" loading="lazy"></a></li>
+          <li class="logo"><a href="https://www.dsm-firmenich.com" target="_blank" rel="noopener"><img src="images/logos/dsm-firmenich.svg" alt="dsm-firmenich" loading="lazy"></a></li>
+          <li class="logo"><a href="https://www.landsec.com" target="_blank" rel="noopener"><img src="images/logos/landsec.svg" alt="Landsec" loading="lazy"></a></li>
+          <li class="logo"><a href="https://www.wittur.com" target="_blank" rel="noopener"><img src="images/logos/wittur.png" alt="Wittur Group" loading="lazy"></a></li>
+          <li class="logo"><a href="https://www.williamslea.com" target="_blank" rel="noopener"><img src="images/logos/williams-lea.svg" alt="Williams Lea (formerly Williams Lea Tag)" loading="lazy"></a></li>
+          <li class="logo"><a href="https://www.dentsu.com" target="_blank" rel="noopener"><img src="images/logos/dentsu.svg" alt="dentsu" loading="lazy"></a></li>
+          <li class="logo"><a href="https://www.skyscanner.net" target="_blank" rel="noopener"><img src="images/logos/skyscanner.svg" alt="Skyscanner" loading="lazy"></a></li>
+          <li class="logo"><a href="https://www.grantthornton.global" target="_blank" rel="noopener"><img src="images/logos/grant-thornton.svg" alt="Grant Thornton" loading="lazy"></a></li>
+          <li class="logo"><a href="https://www.informa.com" target="_blank" rel="noopener"><img src="images/logos/informa.png" alt="Informa" loading="lazy"></a></li>
+          <li class="logo"><a href="https://www.wilhelmsen.com" target="_blank" rel="noopener"><img src="images/logos/wilhelmsen.svg" alt="Wilhelmsen" loading="lazy"></a></li>
+          <li class="logo"><a href="https://www.sealedair.com" target="_blank" rel="noopener"><img src="images/logos/sealed-air.png" alt="Sealed Air" loading="lazy"></a></li>
         </ul>
       </div>
     </div>
