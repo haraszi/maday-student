@@ -1,399 +1,738 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Ildi Haraszi · Career Coaching for University Students</title>
-  <meta name="description" content="Career coaching for university students using DISC personality profiling. Understand how you work, what drives you, and which career paths actually fit.">
-  <meta property="og:title" content="Ildi Haraszi · Career Coaching for University Students">
-  <meta property="og:description" content="Stop guessing your career. Use DISC to understand how you work and what motivates you, then choose with confidence.">
-  <meta property="og:image" content="images/ildi.jpg">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --bg: #faf7f2;
-      --bg-alt: #f1ebe1;
-      --ink: #2a2522;
-      --muted: #6b625a;
-      --line: #e2d9cc;
-      --accent: #8a5a3c;
-      --accent-ink: #ffffff;
-      --d: #c2553f;
-      --i: #d9a12b;
-      --s: #5d8f6a;
-      --c: #3f6f9a;
-      --radius: 14px;
-      --max: 1080px;
-    }
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      margin: 0;
-      background: var(--bg);
-      color: var(--ink);
-      font: 17px/1.65 "DM Sans", system-ui, sans-serif;
-    }
-    img { max-width: 100%; display: block; }
-    a { color: inherit; }
-    h1, h2, h3 { font-family: "Fraunces", Georgia, serif; font-weight: 600; line-height: 1.15; margin: 0 0 .5em; }
-    h1 { font-size: clamp(2.2rem, 5vw, 3.6rem); letter-spacing: -.01em; }
-    h2 { font-size: clamp(1.7rem, 3.4vw, 2.4rem); }
-    h3 { font-size: 1.25rem; }
-    p { margin: 0 0 1em; }
-    .wrap { max-width: var(--max); margin: 0 auto; padding: 0 20px; }
-    section { padding: 88px 0; }
-    .alt { background: var(--bg-alt); }
-    .eyebrow { text-transform: uppercase; letter-spacing: .14em; font-size: .78rem; font-weight: 700; color: var(--accent); margin-bottom: 14px; }
-    .lead { font-size: 1.2rem; color: var(--muted); max-width: 40ch; }
-    .btn {
-      display: inline-block; background: var(--accent); color: var(--accent-ink);
-      padding: 15px 28px; border-radius: 999px; text-decoration: none; font-weight: 700;
-      transition: transform .15s ease, background .15s ease;
-    }
-    .btn:hover { transform: translateY(-1px); background: #74482d; }
-    .btn-ghost { background: transparent; color: var(--ink); border: 1.5px solid var(--ink); }
-    .btn-ghost:hover { background: var(--ink); color: var(--bg); }
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>maday.ae · Free career style quiz for students, with Ildi Haraszi</title>
+<meta name="description" content="Stop guessing your career. Take a free 3 minute DISC-style quiz and see how you think, work and get things done. With career coach Ildi Haraszi.">
+<meta property="og:title" content="maday.ae · Stop guessing your career. Start with you.">
+<meta property="og:description" content="A free 3 minute quiz that shows how you think, work and get things done.">
+<meta property="og:image" content="images/ildi.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+/* A loud, sticker-bright student site. Yellow hero, pink and red accents, big type, one clear button. */
+:root {
+  --bg: #FFFFFF;
+  --surface: #FFF3C4;
+  --ink: #1E1033;
+  --muted: #5B4E6E;
+  --line: #E6DCEF;
+  --yellow: #FFD21F;
+  --pink: #FF4F9A;
+  --red: #E5322D;
+  --on-yellow: #1E1033;
+  --on-pink: #1E1033;
+  --on-red: #FFFFFF;
+  --card: #FFFFFF;
+  --d: #E5322D;
+  --i: #FFC21A;
+  --s: #2FB36B;
+  --c: #2A6FDB;
+  --on-d: #FFFFFF;
+  --on-i: #1E1033;
+  --on-s: #0F2A1B;
+  --on-c: #FFFFFF;
+  --font-display: "Bricolage Grotesque", "Arial Black", system-ui, sans-serif;
+  --font-body: "DM Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #150E22;
+    --surface: #241838;
+    --ink: #FFF6DC;
+    --muted: #C4B8D6;
+    --line: #3B2C54;
+    --card: #1D1330;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #150E22;
+  --surface: #241838;
+  --ink: #FFF6DC;
+  --muted: #C4B8D6;
+  --line: #3B2C54;
+  --card: #1D1330;
+  color-scheme: dark;
+}
 
-    /* Header */
-    header { position: sticky; top: 0; z-index: 10; background: rgba(250,247,242,.92); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
-    header .wrap { display: flex; align-items: center; justify-content: space-between; height: 68px; }
-    .brand { font-family: "Fraunces", serif; font-weight: 600; font-size: 1.2rem; text-decoration: none; }
-    .brand span { color: var(--muted); font-family: "DM Sans", sans-serif; font-weight: 400; font-size: .9rem; margin-left: 8px; }
-    nav a { text-decoration: none; margin-left: 26px; font-size: .95rem; color: var(--muted); }
-    nav a:hover { color: var(--ink); }
-    nav .btn { color: var(--accent-ink); padding: 10px 20px; margin-left: 26px; }
+* { box-sizing: border-box; }
+html { scroll-padding-top: 80px; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 1.0625rem;
+  line-height: 1.55;
+}
+img { max-width: 100%; display: block; }
+[hidden] { display: none !important; }
+h1, h2, h3 { font-family: var(--font-display); line-height: 1.02; margin: 0; text-wrap: balance; letter-spacing: -0.02em; }
+h1 { font-size: clamp(2.6rem, 9vw, 5.6rem); font-weight: 800; }
+h2 { font-size: clamp(2rem, 5.6vw, 3.4rem); font-weight: 800; }
+h3 { font-size: clamp(1.25rem, 3vw, 1.6rem); font-weight: 700; }
+p { margin: 0; }
+.eyebrow { font-size: .8rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+.inner {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+.band { padding-block: clamp(48px, 9vw, 96px); }
+.stack { display: flex; flex-direction: column; gap: 20px; }
+.stack-lg { display: flex; flex-direction: column; gap: 32px; }
+.lede { font-size: clamp(1.1rem, 2.4vw, 1.35rem); max-width: 34em; }
+.muted { color: var(--muted); }
 
-    /* Hero */
-    .hero { padding: 64px 0 88px; }
-    .hero .wrap { display: grid; grid-template-columns: 1.1fr .9fr; gap: 56px; align-items: center; }
-    .hero-photo { position: relative; }
-    .hero-photo img { border-radius: 24px; aspect-ratio: 4/5; object-fit: cover; object-position: 50% 20%; width: 100%; }
-    .disc-dots { display: flex; gap: 8px; margin: 26px 0 30px; }
-    .disc-dots i { width: 12px; height: 12px; border-radius: 50%; display: block; }
-    .hero-cta { display: flex; gap: 14px; flex-wrap: wrap; }
+/* Buttons */
+.btn {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(1.05rem, 3.4vw, 1.3rem);
+  border: 3px solid var(--ink);
+  border-radius: 999px;
+  padding: 16px 28px;
+  cursor: pointer;
+  min-height: 56px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--red);
+  color: var(--on-red);
+  box-shadow: 5px 5px 0 var(--ink);
+  transition: transform .12s ease, box-shadow .12s ease;
+}
+.btn:hover { transform: translate(-2px, -2px); box-shadow: 7px 7px 0 var(--ink); }
+.btn:active { transform: translate(3px, 3px); box-shadow: 2px 2px 0 var(--ink); }
+.btn.yellow { background: var(--yellow); color: var(--on-yellow); }
+.btn.pink { background: var(--pink); color: var(--on-pink); }
+.btn.ghost { background: transparent; color: var(--ink); box-shadow: none; border-width: 2px; font-size: 1rem; min-height: 48px; padding: 10px 20px; }
+.btn.ghost:hover { background: var(--surface); transform: none; box-shadow: none; }
+.btn[disabled] { opacity: .45; cursor: not-allowed; box-shadow: none; transform: none; }
+:focus-visible { outline: 3px solid var(--pink); outline-offset: 3px; }
 
-    /* Problem */
-    .problem .wrap { max-width: 760px; }
-    .problem p { font-size: 1.12rem; }
-    .quote-list { list-style: none; padding: 0; margin: 28px 0; display: grid; gap: 12px; }
-    .quote-list li { background: var(--bg); border-left: 4px solid var(--accent); padding: 14px 18px; border-radius: 0 10px 10px 0; font-style: italic; }
+/* Header */
+.site-header { position: sticky; top: 0; z-index: 20; background: var(--bg); border-bottom: 2px solid var(--ink); }
+.site-header .inner { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-block: 10px; }
+.brand { background: none; border: 0; padding: 0; cursor: pointer; text-align: left; color: var(--ink); font-family: var(--font-display); display: flex; flex-direction: column; line-height: 1.05; }
+.brand b { font-size: 1.5rem; font-weight: 800; letter-spacing: -0.03em; }
+.brand b i { font-style: normal; color: var(--red); }
+.brand span { font-family: var(--font-body); font-size: .75rem; color: var(--muted); }
+.site-header .btn { font-size: .95rem; min-height: 44px; padding: 8px 18px; border-width: 2px; box-shadow: 3px 3px 0 var(--ink); }
 
-    /* DISC */
-    .disc-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; margin-top: 40px; }
-    .disc-card { background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 26px 22px; border-top: 6px solid var(--clr); }
-    .disc-card .letter { font-family: "Fraunces", serif; font-size: 2.6rem; color: var(--clr); line-height: 1; margin-bottom: 6px; }
-    .disc-card p { color: var(--muted); font-size: .97rem; margin: 0; }
-    .note { margin-top: 30px; color: var(--muted); max-width: 70ch; }
+/* Hero */
+.hero { background: var(--yellow); color: var(--on-yellow); border-bottom: 3px solid var(--ink); overflow: hidden; }
+.hero .inner { display: grid; grid-template-columns: 1.4fr 1fr; gap: 32px; align-items: center; }
+.hero .copy { min-width: 0; }
+.chip { display: inline-block; background: var(--ink); color: var(--yellow); border-radius: 999px; padding: 6px 14px; width: fit-content; }
+.mark { background: linear-gradient(transparent 58%, var(--pink) 58%, var(--pink) 92%, transparent 92%); padding: 0 .08em; }
+.hero .lede { color: var(--on-yellow); }
+.cta-row { display: flex; flex-direction: column; gap: 12px; align-items: flex-start; }
+.tiles { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; max-width: 340px; justify-self: center; width: 100%; }
+.tile { aspect-ratio: 1; border: 3px solid var(--ink); border-radius: 22px; display: flex; flex-direction: column; align-items: center; justify-content: center; font-family: var(--font-display); font-weight: 800; box-shadow: 5px 5px 0 var(--ink); }
+.tile b { font-size: clamp(2.6rem, 8vw, 4rem); line-height: 1; }
+.tile span { font-size: .8rem; font-family: var(--font-body); font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+.tile.d { background: var(--d); color: var(--on-d); transform: rotate(-4deg); }
+.tile.i { background: var(--i); color: var(--on-i); transform: rotate(3deg); }
+.tile.s { background: var(--s); color: var(--on-s); transform: rotate(2deg); }
+.tile.c { background: var(--c); color: var(--on-c); transform: rotate(-3deg); }
 
-    /* Steps */
-    .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; margin-top: 40px; counter-reset: step; }
-    .step { position: relative; padding-top: 58px; }
-    .step::before {
-      counter-increment: step; content: counter(step);
-      position: absolute; top: 0; left: 0; width: 42px; height: 42px; border-radius: 50%;
-      background: var(--accent); color: #fff; display: grid; place-items: center;
-      font-family: "Fraunces", serif; font-size: 1.2rem;
-    }
-    .step p { color: var(--muted); }
+/* Sections */
+.worries { display: grid; gap: 14px; margin: 0; padding: 0; list-style: none; }
+.worries li { font-family: var(--font-display); font-weight: 700; font-size: clamp(1.2rem, 3.2vw, 1.7rem); line-height: 1.15; border: 3px solid var(--ink); border-radius: 22px; padding: 18px 22px; background: var(--card); box-shadow: 5px 5px 0 var(--ink); }
+.worries li:nth-child(2) { margin-left: clamp(0px, 4vw, 40px); }
+.worries li:nth-child(3) { margin-left: clamp(0px, 8vw, 80px); }
+.split { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(24px, 5vw, 56px); align-items: start; }
+.split > * { min-width: 0; }
+.pinkband { background: var(--pink); color: var(--on-pink); border-block: 3px solid var(--ink); }
+.pinkband .lede { color: var(--on-pink); }
+.gets { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+.gets li { display: flex; gap: 14px; align-items: flex-start; font-weight: 500; font-size: 1.15rem; }
+.gets li::before { content: ""; flex: none; width: 22px; height: 22px; margin-top: 4px; background: var(--yellow); border: 3px solid var(--ink); border-radius: 7px; transform: rotate(8deg); }
+.steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin: 0; padding: 0; list-style: none; }
+.steps li { border: 3px solid var(--ink); border-radius: 22px; padding: 22px; background: var(--card); display: flex; flex-direction: column; gap: 10px; box-shadow: 5px 5px 0 var(--ink); min-width: 0; }
+.steps .n { width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center; font-family: var(--font-display); font-weight: 800; font-size: 1.3rem; border: 3px solid var(--ink); }
+.steps li:nth-child(1) .n { background: var(--yellow); color: var(--on-yellow); }
+.steps li:nth-child(2) .n { background: var(--pink); color: var(--on-pink); }
+.steps li:nth-child(3) .n { background: var(--red); color: var(--on-red); }
+.softband { background: var(--surface); border-block: 3px solid var(--ink); }
+.photo { aspect-ratio: 4 / 5; max-width: 340px; width: 100%; object-fit: cover; object-position: 50% 15%; border: 3px solid var(--ink); border-radius: 28px; background: var(--card); box-shadow: 6px 6px 0 var(--ink); transform: rotate(-2deg); }
+.quotes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.quote { margin: 0; border: 3px solid var(--ink); border-radius: 22px; padding: 22px; background: var(--card); display: flex; flex-direction: column; justify-content: space-between; gap: 16px; min-width: 0; }
+.quote:nth-child(1) { background: var(--yellow); color: var(--on-yellow); }
+.quote p { font-family: var(--font-display); font-weight: 700; font-size: 1.3rem; line-height: 1.2; }
+.quote cite { font-style: normal; font-size: .9rem; font-weight: 700; }
+.logos { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+.logo { border: 2px solid var(--ink); border-radius: 12px; padding: 10px 16px; font-weight: 700; font-size: .95rem; background: var(--card); }
+.finalcta { background: var(--red); color: var(--on-red); border-top: 3px solid var(--ink); text-align: center; }
+.finalcta .inner { display: flex; flex-direction: column; align-items: center; gap: 28px; }
+.footer { padding-block: 28px; font-size: .9rem; color: var(--muted); }
+.footer .inner { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.footer a { color: inherit; font-weight: 700; }
 
-    /* Outcomes */
-    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; }
-    .checks { list-style: none; padding: 0; margin: 0; }
-    .checks li { padding: 14px 0 14px 36px; border-bottom: 1px solid var(--line); position: relative; }
-    .checks li::before { content: "✓"; position: absolute; left: 0; top: 13px; color: var(--accent); font-weight: 700; font-size: 1.1rem; }
+/* Quiz */
+.focus-view { min-height: 70vh; padding-block: clamp(28px, 6vw, 64px); }
+.col { max-width: 700px; margin: 0 auto; display: flex; flex-direction: column; gap: 22px; }
+.progress-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; font-weight: 700; }
+.bar { height: 16px; border: 3px solid var(--ink); border-radius: 999px; overflow: hidden; background: var(--card); }
+.bar > i { display: block; height: 100%; background: var(--pink); transition: width .25s ease; }
+.q-prompt { font-size: clamp(1.7rem, 5vw, 2.5rem); }
+.q-help { color: var(--muted); font-size: .98rem; }
+.stmts { display: flex; flex-direction: column; gap: 12px; }
+.stmt { border: 3px solid var(--ink); border-radius: 20px; padding: 16px 18px; background: var(--card); display: flex; flex-direction: column; gap: 12px; transition: background .12s ease; }
+.stmt.is-most { background: var(--yellow); color: var(--on-yellow); }
+.stmt.is-least { background: var(--surface); border-style: dashed; }
+.stmt-text { font-size: 1.12rem; font-weight: 500; }
+.pick { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.pbtn { font-family: var(--font-body); font-weight: 700; font-size: .95rem; min-height: 46px; border-radius: 999px; border: 2px solid var(--ink); background: transparent; color: inherit; cursor: pointer; padding: 8px 10px; }
+.pbtn:hover { background: rgba(255, 79, 154, .22); }
+.pbtn[aria-pressed="true"] { background: var(--ink); color: var(--bg); }
+.pbtn[aria-pressed="true"].m::before { content: "\2713\00a0"; }
+.pbtn[aria-pressed="true"].l::before { content: "\00d7\00a0"; }
+.nav-row { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; }
+.input { font: inherit; font-size: 1rem; padding: 14px 16px; border: 3px solid var(--ink); border-radius: 16px; background: var(--card); color: var(--ink); width: 100%; min-height: 120px; }
 
-    /* Placeholders: remove the class once you add real content */
-    .placeholder { border: 2px dashed #c9a98f; background: #fffaf3; border-radius: var(--radius); padding: 26px; color: var(--muted); }
-    .placeholder strong { color: var(--accent); display: block; margin-bottom: 6px; font-size: .8rem; letter-spacing: .1em; text-transform: uppercase; }
+/* Result */
+.result-hero { background: var(--yellow); color: var(--on-yellow); border-bottom: 3px solid var(--ink); }
+.badge-big { width: 96px; height: 96px; border: 3px solid var(--ink); border-radius: 26px; display: grid; place-items: center; font-family: var(--font-display); font-weight: 800; font-size: 3.4rem; box-shadow: 5px 5px 0 var(--ink); transform: rotate(-5deg); }
+.chartwrap { border: 3px solid var(--ink); border-radius: 24px; padding: clamp(18px, 4vw, 30px); background: var(--card); box-shadow: 6px 6px 0 var(--ink); display: flex; flex-direction: column; gap: 18px; }
+.row { display: grid; grid-template-columns: 48px 1fr 56px; gap: 12px; align-items: center; }
+.row .lt { width: 48px; height: 48px; border-radius: 14px; border: 3px solid var(--ink); display: grid; place-items: center; font-family: var(--font-display); font-weight: 800; font-size: 1.4rem; }
+.row .nm { font-weight: 700; font-size: .95rem; margin-bottom: 4px; }
+.track { height: 22px; border-radius: 999px; background: var(--surface); border: 2px solid var(--ink); overflow: hidden; }
+.fill { height: 100%; transform-origin: left; animation: grow .7s ease-out both; }
+@keyframes grow { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+.row .pc { font-family: var(--font-display); font-weight: 800; font-size: 1.3rem; text-align: right; font-variant-numeric: tabular-nums; }
+.two { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.mini { border: 3px solid var(--ink); border-radius: 20px; padding: 18px; background: var(--card); display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+.mini .eyebrow { color: var(--muted); }
+.note-box { border: 3px dashed var(--ink); border-radius: 20px; padding: 16px 18px; background: var(--surface); font-size: .98rem; }
 
-    /* About */
-    .about .wrap { display: grid; grid-template-columns: .8fr 1.2fr; gap: 56px; align-items: start; }
-    .about img { border-radius: 20px; aspect-ratio: 4/5; object-fit: cover; object-position: 50% 15%; position: sticky; top: 96px; }
-    .about h3 { margin-top: 1.6em; }
-    .about .btn { margin-top: 12px; }
-    .trust { font-size: .95rem; color: var(--muted); border-left: 3px solid var(--accent); padding-left: 14px; margin-top: 4px; }
+/* Deep dive */
+.dd { background: var(--pink); color: var(--on-pink); border-block: 3px solid var(--ink); }
+.dd .lede { color: var(--on-pink); }
+.tiers { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.tier { border: 3px solid var(--ink); border-radius: 24px; padding: 24px; background: var(--card); color: var(--ink); display: flex; flex-direction: column; gap: 14px; box-shadow: 6px 6px 0 var(--ink); min-width: 0; position: relative; }
+.tier.best { background: var(--yellow); color: var(--on-yellow); }
+.tier ul { margin: 0; padding-left: 1.2em; display: grid; gap: 6px; }
+.tier .btn { margin-top: auto; }
+.price { font-family: var(--font-display); font-weight: 800; font-size: 2.6rem; line-height: 1; font-variant-numeric: tabular-nums; }
+.price small { font-size: 1rem; font-weight: 700; }
+.price s { font-size: 1.1rem; font-weight: 500; opacity: .7; margin-left: 6px; }
+.save { position: absolute; top: -16px; right: 18px; background: var(--red); color: var(--on-red); border: 3px solid var(--ink); border-radius: 999px; padding: 4px 14px; font-weight: 800; font-size: .9rem; transform: rotate(3deg); }
+.dd a.inline { color: inherit; font-weight: 700; }
 
-    /* Credentials */
-    .creds { list-style: none; padding: 0; margin: 36px 0 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-    .creds li { background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 20px 22px; font-weight: 500; }
-    .clients { margin-top: 32px; color: var(--muted); }
-    .clients strong { color: var(--ink); font-weight: 500; }
-
-    /* Proof */
-    .proof-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 36px; }
-    .testimonial { margin: 0; background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 30px 26px 24px; display: flex; flex-direction: column; justify-content: space-between; gap: 20px; position: relative; }
-    .testimonial::before { content: "\201C"; position: absolute; top: -6px; left: 20px; font-family: "Fraunces", serif; font-size: 4.5rem; line-height: 1; color: var(--accent); opacity: .25; }
-    .testimonial blockquote { margin: 0; font-family: "Fraunces", serif; font-size: 1.15rem; line-height: 1.45; }
-    .testimonial figcaption { font-weight: 700; font-size: .92rem; color: var(--accent); }
-
-    /* FAQ */
-    .faq { max-width: 760px; }
-    details { border-bottom: 1px solid var(--line); padding: 18px 0; }
-    summary { cursor: pointer; font-weight: 700; list-style: none; display: flex; justify-content: space-between; gap: 20px; }
-    summary::-webkit-details-marker { display: none; }
-    summary::after { content: "+"; font-size: 1.4rem; line-height: 1; color: var(--accent); }
-    details[open] summary::after { content: "–"; }
-    details p { margin: 12px 0 0; color: var(--muted); }
-
-    /* CTA */
-    .cta { background: var(--ink); color: var(--bg); text-align: center; }
-    .cta .lead { color: #cfc6bb; margin: 0 auto 32px; }
-    .cta .btn { background: var(--bg); color: var(--ink); }
-    .cta .btn:hover { background: #fff; }
-
-    footer { padding: 32px 0; font-size: .88rem; color: var(--muted); }
-    footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
-
-    @media (max-width: 860px) {
-      section { padding: 64px 0; }
-      nav a:not(.btn) { display: none; }
-      .hero .wrap, .two-col, .about .wrap { grid-template-columns: 1fr; gap: 36px; }
-      .hero-photo { order: -1; max-width: 420px; }
-      .disc-grid { grid-template-columns: 1fr 1fr; }
-      .steps, .proof-grid, .creds { grid-template-columns: 1fr; }
-      .about img { position: static; max-width: 420px; }
-    }
-    @media (max-width: 480px) {
-      .disc-grid { grid-template-columns: 1fr; }
-      .brand span { display: none; }
-      nav .btn { margin-left: 0; }
-    }
-  </style>
+@media (max-width: 760px) {
+  .hero .inner, .split, .steps, .quotes, .two, .tiers { grid-template-columns: 1fr; }
+  .tiles { max-width: 260px; }
+  .photo { max-width: 260px; }
+  .tier { margin-top: 10px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; }
+}
+</style>
 </head>
 <body>
 
-  <header>
-    <div class="wrap">
-      <a class="brand" href="#top">Ildi Haraszi <span>Career Coach</span></a>
-      <nav>
-        <a href="#disc">What is DISC?</a>
-        <a href="#how">How it works</a>
-        <a href="#about">About</a>
-        <a class="btn" href="https://cal.com/maday" target="_blank" rel="noopener">Book a call</a>
-      </nav>
+<header class="site-header">
+  <div class="inner">
+    <button class="brand" id="brand" aria-label="maday.ae home">
+      <b>maday<i>.ae</i></b>
+      <span>with Ildi Haraszi</span>
+    </button>
+    <button class="btn" id="hdr-cta" data-start>Start the free quiz</button>
+  </div>
+</header>
+
+<main>
+<!-- HOME -->
+<div id="view-home">
+  <section class="hero">
+    <div class="inner band">
+      <div class="copy stack-lg">
+        <span class="eyebrow chip">Free quiz &middot; 3 minutes</span>
+        <h1 id="home-h1" tabindex="-1">Stop guessing your career. <span class="mark">Start with you.</span></h1>
+        <p class="lede">A free 3 minute quiz that shows how you think, work and get things done.</p>
+        <div class="cta-row">
+          <button class="btn" data-start>Start my free 12 question quiz</button>
+          <p style="font-weight:500">Free. No sign up. Your result in minutes.</p>
+        </div>
+      </div>
+      <div class="tiles" aria-hidden="true">
+        <div class="tile d"><b>D</b><span>Driver</span></div>
+        <div class="tile i"><b>I</b><span>Spark</span></div>
+        <div class="tile s"><b>S</b><span>Anchor</span></div>
+        <div class="tile c"><b>C</b><span>Architect</span></div>
+      </div>
     </div>
-  </header>
+  </section>
 
-  <main id="top">
-
-    <!-- HERO -->
-    <section class="hero">
-      <div class="wrap">
-        <div>
-          <p class="eyebrow">Career coaching for university students</p>
-          <h1>You don't need to have it all figured out. You need to know yourself.</h1>
-          <p class="lead">I help students choose a career path that fits how they actually think, work and feel motivated, using DISC personality profiling instead of guesswork.</p>
-          <p class="trust">DISC certified consultant and executive coach · 20+ years coaching leaders and teams across three continents</p>
-          <div class="disc-dots" aria-hidden="true">
-            <i style="background:var(--d)"></i><i style="background:var(--i)"></i><i style="background:var(--s)"></i><i style="background:var(--c)"></i>
-          </div>
-          <div class="hero-cta">
-            <a class="btn" href="https://cal.com/maday" target="_blank" rel="noopener">Book a free intro call</a>
-            <a class="btn btn-ghost" href="#how">See how it works</a>
-          </div>
-        </div>
-        <div class="hero-photo">
-          <img src="images/ildi.jpg" alt="Ildi Haraszi, career coach, smiling in a cream blazer" width="1024" height="1024">
-        </div>
-      </div>
-    </section>
-
-    <!-- PROBLEM -->
-    <section class="problem alt">
-      <div class="wrap">
-        <p class="eyebrow">Sound familiar?</p>
-        <h2>Most students pick a career based on what they're told, not on who they are.</h2>
-        <p>I hear the same things from students again and again:</p>
-        <ul class="quote-list">
-          <li>"Everyone else seems to know what they want. I don't."</li>
-          <li>"I chose my degree, but I'm not sure it's really me."</li>
-          <li>"I'm good at a lot of things. How do I pick one?"</li>
-          <li>"My parents have one idea, my friends have another, and I'm stuck in the middle."</li>
-        </ul>
-        <p>None of this means something is wrong with you. It usually means nobody has helped you look at the most important piece of the puzzle: <strong>you</strong>. How you make decisions, how you like to work with people, what pace suits you, and what genuinely drives you.</p>
-        <p>That's where I start.</p>
-      </div>
-    </section>
-
-    <!-- DISC -->
-    <section id="disc">
-      <div class="wrap">
-        <p class="eyebrow">The tool I use</p>
-        <h2>What is DISC, and why does it help?</h2>
-        <p class="lead">DISC is a well-established behavioural profile. It describes how you tend to act, communicate and respond to challenges, and what motivates you. It doesn't put you in a box. It gives you a language for yourself.</p>
-        <div class="disc-grid">
-          <div class="disc-card" style="--clr:var(--d)">
-            <div class="letter">D</div>
-            <h3>Dominance</h3>
-            <p>Driven by results and challenge. Likes to decide, lead and move fast.</p>
-          </div>
-          <div class="disc-card" style="--clr:var(--i)">
-            <div class="letter">I</div>
-            <h3>Influence</h3>
-            <p>Energised by people and ideas. Persuades, inspires and builds connections.</p>
-          </div>
-          <div class="disc-card" style="--clr:var(--s)">
-            <div class="letter">S</div>
-            <h3>Steadiness</h3>
-            <p>Values trust, stability and teamwork. Patient, loyal and a great supporter.</p>
-          </div>
-          <div class="disc-card" style="--clr:var(--c)">
-            <div class="letter">C</div>
-            <h3>Conscientiousness</h3>
-            <p>Loves accuracy, quality and logic. Thinks things through and gets them right.</p>
-          </div>
-        </div>
-        <p class="note">Everyone is a blend of all four. Your particular mix says a lot about the work environments where you'll thrive, and the ones that will quietly drain you. That is exactly what we use to make better career decisions.</p>
-      </div>
-    </section>
-
-    <!-- HOW IT WORKS -->
-    <section id="how" class="alt">
-      <div class="wrap">
-        <p class="eyebrow">How it works</p>
-        <h2>Three steps from "I don't know" to a clear direction</h2>
-        <div class="steps">
-          <div class="step">
-            <h3>Discover your profile</h3>
-            <p>You complete a short online DISC assessment in your own time. It takes around 15–20 minutes, and there are no right or wrong answers.</p>
-          </div>
-          <div class="step">
-            <h3>Make sense of it together</h3>
-            <p>We meet one-to-one and go through your results in plain language: your strengths, your blind spots, and what really motivates you.</p>
-          </div>
-          <div class="step">
-            <h3>Turn insight into choices</h3>
-            <p>We connect your profile to real career paths, study options and next steps, so you leave with a direction you actually believe in.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- OUTCOMES -->
-    <section>
-      <div class="wrap two-col">
-        <div>
-          <p class="eyebrow">What you walk away with</p>
-          <h2>Clarity you can use, not just a report you file away</h2>
-          <p class="lead">My goal is simple: that you make your next career decision with confidence, because it's based on who you really are.</p>
-        </div>
-        <ul class="checks">
-          <li>Your personal DISC profile, explained so it makes sense to you</li>
-          <li>A clear picture of your natural strengths and what motivates you</li>
-          <li>Career paths and work environments that suit your style</li>
-          <li>Words to describe yourself confidently in CVs and interviews</li>
-          <li>Concrete next steps: courses, internships, people to talk to</li>
-        </ul>
-      </div>
-    </section>
-
-    <!-- ABOUT -->
-    <section id="about" class="about alt">
-      <div class="wrap">
-        <img src="images/ildi.jpg" alt="Portrait of Ildi Haraszi" width="1024" height="1024" loading="lazy">
-        <div>
-          <p class="eyebrow">About me</p>
-          <h2>Hi, I'm Ildi.</h2>
-          <p>I've spent two decades helping people through the hardest part of any change: the human part. I started in Hungary, built my career across the UK, Germany, Hong Kong, Switzerland and the Middle East, and I now live in Abu Dhabi. I hold British and Hungarian citizenship, speak English, German and Hungarian fluently, and I'm learning Arabic. My accent in all of them is a work in progress.</p>
-
-          <h3>Where my experience comes from</h3>
-          <p>I've worked with global names like GSK, Barclays Capital, Cathay Pacific, Sandvik, Workday and Al Tayer Group. At GSK, I led 20 senior change managers and a community of 250 change agents across a rollout that reached 100,000 people in 60 countries.</p>
-          <p>Why does that matter to a student? Because every one of those projects came down to the same question: do people understand themselves and each other well enough to work together? DISC answers it faster than anything else I've used.</p>
-
-          <h3>Why I coach students with DISC</h3>
-          <p>Most students choose a career by asking what they're good at. I ask a better question: how do you <em>naturally operate</em>? Do you push for results or protect quality? Do you energise a room or recharge away from it? DISC gives you a language for those answers. Think of it as a compass. It won't pick your destination, but it makes sure you stop walking in circles.</p>
-
-          <h3>How I coach</h3>
-          <p>I keep it honest, practical and warm. I'll tell you the truth even when it stings, I'll make you laugh at least once, and you'll leave with a clear picture of your style and next steps you can act on this week.</p>
-
-          <a class="btn btn-ghost" href="https://www.linkedin.com/in/ildikoharaszi/" target="_blank" rel="noopener">Want the full story? Connect on LinkedIn</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- CREDENTIALS -->
-    <section id="credentials">
-      <div class="wrap">
-        <p class="eyebrow">What I bring to your session</p>
-        <h2>Two decades of experience, now on your side</h2>
-        <ul class="creds">
-          <li>DISC certified</li>
-          <li>Executive coach and NLP Practitioner, trained at Coaching Academy London</li>
-          <li>MSc in Business Administration, Budapest University of Economics</li>
-          <li>Member of the Association of Change Management Professionals and the Change Management Institute</li>
-          <li>Fearless Culture™ Implementation Consultant</li>
-          <li>CliftonStrengths top 5: Achiever, Activator, Restorative, Positivity and Ideation</li>
-        </ul>
-        <p class="clients">Worked with <strong>GSK</strong> · <strong>Barclays Capital</strong> · <strong>Cathay Pacific</strong> · <strong>Sandvik</strong> · <strong>Workday</strong> · <strong>Al Tayer Group</strong></p>
-      </div>
-    </section>
-
-    <!-- PROOF -->
-    <section id="proof">
-      <div class="wrap">
-        <p class="eyebrow">What students say</p>
-        <h2>Real stories, real decisions</h2>
-        <div class="proof-grid">
-          <figure class="testimonial">
-            <blockquote>"Finally someone understands me without trying to convince me they know what is best for me."</blockquote>
-            <figcaption>Angelina Teg</figcaption>
-          </figure>
-          <figure class="testimonial">
-            <blockquote>"It feels so liberating not having to guess, but to understand that nothing is wrong with me."</blockquote>
-            <figcaption>Fatima AlHosani</figcaption>
-          </figure>
-          <figure class="testimonial">
-            <blockquote>"I want to show this to my parents so they see that my gut feeling about what I would love to do is right."</blockquote>
-            <figcaption>Ahmed AlDhaheri</figcaption>
-          </figure>
-        </div>
-      </div>
-    </section>
-
-    <!-- FAQ -->
-    <section class="alt">
-      <div class="wrap faq">
-        <p class="eyebrow">Questions</p>
-        <h2>Things students often ask me</h2>
-        <details>
-          <summary>Is DISC a personality test I can pass or fail?</summary>
-          <p>Not at all. There are no good or bad profiles. DISC simply describes your natural style, and every style has its own strengths.</p>
-        </details>
-        <details>
-          <summary>Will it tell me exactly which job to do?</summary>
-          <p>No tool can do that, and I'd be wary of any that claims to. What DISC does is show you which kinds of roles and environments suit you, so your choices become much clearer. The decision stays yours.</p>
-        </details>
-        <details>
-          <summary>I'm in my final year. Is it too late?</summary>
-          <p>Never. Whether you're choosing a degree, a master's, your first job or a change of direction, knowing yourself better helps at every stage.</p>
-        </details>
-        <details>
-          <summary>Do we meet in person or online?</summary>
-          <p>Sessions are held online, so you can join from wherever you're studying.</p>
-        </details>
-      </div>
-    </section>
-
-    <!-- CTA -->
-    <section id="book" class="cta">
-      <div class="wrap">
-        <h2>Ready to stop guessing?</h2>
-        <p class="lead">Book a free, no-pressure intro call. We'll talk about where you are now and whether DISC coaching is right for you.</p>
-        <a class="btn" href="https://cal.com/maday" target="_blank" rel="noopener">Book your free intro call</a>
-      </div>
-    </section>
-
-  </main>
-
-  <footer>
-    <div class="wrap">
-      <span>© <span id="yr">2026</span> Ildi Haraszi · Career Coaching</span>
-      <span>DISC-based career guidance for university students</span>
+  <section class="band">
+    <div class="inner stack-lg">
+      <h2>What if you pick wrong?</h2>
+      <p class="lede">That question keeps a lot of students awake.</p>
+      <ul class="worries">
+        <li>&ldquo;What if I chose the wrong degree?&rdquo;</li>
+        <li>&ldquo;What if I waste three years?&rdquo;</li>
+        <li>&ldquo;What if everyone else was right and I was wrong?&rdquo;</li>
+      </ul>
+      <p class="lede">So you wait. You scroll. You compare. And the fear grows.</p>
+      <p class="lede"><b>Here's the secret: you don't fear the choice. You fear choosing without knowing yourself.</b></p>
     </div>
-  </footer>
+  </section>
 
-  <script>document.getElementById("yr").textContent = new Date().getFullYear();</script>
+  <section class="pinkband band">
+    <div class="inner stack">
+      <h2>Guessing feels risky. Knowing feels safe.</h2>
+      <p class="lede">When you understand how you naturally work, you stop gambling. You start choosing.</p>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="inner split">
+      <div class="stack">
+        <h2>In three minutes, you'll see:</h2>
+      </div>
+      <div class="stack-lg">
+        <ul class="gets">
+          <li>How you think and decide</li>
+          <li>What drives you</li>
+          <li>Where you shine, and where you'd quietly burn out</li>
+        </ul>
+        <p class="lede"><b>That's the difference between a guess and a good decision.</b></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="softband band">
+    <div class="inner stack-lg">
+      <h2>How it works</h2>
+      <ol class="steps">
+        <li><span class="n">1</span><h3>Take the quiz</h3><p>12 quick questions. No wrong answers.</p></li>
+        <li><span class="n">2</span><h3>See your result</h3><p>Your style, in a clear chart.</p></li>
+        <li><span class="n">3</span><h3>Go deeper if you want</h3><p>Your deep dive shows careers that fit you.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="inner split">
+      <div class="stack">
+        <h2>Want to feel even surer?</h2>
+        <p class="lede">Your free result is the taster. The deep dive adds careers, work environments and next steps that match your style. Available in English or Arabic.</p>
+      </div>
+      <div class="stack">
+        <h3>Parents: they're scared too.</h3>
+        <p class="lede">Your child fears letting you down as much as choosing wrong. Give them words for who they are, and you both get a calmer conversation about the future.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="pinkband band">
+    <div class="inner split" style="align-items:center">
+      <img class="photo" src="images/ildi.jpg" alt="Ildi Haraszi, career coach" width="1024" height="1024" loading="lazy">
+      <div class="stack">
+        <h2>Hi, I'm Ildi.</h2>
+        <p class="lede">Twenty years of helping people through big, scary change. Now helping students choose with confidence. Honest. Practical. Warm. And yes, you'll laugh at least once.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="inner stack-lg">
+      <div class="quotes">
+        <figure class="quote"><p>&ldquo;It feels so liberating not having to guess.&rdquo;</p><cite>Fatima AlHosani</cite></figure>
+        <figure class="quote"><p>&ldquo;Finally someone understands me.&rdquo;</p><cite>Angelina Teg</cite></figure>
+        <figure class="quote"><p>&ldquo;I want to show this to my parents.&rdquo;</p><cite>Ahmed AlDhaheri</cite></figure>
+      </div>
+      <div class="stack">
+        <span class="eyebrow muted">Where I've led change</span>
+        <div class="logos">
+          <span class="logo">GSK</span><span class="logo">Barclays Capital</span><span class="logo">Cathay Pacific</span><span class="logo">Sandvik</span><span class="logo">Workday</span><span class="logo">Al Tayer Group</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="finalcta band">
+    <div class="inner">
+      <h2>Scared of choosing wrong? Start with you.</h2>
+      <button class="btn yellow" data-start>Start my free 12 question quiz</button>
+    </div>
+  </section>
+</div>
+
+<!-- QUIZ -->
+<section id="view-quiz" class="focus-view" hidden>
+  <div class="inner">
+    <div class="col">
+      <div class="progress-top"><span id="q-count" aria-live="polite">Question 1 of 12</span><button class="btn ghost" id="q-exit">Leave quiz</button></div>
+      <div class="bar" role="progressbar" aria-valuemin="0" aria-valuemax="12" aria-valuenow="0" id="q-bar"><i id="q-fill" style="width:0%"></i></div>
+      <h2 class="q-prompt" id="q-prompt" tabindex="-1"></h2>
+      <p class="q-help">Pick the one that is most like you, and the one that is least like you.</p>
+      <div class="stmts" id="q-stmts"></div>
+      <div class="nav-row">
+        <button class="btn ghost" id="q-back">Back</button>
+        <button class="btn" id="q-next" disabled>Next</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESULT -->
+<section id="view-result" hidden>
+  <div class="result-hero">
+    <div class="inner band" style="padding-block:clamp(36px,7vw,72px)">
+      <div class="stack-lg">
+        <span class="eyebrow chip">Your free result</span>
+        <div style="display:flex;gap:24px;align-items:center;flex-wrap:wrap">
+          <div class="badge-big" id="r-badge" aria-hidden="true"></div>
+          <div class="stack" style="min-width:0;flex:1 1 280px">
+            <span class="eyebrow" id="r-name"></span>
+            <h1 id="r-head" tabindex="-1" style="font-size:clamp(2.4rem,8vw,4.6rem)"></h1>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="band" style="padding-block:clamp(36px,6vw,64px)">
+    <div class="inner stack-lg">
+      <p class="lede" id="r-intro"></p>
+      <div class="chartwrap">
+        <h3>Your style mix</h3>
+        <div id="r-chart" class="stack" style="gap:14px"></div>
+        <p class="muted" style="font-size:.9rem">Each bar shows how strongly that style came through in your answers.</p>
+      </div>
+      <p class="lede" id="r-blend"></p>
+      <div class="two">
+        <div class="mini"><span class="eyebrow">Your strength</span><p id="r-strength"></p></div>
+        <div class="mini"><span class="eyebrow">Watch out for</span><p id="r-watch"></p></div>
+      </div>
+      <p class="lede"><b>Scared of choosing wrong? Start here. Knowing how you work turns a guess into a decision.</b></p>
+      <div class="note-box">This is a taster, not the full certified assessment. Your deep dive goes much further.</div>
+      <p id="r-cta" class="lede"></p>
+    </div>
+  </div>
+
+  <section class="dd band" id="deepdive">
+    <div class="inner stack-lg">
+      <div class="stack">
+        <h2>Want to feel even surer?</h2>
+        <p class="lede">Your deep dive is the full professional DISC report, with the careers, work environments and next steps that suit your style. Available in English or Arabic.</p>
+      </div>
+      <div class="tiers">
+        <div class="tier">
+          <h3>Deep dive report</h3>
+          <ul>
+            <li>Your full professional DISC report</li>
+            <li>In English or Arabic, your choice</li>
+          </ul>
+          <p class="price">187 <small>AED</small></p>
+          <a class="btn pink" href="https://cal.com/maday" target="_blank" rel="noopener">Get my deep dive</a>
+        </div>
+        <div class="tier best">
+          <span class="save">Save 55 AED</span>
+          <h3>Deep dive + debrief</h3>
+          <ul>
+            <li>Your full professional DISC report</li>
+            <li>A one to one debrief to turn it into next steps</li>
+            <li>In English or Arabic, your choice</li>
+          </ul>
+          <p class="price">349 <small>AED</small><s>404 AED</s></p>
+          <a class="btn" href="https://cal.com/maday" target="_blank" rel="noopener">Get deep dive + debrief</a>
+        </div>
+      </div>
+      <p style="font-size:.95rem">Book a short call and we'll sort out your language, payment and next steps together. Already have your report? <a class="inline" href="https://cal.com/maday" target="_blank" rel="noopener">Add a debrief for 217 AED.</a></p>
+    </div>
+  </section>
+
+  <section class="band" style="padding-block:clamp(36px,6vw,64px)">
+    <div class="inner stack-lg">
+      <div class="two">
+        <div class="mini">
+          <h3>Share this with your parents</h3>
+          <p>Show them how you naturally work, so the conversation about your future gets calmer.</p>
+          <button class="btn yellow" id="share-btn" style="align-self:flex-start;font-size:1rem">Copy a note for my parents</button>
+          <p id="share-msg" class="muted" style="font-size:.9rem" aria-live="polite"></p>
+          <textarea class="input" id="share-text" readonly rows="4" hidden></textarea>
+        </div>
+        <div class="mini">
+          <h3>Not quite you?</h3>
+          <p>Answer a little differently and see what shifts. It takes about three minutes.</p>
+          <button class="btn ghost" id="retake" style="align-self:flex-start">Retake the quiz</button>
+        </div>
+      </div>
+    </div>
+  </section>
+</section>
+</main>
+
+<footer class="footer">
+  <div class="inner">
+    <span>&copy; <span id="yr">2026</span> maday.ae with Ildi Haraszi</span>
+    <a href="https://cal.com/maday" target="_blank" rel="noopener">Book a call</a>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var ORDER = ["D", "I", "S", "C"];
+  var QUESTIONS = [
+    { p: "Your group project has stalled. What are you most likely to do?", s: [
+      ["I take charge and hand out the tasks so we get moving.", "D"],
+      ["I rally everyone with ideas and good energy.", "I"],
+      ["I check in with each person and keep the peace.", "S"],
+      ["I make a clear plan and double check every detail.", "C"] ] },
+    { p: "When do you feel proudest at uni?", s: [
+      ["When I beat a tough challenge or hit a big goal.", "D"],
+      ["When people love my idea or my presentation.", "I"],
+      ["When I helped my team or a friend get through something.", "S"],
+      ["When my work is accurate and top quality.", "C"] ] },
+    { p: "Exam season is coming. What does your prep look like?", s: [
+      ["I push hard and race to be done first.", "D"],
+      ["I study with friends and keep the mood fun.", "I"],
+      ["I stick to a steady routine and avoid surprises.", "S"],
+      ["I build a detailed timetable and cover every topic.", "C"] ] },
+    { p: "In a class discussion, when do you feel most comfortable?", s: [
+      ["When I can challenge ideas and push for the best answer.", "D"],
+      ["When I can tell a story and get people talking.", "I"],
+      ["When I can listen first and support other people's views.", "S"],
+      ["When I've done my homework and know my facts.", "C"] ] },
+    { p: "You have to present in front of the class. What do you do?", s: [
+      ["I jump in first and aim to impress.", "D"],
+      ["I bring humour and make the audience smile.", "I"],
+      ["I prepare with a friend so I feel supported.", "S"],
+      ["I rehearse until every slide and number is right.", "C"] ] },
+    { p: "What makes a day at uni feel great?", s: [
+      ["Winning something, big or small.", "D"],
+      ["Meeting new people and having fun conversations.", "I"],
+      ["Feeling calm, settled and close to my people.", "S"],
+      ["Finishing everything on my list, done properly.", "C"] ] },
+    { p: "It's your first week with a new group of classmates. What do you do?", s: [
+      ["I quickly work out who's who and who will get things done.", "D"],
+      ["I start conversations and introduce people to each other.", "I"],
+      ["I wait, listen and build trust slowly.", "S"],
+      ["I observe first and join in once I understand how the group works.", "C"] ] },
+    { p: "Your lecturer suddenly changes the assignment deadline. How do you feel?", s: [
+      ["Ready to take it on and move fast.", "D"],
+      ["Fine, as long as we stay positive and talk it through.", "I"],
+      ["A bit unsettled, because I like knowing what's coming.", "S"],
+      ["Frustrated until I know the exact new requirements.", "C"] ] },
+    { p: "You get feedback on an essay, and it isn't what you hoped for. What do you do?", s: [
+      ["I ask what I need to do to win next time.", "D"],
+      ["I talk it over with friends and bounce back quickly.", "I"],
+      ["I take time to reflect and ask for gentle guidance.", "S"],
+      ["I go through every comment and fix each point carefully.", "C"] ] },
+    { p: "What would motivate you most in a future job?", s: [
+      ["Real responsibility and big targets.", "D"],
+      ["Freedom to be creative and work with lively people.", "I"],
+      ["A supportive team and a secure, steady environment.", "S"],
+      ["Quality standards and a chance to become an expert.", "C"] ] },
+    { p: "You and a classmate disagree about how to do a task. What do you do?", s: [
+      ["I say what I think directly and push for a decision.", "D"],
+      ["I use charm and ideas to bring us together.", "I"],
+      ["I look for a compromise to keep the peace.", "S"],
+      ["I lay out the facts and let the evidence decide.", "C"] ] },
+    { p: "When you picture choosing your career, what worries you most?", s: [
+      ["Getting stuck in something slow with no progress.", "D"],
+      ["Ending up in a boring job with no variety or people.", "I"],
+      ["Choosing wrongly and letting down the people around me.", "S"],
+      ["Making a decision without enough information.", "C"] ] }
+  ];
+
+  var STYLES = {
+    D: { name: "Dominance", head: "You're a driver.",
+      intro: "You like results, and you like them now. Give you a goal and you're already moving. You decide fast, you speak straight, and you don't wait for permission.",
+      strength: "You make things happen when everyone else is still talking about it.",
+      watch: "Going so fast that people get left behind. Slow down once in a while and ask what others think.",
+      cta: "Your deep dive shows exactly which careers match your drive. Ready to go further?",
+      blend: "bold, fast decisions", color: "var(--d)", on: "var(--on-d)" },
+    I: { name: "Influence", head: "You're a spark!",
+      intro: "You light up a room, and people love being around you. You come alive with ideas, conversations and new faces. When you're excited, everyone catches it!",
+      strength: "You inspire people and turn a boring task into something fun.",
+      watch: "Starting ten brilliant things and finishing three. Pick your favourites and see them through.",
+      cta: "Your deep dive reveals the careers where your energy is a superpower. Curious to see them?",
+      blend: "easy charm and big ideas", color: "var(--i)", on: "var(--on-i)" },
+    S: { name: "Steadiness", head: "You're the anchor.",
+      intro: "You bring calm to any group. You listen, you care, and people trust you because you show up the same way every day. You like a steady pace, and you do your best work when you feel safe and supported.",
+      strength: "You build trust and keep a team together, even when things get hard.",
+      watch: "Staying quiet when you disagree. Your opinion matters, and the people around you want to hear it.",
+      cta: "Your deep dive explores the careers and teams where you can grow at a pace that feels right. Whenever you're ready, we can look at them together.",
+      blend: "warm, steady support", color: "var(--s)", on: "var(--on-s)" },
+    C: { name: "Conscientiousness", head: "You're the architect.",
+      intro: "You value accuracy, logic and quality. You think before you act, you check your work, and you aim to get it right the first time. Others rely on you because your standards are high.",
+      strength: "You spot the detail that everyone else misses.",
+      watch: "Waiting for perfect information before you decide. Sometimes good enough and moving beats perfect and late.",
+      cta: "Your deep dive sets out which careers fit your analytical style, with full details and evidence. It's available when you want it.",
+      blend: "careful, sharp thinking", color: "var(--c)", on: "var(--on-c)" }
+  };
+
+  var $ = function (id) { return document.getElementById(id); };
+  var views = ["home", "quiz", "result"];
+  var cur = 0, picks = [], orders = [], lastResult = null;
+
+  function shuffle(a) {
+    a = a.slice();
+    for (var i = a.length - 1; i > 0; i--) {
+      var j = Math.floor(Math.random() * (i + 1));
+      var t = a[i]; a[i] = a[j]; a[j] = t;
+    }
+    return a;
+  }
+  function show(name, focusId) {
+    views.forEach(function (v) { $("view-" + v).hidden = v !== name; });
+    $("hdr-cta").hidden = name !== "home";
+    window.scrollTo(0, 0);
+    if (focusId && $(focusId)) { try { $(focusId).focus({ preventScroll: true }); } catch (e) {} }
+  }
+  function startQuiz() {
+    cur = 0;
+    picks = QUESTIONS.map(function () { return { most: null, least: null }; });
+    orders = QUESTIONS.map(function () { return shuffle([0, 1, 2, 3]); });
+    show("quiz");
+    renderQ();
+    $("q-prompt").focus({ preventScroll: true });
+  }
+
+  function renderQ(focusKey) {
+    var q = QUESTIONS[cur], p = picks[cur];
+    $("q-count").textContent = "Question " + (cur + 1) + " of " + QUESTIONS.length;
+    $("q-fill").style.width = (cur / QUESTIONS.length * 100) + "%";
+    $("q-bar").setAttribute("aria-valuenow", String(cur));
+    $("q-prompt").textContent = q.p;
+    var box = $("q-stmts");
+    box.innerHTML = "";
+    orders[cur].forEach(function (idx) {
+      var card = document.createElement("div");
+      card.className = "stmt" + (p.most === idx ? " is-most" : "") + (p.least === idx ? " is-least" : "");
+      var t = document.createElement("p");
+      t.className = "stmt-text";
+      t.textContent = q.s[idx][0];
+      var row = document.createElement("div");
+      row.className = "pick";
+      [["most", "Most like me", "m"], ["least", "Least like me", "l"]].forEach(function (k) {
+        var b = document.createElement("button");
+        b.type = "button";
+        b.className = "pbtn " + k[2];
+        b.textContent = k[1];
+        b.setAttribute("aria-pressed", String(p[k[0]] === idx));
+        b.setAttribute("data-key", k[0] + idx);
+        b.addEventListener("click", function () { choose(k[0], idx); });
+        row.appendChild(b);
+      });
+      card.appendChild(t);
+      card.appendChild(row);
+      box.appendChild(card);
+    });
+    $("q-back").hidden = cur === 0;
+    $("q-next").disabled = p.most === null || p.least === null;
+    $("q-next").textContent = cur === QUESTIONS.length - 1 ? "See my result" : "Next";
+    if (focusKey) {
+      var el = box.querySelector('[data-key="' + focusKey + '"]');
+      if (el) el.focus({ preventScroll: true });
+    }
+  }
+  function choose(kind, idx) {
+    var p = picks[cur], other = kind === "most" ? "least" : "most";
+    if (p[kind] === idx) { p[kind] = null; }
+    else { p[kind] = idx; if (p[other] === idx) p[other] = null; }
+    renderQ(kind + idx);
+  }
+
+  function score() {
+    var sc = { D: 0, I: 0, S: 0, C: 0 }, mc = { D: 0, I: 0, S: 0, C: 0 };
+    QUESTIONS.forEach(function (q, n) {
+      var p = picks[n];
+      if (p.most !== null) { sc[q.s[p.most][1]] += 1; mc[q.s[p.most][1]] += 1; }
+      if (p.least !== null) { sc[q.s[p.least][1]] -= 1; }
+    });
+    var list = ORDER.map(function (k) {
+      return { k: k, pct: Math.round((sc[k] + QUESTIONS.length) / (2 * QUESTIONS.length) * 100), most: mc[k] };
+    });
+    var ranked = list.slice().sort(function (a, b) {
+      return b.pct - a.pct || b.most - a.most || ORDER.indexOf(a.k) - ORDER.indexOf(b.k);
+    });
+    return { list: list, ranked: ranked };
+  }
+
+  function renderResult() {
+    var r = score(); lastResult = r;
+    var top = r.ranked[0].k, second = r.ranked[1].k, S = STYLES[top];
+    var badge = $("r-badge");
+    badge.textContent = top;
+    badge.style.background = S.color; badge.style.color = S.on;
+    $("r-name").textContent = "Your main style: " + S.name;
+    $("r-head").textContent = S.head;
+    $("r-intro").textContent = S.intro;
+    $("r-strength").textContent = S.strength;
+    $("r-watch").textContent = S.watch;
+    $("r-cta").textContent = S.cta;
+    $("r-blend").textContent = "Your second strongest style is " + STYLES[second].name + ", so you also bring a touch of " + STYLES[second].blend + ".";
+    var chart = $("r-chart");
+    chart.innerHTML = "";
+    r.list.forEach(function (it) {
+      var st = STYLES[it.k];
+      var row = document.createElement("div");
+      row.className = "row";
+      var lt = document.createElement("div");
+      lt.className = "lt"; lt.textContent = it.k;
+      lt.style.background = st.color; lt.style.color = st.on;
+      var mid = document.createElement("div");
+      var nm = document.createElement("div"); nm.className = "nm"; nm.textContent = st.name;
+      var tr = document.createElement("div"); tr.className = "track";
+      tr.setAttribute("role", "img");
+      tr.setAttribute("aria-label", st.name + " " + it.pct + " percent");
+      var f = document.createElement("div"); f.className = "fill";
+      f.style.width = it.pct + "%"; f.style.background = st.color;
+      tr.appendChild(f); mid.appendChild(nm); mid.appendChild(tr);
+      var pc = document.createElement("div"); pc.className = "pc"; pc.textContent = it.pct + "%";
+      row.appendChild(lt); row.appendChild(mid); row.appendChild(pc);
+      chart.appendChild(row);
+    });
+    $("share-text").hidden = true;
+    $("share-msg").textContent = "";
+    show("result", "r-head");
+  }
+
+  function shareNote() {
+    var top = STYLES[lastResult.ranked[0].k];
+    return "Hi! I took a free style quiz on maday.ae. My main style is " + top.name + ": " + top.head.toLowerCase() + " " + top.strength + " It helps me think about my future, and I'd love to talk it through with you.";
+  }
+
+  document.querySelectorAll("[data-start]").forEach(function (b) { b.addEventListener("click", startQuiz); });
+  $("brand").addEventListener("click", function () { show("home"); });
+  $("q-exit").addEventListener("click", function () { show("home"); });
+  $("q-back").addEventListener("click", function () { if (cur > 0) { cur--; renderQ(); } });
+  $("q-next").addEventListener("click", function () {
+    if (cur < QUESTIONS.length - 1) { cur++; renderQ(); $("q-prompt").focus({ preventScroll: true }); window.scrollTo(0, 0); }
+    else { renderResult(); }
+  });
+  $("retake").addEventListener("click", startQuiz);
+  $("share-btn").addEventListener("click", function () {
+    var text = shareNote();
+    var ta = $("share-text"), msg = $("share-msg");
+    function fallback() {
+      ta.value = text; ta.hidden = false; ta.focus(); ta.select();
+      msg.textContent = "Copy this note and send it to your parents.";
+    }
+    try {
+      navigator.clipboard.writeText(text).then(function () {
+        ta.hidden = true; msg.textContent = "Copied. Paste it into a message to your parents.";
+      }, fallback);
+    } catch (e) { fallback(); }
+  });
+  $("yr").textContent = new Date().getFullYear();
+})();
+</script>
+
 </body>
 </html>
