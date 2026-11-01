@@ -93,13 +93,19 @@ footer { border-top: 2px solid var(--ink); padding-block: 24px; color: var(--mut
 
 /* Peek inside the report: sample pages, tap to enlarge */
 .peek h3 { font: 700 1.15rem var(--font-display); margin: 0 0 4px; }
-.peek-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 10px; }
-.peek-row button { padding: 0; border: 3px solid var(--ink); border-radius: 10px; background: #fff; cursor: zoom-in; overflow: hidden; box-shadow: -4px 4px 0 var(--pink); transition: transform .12s ease; }
-.peek-row button:nth-child(2) { box-shadow: -4px 4px 0 var(--yellow); }
-.peek-row button:nth-child(3) { box-shadow: -4px 4px 0 var(--red); }
-.peek-row button:hover { transform: translate(2px, -2px); }
-.peek-row img { display: block; width: 100%; aspect-ratio: 3 / 4; object-fit: cover; object-position: top; }
-.peek-row span { display: block; font-size: .8rem; font-weight: 700; padding: 4px 2px; color: #1E1033; text-align: center; border-top: 2px solid var(--ink); }
+.peek-frame { position: relative; margin-top: 10px; }
+.peek-track { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; scrollbar-width: none; border: 3px solid var(--ink); border-radius: 14px; background: #fff; box-shadow: -5px 5px 0 var(--pink); }
+.peek-track::-webkit-scrollbar { display: none; }
+.peek-slide { flex: 0 0 100%; scroll-snap-align: start; padding: 0; border: 0; background: #fff; color: #1E1033; cursor: zoom-in; font: inherit; }
+.peek-slide img { display: block; width: 100%; aspect-ratio: 16 / 10; object-fit: contain; padding: 12px 12px 6px; box-sizing: border-box; }
+.peek-slide span { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; padding: 8px 14px; border-top: 2px solid var(--ink); background: var(--yellow); font-size: .85rem; }
+.peek-slide b { font: 800 1rem var(--font-display); }
+.peek-arrow { position: absolute; top: calc(50% - 38px); width: 40px; height: 40px; border-radius: 50%; border: 3px solid var(--ink); background: #fff; color: #1E1033; font: 800 1.3rem/1 var(--font-display); cursor: pointer; display: grid; place-items: center; padding: 0; box-shadow: -3px 3px 0 var(--ink); }
+.peek-prev { right: -12px; }
+.peek-next { left: -12px; }
+.peek-dots { display: flex; justify-content: center; gap: 8px; margin-top: 14px; }
+.peek-dots button { width: 12px; height: 12px; border-radius: 50%; border: 2px solid var(--ink); background: transparent; padding: 0; cursor: pointer; }
+.peek-dots button[aria-current="true"] { background: var(--red); }
 .peek-note { font-size: .85rem; color: var(--muted); margin: 8px 0 0; }
 .peek-view { border: 3px solid var(--ink); border-radius: 16px; padding: 0; width: min(760px, 94vw); max-width: none; max-height: 92vh; background: #fff; }
 .peek-view::backdrop { background: rgba(30, 16, 51, .7); }
@@ -161,12 +167,16 @@ input[type="email"] { direction: ltr; text-align: right; }
     </div>
     <div class="peek">
       <h3>شوف من داخل التقرير</h3>
-      <p class="muted" style="margin:0;font-size:.95rem">اضغط على أي صفحة عشان تكبّرها.</p>
-      <div class="peek-row">
-        <button type="button" data-peek="/images/report/sample-graphs.png" aria-label="شوف الصفحة النموذجية: رسومات DISC"><img src="/images/report/sample-graphs.png" alt="" loading="lazy" width="747" height="961"><span>رسوماتك</span></button>
-        <button type="button" data-peek="/images/report/sample-application.png" aria-label="شوف الصفحة النموذجية: كيف تستخدم أسلوبك"><img src="/images/report/sample-application.png" alt="" loading="lazy" width="776" height="1004"><span>كيف تستخدم أسلوبك</span></button>
-        <button type="button" data-peek="/images/report/sample-jobs.png" aria-label="شوف الصفحة النموذجية: الوظايف اللي تناسبك"><img src="/images/report/sample-jobs.png" alt="" loading="lazy" width="671" height="867"><span>وظايف تناسبك</span></button>
+      <div class="peek-frame">
+        <div class="peek-track" aria-label="صفحات من التقرير النموذجي">
+          <button type="button" class="peek-slide" data-peek="/images/report/sample-graphs.png" aria-label="رسوماتك. افتح الصفحة النموذجية كاملة"><img src="/images/report/crop-graphs.png" alt="رسومات DISC النموذجية: أعمدة لدرجات D وI وS وC" width="595" height="350"><span><b>رسوماتك</b><em>1 من 3 · اضغط للتكبير</em></span></button>
+          <button type="button" class="peek-slide" data-peek="/images/report/sample-application.png" aria-label="كيف تستخدم أسلوبك. افتح الصفحة النموذجية كاملة"><img src="/images/report/crop-application.png" alt="صفحة نموذجية عن تطبيق أسلوبك في DISC" loading="lazy" width="615" height="350"><span><b>كيف تستخدم أسلوبك</b><em>2 من 3 · اضغط للتكبير</em></span></button>
+          <button type="button" class="peek-slide" data-peek="/images/report/sample-jobs.png" aria-label="وظايف تناسبك. افتح الصفحة النموذجية كاملة"><img src="/images/report/crop-jobs.png" alt="دائرة أساليب DISC ورسم النمط من قسم الوظايف" loading="lazy" width="500" height="272"><span><b>وظايف تناسبك</b><em>3 من 3 · اضغط للتكبير</em></span></button>
+        </div>
+        <button type="button" class="peek-arrow peek-prev" data-step="-1" aria-label="الصفحة السابقة">›</button>
+        <button type="button" class="peek-arrow peek-next" data-step="1" aria-label="الصفحة التالية">‹</button>
       </div>
+      <div class="peek-dots"></div>
       <p class="peek-note">صفحات من تقرير نموذجي بالإنجليزي. تقريرك الكامل مكتوب عن أسلوبك أنت، وبالعربي إذا تبي.</p>
     </div>
     <div class="trust">
@@ -334,6 +344,27 @@ input[type="email"] { direction: ltr; text-align: right; }
     view.showModal();
   }));
   view.addEventListener("click", e => { if (e.target === view || e.target.closest(".peek-close")) view.close(); });
+  // Carousel: arrows and dots move between slides; swiping works through scroll snapping
+  const track = document.querySelector(".peek-track");
+  const slides = [...track.children];
+  const dotsBox = document.querySelector(".peek-dots");
+  const dots = slides.map((s, i) => {
+    const d = document.createElement("button");
+    d.type = "button";
+    d.setAttribute("aria-label", s.querySelector("b").textContent);
+    d.addEventListener("click", () => go(i));
+    dotsBox.appendChild(d);
+    return d;
+  });
+  const current = () => Math.round(Math.abs(track.scrollLeft) / track.clientWidth);
+  // offsetLeft difference is negative in right-to-left, which matches scrollLeft there
+  const go = i => { track.scrollTo({ left: slides[i].offsetLeft - slides[0].offsetLeft }); mark(i); };
+  const mark = (n = current()) => dots.forEach((d, i) => d.setAttribute("aria-current", i === n));
+  document.querySelectorAll(".peek-arrow").forEach(a => a.addEventListener("click", () => {
+    go((current() + Number(a.dataset.step) + slides.length) % slides.length);
+  }));
+  track.addEventListener("scroll", () => mark(), { passive: true });
+  mark();
 })();
 </script>
 </body>
