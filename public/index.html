@@ -303,6 +303,8 @@ p { margin: 0; }
   .worry-cards li:nth-child(2) { margin-left: 16px; }
   .worry-cards li:nth-child(3) { margin-left: 32px; }
   .cut { transform: scale(.6); transform-origin: top left; }
+  /* keep the SURE corner shape clear of the heading on phones */
+  .sure-dark > .cut { width: 130px !important; top: -12px !important; right: -64px !important; transform: none; }
   .hero .inner, .split, .steps, .quotes, .two, .tiers { grid-template-columns: 1fr; }
   .tiles { max-width: 360px; }
   .photo { max-width: 260px; }
