@@ -280,6 +280,22 @@ p { margin: 0; }
 .pbtn[aria-pressed="true"].m::before { content: "\2713\00a0"; }
 .pbtn[aria-pressed="true"].l::before { content: "\00d7\00a0"; }
 .nav-row { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; }
+/* Quiz colours: soft full-screen background, green = most like me,
+   red = least like me, grey = the two not picked */
+#view-quiz { background: #FFF6DE; min-height: calc(100vh - 64px); }
+.stmt { background: #FFFFFF; color: #1E1033; transition: background .15s ease, border-color .15s ease, opacity .15s ease; }
+.stmt .pbtn { color: #1E1033; border-color: #1E1033; }
+.stmt.is-most { background: #DDF7E6; color: #1E1033; border-color: #15803D; border-style: solid; }
+.stmt.is-least { background: #FDE1DF; color: #1E1033; border-color: #C42520; border-style: solid; }
+.stmt.is-other { background: #EDEDF0; color: #4B4458; border-color: #A9A3B2; }
+.stmt.is-other .pbtn { color: #4B4458; border-color: #A9A3B2; }
+.pbtn[aria-pressed="true"].m { background: #16C25A; border-color: #0F8A40; color: #FFFFFF; }
+.pbtn[aria-pressed="true"].l { background: #E5322D; border-color: #A91F1B; color: #FFFFFF; }
+.pbtn.m:hover { background: rgba(22, 194, 90, .18); }
+.pbtn.l:hover { background: rgba(229, 50, 45, .14); }
+#view-quiz .q-prompt, #view-quiz .progress-top, #view-quiz .q-help { color: #1E1033; }
+#view-quiz .btn.ghost { color: #1E1033; border-color: #1E1033; }
+#q-next { background: var(--yellow); color: #1E1033; margin-inline-start: auto; }
 .input { font: inherit; font-size: 1rem; padding: 14px 16px; border: 3px solid var(--ink); border-radius: 16px; background: var(--card); color: var(--ink); width: 100%; min-height: 120px; }
 
 /* Result */
@@ -839,7 +855,8 @@ p { margin: 0; }
     box.innerHTML = "";
     orders[cur].forEach(function (idx) {
       var card = document.createElement("div");
-      card.className = "stmt" + (p.most === idx ? " is-most" : "") + (p.least === idx ? " is-least" : "");
+      var both = p.most !== null && p.least !== null;
+      card.className = "stmt" + (p.most === idx ? " is-most" : "") + (p.least === idx ? " is-least" : "") + (both && p.most !== idx && p.least !== idx ? " is-other" : "");
       var t = document.createElement("p");
       t.className = "stmt-text";
       t.textContent = q.s[idx][0];
