@@ -8,9 +8,7 @@
 <meta property="og:title" content="The Career Style Compass · maday.ae">
 <meta property="og:description" content="The 3-minute DISC quiz that shows whether you're a Driver, Spark, Anchor or Architect, and which careers fit that style.">
 <meta property="og:image" content="images/ildi.jpg">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="fonts/fonts.css" rel="stylesheet">
 <style>
 /* A loud, sticker-bright student site. Yellow hero, pink and red accents, big type, one clear button. */
 :root {
@@ -22,6 +20,12 @@
   --yellow: #FFD21F;
   --pink: #FF4F9A;
   --red: #E5322D;
+  --orange: #FF7A1A;       /* new brand colour */
+  --sure-u: #FF2E9A;       /* bright pink for the U on plum */
+  --pink-text: #D4127A;    /* pink that's readable as small text on white */
+  --plum-deep: #22172F;
+  --plum-card: #2E2240;
+  --paper: #F1E8DE;
   --on-yellow: #1E1033;
   --on-pink: #1E1033;
   --on-red: #FFFFFF;
@@ -182,6 +186,62 @@ p { margin: 0; }
 @media (max-width: 420px) { .logo { flex-basis: calc(50% - 6px); } }
 .finalcta { background: var(--red); color: var(--on-red); border-top: 3px solid var(--ink); text-align: center; }
 .finalcta .inner { display: flex; flex-direction: column; align-items: center; gap: 28px; }
+
+/* ---- Collage ideas (mockup) ---- */
+.hl { background: var(--yellow); color: #1E1033; padding: 0 .15em; }
+.cut { position: absolute; pointer-events: none; z-index: 0; }
+.tex { mix-blend-mode: multiply; opacity: .28; }
+
+/* hook + worries combined */
+.hook-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: clamp(32px, 6vw, 64px); align-items: center; }
+.hook-grid > * { min-width: 0; }
+.worry-cards { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 14px; }
+.worry-cards li { background: #FBF8F5; color: #1E1033; border-radius: 5px; padding: 24px 26px; font: 700 clamp(1.15rem, 2.6vw, 1.35rem)/1.25 var(--font-display); letter-spacing: -0.02em; border-left: 8px solid var(--pink); }
+.worry-cards li:nth-child(2) { border-left-color: var(--red); margin-left: 32px; }
+.worry-cards li:nth-child(3) { border-left-color: var(--yellow); margin-left: 64px; }
+
+/* SURE in bold plum */
+/* clip sideways (the pink cut-out) but let the zigzag edges stick out top and bottom */
+.sure-dark { background: var(--plum-deep); color: #FBF8F5; position: relative; z-index: 2; overflow-x: clip; overflow-y: visible; }
+.zig { position: absolute; left: 0; width: 100%; height: 28px; display: block; }
+.zig-top { top: -27px; }
+.zig-bottom { bottom: -27px; }
+
+/* "Guessing feels risky" + "In three minutes" side by side */
+.duo { display: grid; grid-template-columns: 1fr 1fr; border-block: 3px solid var(--ink); }
+.duo-half { padding: clamp(48px, 8vw, 88px) clamp(16px, 4vw, 56px); display: flex; align-items: center; }
+.duo-half > * { max-width: 520px; }
+.duo-pink { background: var(--pink); color: var(--on-pink); justify-content: flex-end; border-right: 3px solid var(--ink); }
+.duo-pink .lede { color: var(--on-pink); }
+.duo-white { background: var(--bg); justify-content: flex-start; }
+@media (max-width: 760px) { .duo { grid-template-columns: 1fr; } .duo-pink { border-right: 0; border-bottom: 3px solid var(--ink); justify-content: flex-start; } }
+.sure-dark .lede { color: #E8DFF0; }
+.sure-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin: 0; padding: 0; list-style: none; }
+.sure-grid li { background: var(--plum-card); border-radius: 5px; padding: 28px 26px; display: flex; flex-direction: column; gap: 12px; min-width: 0; }
+.sure-grid h3 { color: #FBF8F5; font-size: 1.45rem; line-height: 1.15; }
+.sure-grid .cap { font-size: 3.6rem; line-height: .8; letter-spacing: -0.04em; margin-right: 1px; vertical-align: baseline; }
+.sure-grid p { color: #CFC4DA; }
+@media (max-width: 1000px) and (min-width: 761px) { .sure-grid { grid-template-columns: 1fr 1fr; } }
+
+/* quote bubbles, all equal */
+.bubbles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+.bubbles figure { margin: 0; min-width: 0; }
+.bubble { margin: 0; background: var(--card); border: 3px solid var(--ink); border-radius: 36px; padding: 28px 30px; position: relative; font: 700 1.3rem/1.22 var(--font-display); letter-spacing: -0.02em; }
+.bubble::after { content: ""; position: absolute; bottom: -20px; left: 44px; width: 32px; height: 32px; background: var(--card); border-right: 3px solid var(--ink); border-bottom: 3px solid var(--ink); transform: rotate(45deg) skew(12deg, 12deg); }
+.bubbles figcaption { margin: 30px 0 0 32px; font-weight: 700; font-size: .95rem; }
+.quotes-tint { background: #FFF1F7; border-top: 3px solid var(--ink); }
+.bubble { color: #1E1033; background: #fff; }
+.bubble::after { background: #fff; }
+.bubbles figure:nth-child(1) .bubble { box-shadow: 8px 8px 0 var(--pink); }
+.bubbles figure:nth-child(2) .bubble { box-shadow: 8px 8px 0 var(--orange); }
+.bubbles figure:nth-child(3) .bubble { box-shadow: 8px 8px 0 var(--yellow); }
+.quotes-tint figcaption { color: #1E1033; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .quotes-tint { background: #2A1A30; } :root:not([data-theme="light"]) .quotes-tint figcaption { color: var(--ink); } }
+
+/* collage-style final section */
+.final-collage { background: var(--paper); border-top: 3px solid var(--ink); text-align: center; position: relative; overflow: hidden; }
+.final-card { position: relative; z-index: 1; max-width: 900px; margin: 0 auto; padding: clamp(44px, 8vw, 72px) 24px; background: #fff; color: #1E1033; border: 3px solid var(--ink); border-radius: 5px; display: flex; flex-direction: column; align-items: center; gap: 18px; }
+.final-card .lede { color: #1E1033; }
 .footer { padding-block: 28px; font-size: .9rem; color: var(--muted); }
 .footer .inner { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
 .footer a { color: inherit; font-weight: 700; }
@@ -239,6 +299,10 @@ p { margin: 0; }
 .dd a.inline { color: inherit; font-weight: 700; }
 
 @media (max-width: 760px) {
+  .hook-grid, .sure-grid, .bubbles { grid-template-columns: 1fr; }
+  .worry-cards li:nth-child(2) { margin-left: 16px; }
+  .worry-cards li:nth-child(3) { margin-left: 32px; }
+  .cut { transform: scale(.6); transform-origin: top left; }
   .hero .inner, .split, .steps, .quotes, .two, .tiers { grid-template-columns: 1fr; }
   .tiles { max-width: 360px; }
   .photo { max-width: 260px; }
@@ -250,6 +314,12 @@ p { margin: 0; }
 </style>
 </head>
 <body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <pattern id="dots" width="9" height="9" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.6" fill="#1E1033"/></pattern>
+    <pattern id="lines" width="10" height="10" patternUnits="userSpaceOnUse" patternTransform="rotate(35)"><rect width="3" height="10" fill="#1E1033"/></pattern>
+  </defs>
+</svg>
 
 <header class="site-header">
   <div class="inner">
@@ -277,50 +347,47 @@ p { margin: 0; }
         </div>
       </div>
       <ul class="tiles" aria-label="The four styles">
-        <li class="tile d"><b>D</b><span>Driver</span><em>Decides fast, loves results</em></li>
-        <li class="tile i"><b>I</b><span>Spark</span><em>Lights up people and ideas</em></li>
-        <li class="tile s"><b>S</b><span>Anchor</span><em>Calm, loyal, steady</em></li>
-        <li class="tile c"><b>C</b><span>Architect</span><em>Careful, logical, precise</em></li>
+        <li class="tile d"><b>D</b><span>The Driver</span><em>Decides fast, loves results</em></li>
+        <li class="tile i"><b>I</b><span>The Spark</span><em>Lights up people and ideas</em></li>
+        <li class="tile s"><b>S</b><span>The Anchor</span><em>Calm, loyal, steady</em></li>
+        <li class="tile c"><b>C</b><span>The Architect</span><em>Careful, logical, precise</em></li>
       </ul>
     </div>
   </section>
 
-  <section class="band">
-    <div class="inner stack">
-      <h2>Not another &ldquo;which job suits you&rdquo; quiz.</h2>
-      <p class="lede">You've probably done those quizzes already. They gave you a long list of careers and no reason to trust it.</p>
-      <p class="lede">The Career Style Compass starts somewhere else: with how you naturally decide, work and handle pressure. It's built on DISC, the behavioural model I've used with leaders and teams across three continents.</p>
-      <p class="lede"><b>Twelve questions, three minutes, and you'll know your style and why it matters more than your grades.</b></p>
-    </div>
-  </section>
-
-  <section class="band softband">
-    <div class="inner stack-lg">
-      <h2>What if you pick wrong?</h2>
-      <p class="lede">That question keeps a lot of students awake.</p>
-      <ul class="worries">
-        <li>&ldquo;What if I chose the wrong degree?&rdquo;</li>
-        <li>&ldquo;What if I waste three years?&rdquo;</li>
-        <li>&ldquo;What if everyone else was right and I was wrong?&rdquo;</li>
-      </ul>
-      <p class="lede">So you wait. You scroll. You compare. And the fear grows.</p>
-      <p class="lede"><b>Here's the secret: you don't fear the choice. You fear choosing without knowing yourself.</b></p>
-    </div>
-  </section>
-
-  <section class="pinkband band">
-    <div class="inner stack">
-      <h2>Guessing feels risky. Knowing feels safe.</h2>
-      <p class="lede">When you understand how you naturally work, you stop gambling. You start choosing.</p>
-    </div>
-  </section>
-
-  <section class="band">
-    <div class="inner split">
+  <!-- Collage-style: the hook and the worries combined -->
+  <section class="band hook">
+    <div class="inner hook-grid">
       <div class="stack">
-        <h2>In three minutes, you'll see:</h2>
+        <span class="eyebrow" style="color:var(--pink-text)">Not another quiz</span>
+        <h2>Not another &ldquo;which job suits you&rdquo; quiz.</h2>
+        <p class="lede">You've probably done those quizzes already. They gave you a long list of careers and no reason to trust it.</p>
+        <p class="lede">The Career Style Compass starts somewhere else: with how you naturally decide, work and handle pressure. It's built on DISC, the behavioural model I've used with leaders and teams across three continents.</p>
+        <p class="lede"><b>You don't fear the choice. You fear choosing <span class="hl">without knowing yourself.</span></b></p>
       </div>
+      <div class="stack">
+        <p class="muted" style="font-weight:600">That question keeps a lot of students awake:</p>
+        <ul class="worry-cards">
+          <li>&ldquo;What if I chose the wrong degree?&rdquo;</li>
+          <li>&ldquo;What if I waste three years?&rdquo;</li>
+          <li>&ldquo;What if everyone else was right and I was wrong?&rdquo;</li>
+        </ul>
+        <p class="muted">So you wait. You scroll. You compare. And the fear grows.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- "Guessing feels risky" + "In three minutes" side by side -->
+  <section class="duo">
+    <div class="duo-half duo-pink">
+      <div class="stack">
+        <h2>Guessing feels risky. Knowing feels safe.</h2>
+        <p class="lede">When you understand how you naturally work, you stop gambling. You start choosing.</p>
+      </div>
+    </div>
+    <div class="duo-half duo-white">
       <div class="stack-lg">
+        <h2>In three minutes, you'll see:</h2>
         <ul class="gets">
           <li>How you think and decide</li>
           <li>What drives you</li>
@@ -331,18 +398,22 @@ p { margin: 0; }
     </div>
   </section>
 
-  <section class="softband band">
-    <div class="inner stack-lg">
+  <!-- Collage-style: SURE in bold plum -->
+  <section class="band sure-dark">
+    <svg class="zig zig-top" viewBox="0 0 1200 28" preserveAspectRatio="none" aria-hidden="true"><path d="M0 28V14l50-8 40 10 55-9 30 7 60-11 45 12 35-6 50 8 40-10 60 9 30-5 55 10 45-12 50 11 35-7 60 9 40-10 50 8 35-6 55 11 45-9 50 6V28z" fill="var(--plum-deep)"/></svg>
+    <svg class="zig zig-bottom" viewBox="0 0 1200 28" preserveAspectRatio="none" aria-hidden="true"><path d="M0 0V16l40-6 30 10 50-9 40 12 60-11 30 7 50-8 45 11 55-10 35 6 60-9 40 13 50-12 35 5 55-8 40 10 60-11 30 6 50-7 45 12 55-11 35 5 50-7V0z" fill="var(--plum-deep)"/></svg>
+    <svg class="cut" style="top:-10px;right:-60px;width:280px" viewBox="0 0 260 260" aria-hidden="true"><path d="M130 10c60 0 120 50 120 120s-60 120-120 120S10 200 10 130 70 10 130 10z" fill="var(--pink)"/><path style="opacity:.18" d="M130 10c60 0 120 50 120 120s-60 120-120 120S10 200 10 130 70 10 130 10z" fill="url(#lines)"/></svg>
+    <div class="inner stack-lg" style="position:relative;z-index:1">
       <div class="stack">
-        <span class="eyebrow">How it works</span>
-        <h2>The SURE Method</h2>
+        <span class="eyebrow" style="color:var(--yellow)">How it works</span>
+        <h2>The <span style="color:var(--yellow)">S</span><span style="color:var(--sure-u)">U</span><span style="color:var(--red)">R</span><span style="color:var(--orange)">E</span> Method</h2>
         <p class="lede"><b>From guessing to SURE,</b> in four steps.</p>
       </div>
-      <ol class="steps">
-        <li><span class="n">S</span><h3>Spot your style</h3><p>Take the free 12-question Career Style Compass quiz. Three minutes, no wrong answers.</p></li>
-        <li><span class="n">U</span><h3>Understand what drives you</h3><p>See your style mix in a clear chart, then go further with your full DISC profile.</p></li>
-        <li><span class="n">R</span><h3>Reveal the careers that fit</h3><p>Your deep dive report shows the careers and work environments that suit your style.</p></li>
-        <li><span class="n">E</span><h3>Engage your next steps</h3><p>A one-to-one debrief turns it into steps you can act on this week, and words to use with your parents.</p></li>
+      <ol class="sure-grid">
+        <li><h3><span class="cap" style="color:var(--yellow)">S</span>pot your style</h3><p>Take the free 12-question Career Style Compass quiz. Three minutes, no wrong answers.</p></li>
+        <li><h3><span class="cap" style="color:var(--sure-u)">U</span>nderstand what drives you</h3><p>See your style mix in a clear chart, then go further with your full DISC profile.</p></li>
+        <li><h3><span class="cap" style="color:var(--red)">R</span>eveal the careers that fit</h3><p>Your deep dive report shows the careers and work environments that suit your style.</p></li>
+        <li><h3><span class="cap" style="color:var(--orange)">E</span>ngage your next steps</h3><p>A one-to-one debrief turns it into steps you can act on this week, and words to use with your parents.</p></li>
       </ol>
     </div>
   </section>
@@ -372,11 +443,6 @@ p { margin: 0; }
 
   <section class="band">
     <div class="inner stack-lg">
-      <div class="quotes">
-        <figure class="quote"><p>&ldquo;It feels so liberating not having to guess.&rdquo;</p><cite>Fatima AlHosani</cite></figure>
-        <figure class="quote"><p>&ldquo;Finally someone understands me.&rdquo;</p><cite>Angelina Teg</cite></figure>
-        <figure class="quote"><p>&ldquo;I want to show this to my parents.&rdquo;</p><cite>Ahmed AlDhaheri</cite></figure>
-      </div>
       <div class="stack logo-block">
         <h3>Where I've led change</h3>
         <span class="eyebrow muted">Here in the UAE</span>
@@ -413,11 +479,32 @@ p { margin: 0; }
     </div>
   </section>
 
-  <section class="finalcta band">
+  <!-- Testimonials: light tint, white bubbles with colour-tinted shadows -->
+  <section class="band quotes-tint">
+    <div class="inner stack-lg">
+      <div class="stack" style="align-items:center;text-align:center">
+        <span class="eyebrow" style="color:var(--pink-text)">What students say</span>
+        <h2>Real stories, real decisions.</h2>
+      </div>
+      <div class="bubbles">
+        <figure><blockquote class="bubble">&ldquo;It feels so liberating not having to guess.&rdquo;</blockquote><figcaption>Fatima AlHosani</figcaption></figure>
+        <figure><blockquote class="bubble">&ldquo;Finally someone understands me.&rdquo;</blockquote><figcaption>Angelina Teg</figcaption></figure>
+        <figure><blockquote class="bubble">&ldquo;I want to show this to my parents.&rdquo;</blockquote><figcaption>Ahmed AlDhaheri</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- Collage-style final section -->
+  <section class="band final-collage">
+    <svg class="cut" style="top:24px;left:4%;width:260px" viewBox="0 0 260 240" aria-hidden="true"><path d="M30 50C80 0 200 20 230 80s0 140-80 150S-20 100 30 50z" fill="var(--pink)"/><path class="tex" d="M30 50C80 0 200 20 230 80s0 140-80 150S-20 100 30 50z" fill="url(#dots)"/></svg>
+    <svg class="cut" style="bottom:30px;right:5%;width:220px" viewBox="0 0 220 200" aria-hidden="true"><path d="M20 30l180 10-20 150L0 170z" fill="var(--yellow)"/><path class="tex" d="M20 30l180 10-20 150L0 170z" fill="url(#lines)"/></svg>
     <div class="inner">
-      <h2>Stop guessing your career. Start with you.</h2>
-      <p class="lede" style="color:var(--on-red)"><b>From guessing to SURE.</b> Step 1 takes three minutes.</p>
-      <button class="btn yellow" data-start>Find my style: free 12 question quiz</button>
+      <div class="final-card">
+        <span class="eyebrow" style="color:var(--red)">Step 1 takes three minutes</span>
+        <h2>Stop guessing. Start with you.</h2>
+        <p class="lede">Find out if you're a Driver, Spark, Anchor or Architect, and what that means for your career. <b>From guessing to SURE.</b></p>
+        <button class="btn yellow" data-start>Find my style: free 12 question quiz</button>
+      </div>
     </div>
   </section>
 </div>
