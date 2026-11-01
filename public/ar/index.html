@@ -292,6 +292,15 @@ p { margin: 0; }
 .mini { border: 3px solid var(--ink); border-radius: 20px; padding: 18px; background: var(--card); display: flex; flex-direction: column; gap: 8px; min-width: 0; }
 .mini .eyebrow { color: var(--muted); }
 .note-box { border: 3px dashed var(--ink); border-radius: 20px; padding: 16px 18px; background: var(--surface); font-size: .98rem; }
+/* career examples on the result page */
+.careers { display: flex; flex-direction: column; gap: 14px; }
+.career-list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 14px; }
+.career-list li { border: 3px solid var(--ink); border-radius: 20px; padding: 16px 18px; background: var(--card); box-shadow: -5px 5px 0 var(--style-color, var(--ink)); display: flex; flex-direction: column; gap: 6px; }
+.career-list b { font-family: var(--font-display); font-size: 1.15rem; line-height: 1.3; }
+.career-list span { font-size: .97rem; color: var(--muted); }
+.career-sources { margin: 0; padding-right: 1.1em; padding-left: 0; font-size: .82rem; line-height: 1.6; color: var(--muted); display: grid; gap: 4px; }
+.career-sources a { color: inherit; font-weight: 700; }
+.future-chip { display: inline-block; background: var(--orange); color: #1E1033; border-radius: 999px; padding: 1px 10px; font-size: .8rem; font-weight: 700; white-space: nowrap; width: fit-content; }
 
 /* Deep dive */
 .dd { background: var(--pink); color: var(--on-pink); border-block: 3px solid var(--ink); }
@@ -610,6 +619,17 @@ body { line-height: 1.75; }
         <div class="mini"><span class="eyebrow">نقطة قوتك</span><p id="r-strength"></p></div>
         <div class="mini"><span class="eyebrow">انتبه من</span><p id="r-watch"></p></div>
       </div>
+      <div class="careers">
+        <span class="eyebrow" style="color:var(--pink-text)">مهن تناسب أسلوبك عادةً</span>
+        <h3 id="r-careers-title"></h3>
+        <p class="lede" id="r-careers-line"></p>
+        <ul class="career-list" id="r-careers-list"></ul>
+        <p class="muted" style="font-size:.92rem">هذي مجرد أمثلة، مو حدود: وايد ناس ينجحون برا المهن المعتادة لأسلوبهم. علامة <span class="future-chip">مطلوبة بقوة</span> تعني مهن تتوقع الإمارات والشركات العالمية تحتاج منها أكثر بوايد بحلول 2030. تقرير التعمّق يربط المهن بمزيج أسلوبك الكامل، مو بس بأسلوبك الأساسي.</p>
+        <ul class="career-sources">
+          <li><a href="https://www.weforum.org/stories/2025/01/future-of-jobs-report-2025-the-fastest-growing-and-declining-jobs/" target="_blank" rel="noopener">تقرير مستقبل الوظائف 2025 من المنتدى الاقتصادي العالمي</a>: وظائف البيانات الضخمة والذكاء الاصطناعي والأمن السيبراني والطاقة المتجددة والرعاية من أسرع الوظائف نموًا.</li>
+          <li><a href="https://gulfnews.com/business/UAE-needs-1-million-more-workers-by-2030-here-are-the-top-sectors-driving-the-hiring-surge-1.500382341" target="_blank" rel="noopener">توقعات القوى العاملة في الإمارات 2025</a>: قطاعا الطاقة (+33%) والتعليم (+31%) هما الأسرع نموًا في الإمارات حتى 2030، وعشان كذا مهن الطاقة المتجددة والتعليم عليها هالعلامة.</li>
+        </ul>
+      </div>
       <p class="lede"><b>خايف تختار غلط؟ ابدأ من هني. لما تعرف طريقتك في الشغل، التخمين يتحوّل لقرار.</b></p>
       <div class="note-box">هذا مجرد طعم بسيط، مو التقييم المعتمد الكامل. التعمّق يروح أبعد بوايد.</div>
       <p id="r-cta" class="lede"></p>
@@ -775,6 +795,42 @@ body { line-height: 1.75; }
       blend: "التفكير الدقيق والحاد", color: "var(--c)", on: "var(--on-c)" }
   };
 
+  // Example careers per main style (same list as the English page). f = growing fast.
+  var CAREERS = {
+    D: { title: "وين يلمع المبادر عادةً",
+      line: "أسلوب المبادر يحب التحدّي، يقرّر بسرعة ويبا يشوف نتايج. من المهن المعتادة لهالأسلوب:",
+      list: [
+        ["رائد أعمال أو مؤسس شركة ناشئة", "ابنِ شي خاص فيك، وكل نتيجة تكون إنجازك."],
+        ["محامي", "اعرض القضية، ادفع لأفضل نتيجة، واكسبها."],
+        ["مدير مشاريع كبرى", "حرّك فرق ضخمة في مشاريع عملاقة، من مدن جديدة لين المطارات."],
+        ["مدير تطوير أعمال", "افتح أسواق جديدة، اختم الصفقات وحقّق أهداف طموحة."],
+        ["مدير مشاريع الطاقة المتجددة", "قود مشاريع الطاقة الشمسية والنظيفة اللي تشغّل مستقبل الإمارات.", 1] ] },
+    I: { title: "وين تلمع الشرارة عادةً",
+      line: "أسلوب الشرارة ينوّر أي مكان، يحب الأفكار ويعيش مع الناس. من المهن المعتادة لهالأسلوب:",
+      list: [
+        ["مدير تسويق أو علامة تجارية", "حوّل الأفكار لحملات الكل يتكلّم عنها."],
+        ["صانع محتوى أو مخطط سوشال ميديا", "ابنِ جمهور بقصصك وفيديوهاتك وصوتك الخاص."],
+        ["مدير فعاليات وضيافة", "اصنع التجارب اللي الإمارات مشهورة فيها، من المهرجانات لين فنادق الخمس نجوم."],
+        ["أخصائي علاقات عامة وإعلام", "كن الصوت اللي يشرح العلامة التجارية أو المشروع الحكومي للعالم."],
+        ["مصمم تجربة العملاء", "صمّم إحساس الناس وهم يستخدمون تطبيق أو بنك أو خدمة.", 1] ] },
+    S: { title: "وين يلمع السند عادةً",
+      line: "أسلوب السند هادئ ووفي، ومبدع في دعم غيره. من المهن المعتادة لهالأسلوب:",
+      list: [
+        ["ممرض أو طبيب", "اهتم بالناس وقت حاجتهم، بصبر وثقة."],
+        ["معلم أو مرشد طلابي", "ساعد الشباب ينمون، خطوة ثابتة بعد خطوة.", 1],
+        ["أخصائي علاج طبيعي", "رجّع الناس لقوتهم بتقدّم ثابت أسبوع بعد أسبوع."],
+        ["أخصائي موارد بشرية", "اهتم بالناس اللي يخلّون الشركة تشتغل."],
+        ["أخصائي صحة نفسية ورفاهية", "ادعم صحة الناس النفسية في المدرسة والشغل وأونلاين.", 1] ] },
+    C: { title: "وين يلمع المهندس عادةً",
+      line: "أسلوب المهندس يحب التفاصيل ويستمتع لما يسوي الأشياء صح بالضبط. من المهن المعتادة لهالأسلوب:",
+      list: [
+        ["محاسب أو مدقق حسابات", "تأكّد إن الأرقام صحيحة وإن كل شركة تقدر تثق فيها."],
+        ["مهندس", "صمّم جسور أو آلات أو أنظمة تشتغل بأمان، كل مرة."],
+        ["صيدلي", "اجمع بين العلم والدقة عشان تحافظ على سلامة المرضى."],
+        ["محلل بيانات أو عالم بيانات", "اكتشف الأنماط في البيانات اللي تساعد القادة ياخذون قرارات ذكية.", 1],
+        ["أخصائي أمن سيبراني", "احمِ الشركات والناس من الهجمات الرقمية.", 1] ] }
+  };
+
   var $ = function (id) { return document.getElementById(id); };
   var views = ["home", "quiz", "result"];
   var cur = 0, picks = [], orders = [], lastResult = null;
@@ -877,6 +933,20 @@ body { line-height: 1.75; }
     $("r-intro").textContent = S.intro;
     $("r-strength").textContent = S.strength;
     $("r-watch").textContent = S.watch;
+    var C = CAREERS[top];
+    $("r-careers-title").textContent = C.title;
+    $("r-careers-line").textContent = C.line;
+    var cl = $("r-careers-list");
+    cl.innerHTML = "";
+    cl.style.setProperty("--style-color", S.color);
+    C.list.forEach(function (c) {
+      var li = document.createElement("li");
+      var b = document.createElement("b"); b.textContent = c[0];
+      var d = document.createElement("span"); d.textContent = c[1];
+      li.appendChild(b); li.appendChild(d);
+      if (c[2]) { var f = document.createElement("em"); f.className = "future-chip"; f.style.fontStyle = "normal"; f.textContent = "مطلوبة بقوة"; li.appendChild(f); }
+      cl.appendChild(li);
+    });
     $("r-cta").textContent = S.cta;
     $("r-blend").textContent = "ثاني أقوى أسلوب عندك هو " + STYLES[second].name + "، يعني بعد عندك لمسة من " + STYLES[second].blend + ".";
     var chart = $("r-chart");

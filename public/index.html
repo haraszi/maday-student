@@ -297,6 +297,15 @@ p { margin: 0; }
 .mini { border: 3px solid var(--ink); border-radius: 20px; padding: 18px; background: var(--card); display: flex; flex-direction: column; gap: 8px; min-width: 0; }
 .mini .eyebrow { color: var(--muted); }
 .note-box { border: 3px dashed var(--ink); border-radius: 20px; padding: 16px 18px; background: var(--surface); font-size: .98rem; }
+/* career examples on the result page */
+.careers { display: flex; flex-direction: column; gap: 14px; }
+.career-list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 14px; }
+.career-list li { border: 3px solid var(--ink); border-radius: 20px; padding: 16px 18px; background: var(--card); box-shadow: 5px 5px 0 var(--style-color, var(--ink)); display: flex; flex-direction: column; gap: 6px; }
+.career-list b { font-family: var(--font-display); font-size: 1.15rem; line-height: 1.15; }
+.career-list span { font-size: .97rem; color: var(--muted); }
+.career-sources { margin: 0; padding-left: 1.1em; font-size: .78rem; line-height: 1.45; color: var(--muted); display: grid; gap: 4px; }
+.career-sources a { color: inherit; font-weight: 700; }
+.future-chip { display: inline-block; background: var(--orange); color: #1E1033; border-radius: 999px; padding: 1px 10px; font-size: .75rem; font-weight: 700; letter-spacing: .02em; white-space: nowrap; width: fit-content; }
 
 /* Deep dive */
 .dd { background: var(--pink); color: var(--on-pink); border-block: 3px solid var(--ink); }
@@ -580,6 +589,17 @@ p { margin: 0; }
         <div class="mini"><span class="eyebrow">Your strength</span><p id="r-strength"></p></div>
         <div class="mini"><span class="eyebrow">Watch out for</span><p id="r-watch"></p></div>
       </div>
+      <div class="careers">
+        <span class="eyebrow" style="color:var(--pink-text)">Careers that often suit your style</span>
+        <h3 id="r-careers-title"></h3>
+        <p class="lede" id="r-careers-line"></p>
+        <ul class="career-list" id="r-careers-list"></ul>
+        <p class="muted" style="font-size:.92rem">These are examples, not limits: plenty of people thrive outside the usual matches. <span class="future-chip">Growing fast</span> marks roles the UAE and global employers expect to need much more of by 2030. Your deep dive matches careers to your full style mix, not just your main style.</p>
+        <ul class="career-sources">
+          <li><a href="https://www.weforum.org/stories/2025/01/future-of-jobs-report-2025-the-fastest-growing-and-declining-jobs/" target="_blank" rel="noopener">The World Economic Forum's Future of Jobs Report 2025</a>: big data, AI, cybersecurity, renewable energy and care roles are among the fastest growing.</li>
+          <li><a href="https://gulfnews.com/business/UAE-needs-1-million-more-workers-by-2030-here-are-the-top-sectors-driving-the-hiring-surge-1.500382341" target="_blank" rel="noopener">A 2025 UAE workforce forecast</a>: energy (+33%) and education (+31%) are the fastest-growing UAE sectors to 2030, which is why roles in renewable energy and teaching carry the tag.</li>
+        </ul>
+      </div>
       <p class="lede"><b>Scared of choosing wrong? Start here. Knowing how you work turns a guess into a decision.</b></p>
       <div class="note-box">This is a taster, not the full certified assessment. Your deep dive goes much further.</div>
       <p id="r-cta" class="lede"></p>
@@ -745,6 +765,43 @@ p { margin: 0; }
       blend: "careful, sharp thinking", color: "var(--c)", on: "var(--on-c)" }
   };
 
+  // Example careers per main style: classic DISC matches plus roles in fast-growing
+  // fields (WEF Future of Jobs 2025; UAE Workforce Skills Forecast 2025). f = growing fast.
+  var CAREERS = {
+    D: { title: "Where Drivers often shine",
+      line: "The Driver style loves a challenge, decides fast and wants to see results. Typical roles for this main style include:",
+      list: [
+        ["Entrepreneur or startup founder", "Build something of your own and own every result."],
+        ["Lawyer", "Make the case, push for the best outcome and win it."],
+        ["Project manager on big builds", "Keep huge teams moving on giga-projects, from new cities to airports."],
+        ["Business development lead", "Open new markets, close deals and hit ambitious targets."],
+        ["Renewable energy project lead", "Lead the solar and clean-energy projects powering the UAE's future.", 1] ] },
+    I: { title: "Where Sparks often shine",
+      line: "The Spark style lights up a room, loves ideas and comes alive around people. Typical roles for this main style include:",
+      list: [
+        ["Marketing or brand manager", "Turn ideas into campaigns that get everyone talking."],
+        ["Content creator or social media strategist", "Build an audience with stories, videos and a voice of your own."],
+        ["Events and hospitality manager", "Create the experiences the UAE is famous for, from festivals to five-star hotels."],
+        ["PR and communications specialist", "Be the voice that explains a brand or a government project to the world."],
+        ["Customer experience designer", "Design how people feel when they use an app, a bank or a service.", 1] ] },
+    S: { title: "Where Anchors often shine",
+      line: "The Anchor style is calm, loyal and brilliant at supporting others. Typical roles for this main style include:",
+      list: [
+        ["Nurse or doctor", "Care for people when they need it most, with patience and trust."],
+        ["Teacher or school counsellor", "Help young people grow, one steady step at a time.", 1],
+        ["Physiotherapist", "Guide people back to strength through steady, week-by-week progress."],
+        ["HR and people partner", "Look after the people who make a company work."],
+        ["Mental health and wellbeing specialist", "Support people's wellbeing at school, at work and online.", 1] ] },
+    C: { title: "Where Architects often shine",
+      line: "The Architect style likes detail and enjoys getting things exactly right. Typical roles for this main style include:",
+      list: [
+        ["Accountant or auditor", "Make sure the numbers are right and every company can trust them."],
+        ["Engineer", "Design bridges, machines or systems that work safely, every time."],
+        ["Pharmacist", "Combine science and precision to keep patients safe."],
+        ["Data analyst or data scientist", "Find the patterns in data that help leaders make smart decisions.", 1],
+        ["Cybersecurity specialist", "Protect companies and people from digital attacks.", 1] ] }
+  };
+
   var $ = function (id) { return document.getElementById(id); };
   var views = ["home", "quiz", "result"];
   var cur = 0, picks = [], orders = [], lastResult = null;
@@ -847,6 +904,20 @@ p { margin: 0; }
     $("r-intro").textContent = S.intro;
     $("r-strength").textContent = S.strength;
     $("r-watch").textContent = S.watch;
+    var C = CAREERS[top];
+    $("r-careers-title").textContent = C.title;
+    $("r-careers-line").textContent = C.line;
+    var cl = $("r-careers-list");
+    cl.innerHTML = "";
+    cl.style.setProperty("--style-color", S.color);
+    C.list.forEach(function (c) {
+      var li = document.createElement("li");
+      var b = document.createElement("b"); b.textContent = c[0];
+      var d = document.createElement("span"); d.textContent = c[1];
+      li.appendChild(b); li.appendChild(d);
+      if (c[2]) { var f = document.createElement("em"); f.className = "future-chip"; f.style.fontStyle = "normal"; f.textContent = "Growing fast"; li.appendChild(f); }
+      cl.appendChild(li);
+    });
     $("r-cta").textContent = S.cta;
     $("r-blend").textContent = "Your second strongest style is " + STYLES[second].name + ", so you also bring a touch of " + STYLES[second].blend + ".";
     var chart = $("r-chart");
