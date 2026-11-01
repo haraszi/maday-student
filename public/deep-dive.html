@@ -91,6 +91,21 @@ textarea.input { min-height: 96px; resize: vertical; }
 .notice { border: 3px solid var(--ink); background: var(--surface); border-radius: 16px; padding: 14px 18px; font-weight: 700; }
 footer { border-top: 2px solid var(--ink); padding-block: 24px; color: var(--muted); font-size: .9rem; }
 
+/* Peek inside the report: sample pages, tap to enlarge */
+.peek h3 { font: 700 1.15rem var(--font-display); margin: 0 0 4px; }
+.peek-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 10px; }
+.peek-row button { padding: 0; border: 3px solid var(--ink); border-radius: 10px; background: #fff; cursor: zoom-in; overflow: hidden; box-shadow: 4px 4px 0 var(--pink); transition: transform .12s ease; }
+.peek-row button:nth-child(2) { box-shadow: 4px 4px 0 var(--yellow); }
+.peek-row button:nth-child(3) { box-shadow: 4px 4px 0 var(--red); }
+.peek-row button:hover { transform: translate(-2px, -2px); }
+.peek-row img { display: block; width: 100%; aspect-ratio: 3 / 4; object-fit: cover; object-position: top; }
+.peek-row span { display: block; font-size: .8rem; font-weight: 700; padding: 4px 2px; color: #1E1033; text-align: center; border-top: 2px solid var(--ink); }
+.peek-note { font-size: .85rem; color: var(--muted); margin: 8px 0 0; }
+.peek-view { border: 3px solid var(--ink); border-radius: 16px; padding: 0; max-width: min(760px, 94vw); max-height: 92vh; background: #fff; }
+.peek-view::backdrop { background: rgba(30, 16, 51, .7); }
+.peek-view img { display: block; width: 100%; height: auto; }
+.peek-close { position: sticky; top: 8px; float: right; margin: 8px; font: 800 1rem var(--font-display); border: 3px solid var(--ink); border-radius: 999px; background: var(--yellow); color: #1E1033; padding: 6px 14px; cursor: pointer; }
+
 @media (max-width: 820px) {
   .layout { grid-template-columns: 1fr; }
   .aside { position: static; }
@@ -123,6 +138,16 @@ footer { border-top: 2px solid var(--ink); padding-block: 24px; color: var(--mut
         <li>All of it in English or Arabic, your choice</li>
       </ul>
     </div>
+    <div class="peek">
+      <h3>Peek inside the report</h3>
+      <p class="muted" style="margin:0;font-size:.95rem">Tap a page to see it bigger.</p>
+      <div class="peek-row">
+        <button type="button" data-peek="/images/report/sample-graphs.png" aria-label="See the sample page: your DISC graphs"><img src="/images/report/sample-graphs.png" alt="" loading="lazy" width="747" height="961"><span>Your graphs</span></button>
+        <button type="button" data-peek="/images/report/sample-application.png" aria-label="See the sample page: using your style"><img src="/images/report/sample-application.png" alt="" loading="lazy" width="776" height="1004"><span>Using your style</span></button>
+        <button type="button" data-peek="/images/report/sample-jobs.png" aria-label="See the sample page: jobs that fit"><img src="/images/report/sample-jobs.png" alt="" loading="lazy" width="671" height="867"><span>Jobs that fit</span></button>
+      </div>
+      <p class="peek-note">Pages from a sample report. Your full report is written for your own style.</p>
+    </div>
     <div class="trust">
       <b>Secure payment with Apple Pay or card</b> on Ziina, a licensed UAE payment provider. I never see your card details. Your assessment link arrives by email as soon as your payment is confirmed.
     </div>
@@ -137,7 +162,7 @@ footer { border-top: 2px solid var(--ink); padding-block: 24px; color: var(--mut
         <label class="opt"><input type="radio" name="product" value="report"><span class="t"><b>Deep dive report</b><span>Your full DISC report</span></span><span class="price">187 AED</span></label>
         <label class="opt"><span class="tag">Save 55 AED</span><input type="radio" name="product" value="bundle" checked><span class="t"><b>Deep dive + debrief</b><span>Your full DISC report and a one-to-one debrief</span></span><span class="price">349 AED<s>404</s></span></label>
         <label class="opt"><input type="radio" name="product" value="debrief"><span class="t"><b>Debrief only</b><span>Already have your report? Book a one-to-one debrief</span></span><span class="price">217 AED</span></label>
-        <label class="opt"><input type="radio" name="product" value="family"><span class="t"><b>Family package</b><span>Full report, student debrief and a 50-minute family session</span></span><span class="price">549 AED<s>653</s></span></label>
+        <label class="opt"><span class="tag">Save 104 AED</span><input type="radio" name="product" value="family"><span class="t"><b>Family package</b><span>Full report, student debrief and a 50-minute family session</span></span><span class="price">549 AED<s>653</s></span></label>
         <label class="opt"><input type="radio" name="product" value="familyonly"><span class="t"><b>Family session only</b><span>Your child already has their report? Book a 50-minute family session</span></span><span class="price">249 AED</span></label>
       </div>
     </fieldset>
@@ -275,6 +300,18 @@ footer { border-top: 2px solid var(--ink); padding-block: 24px; color: var(--mut
 
   document.getElementById("yr").textContent = new Date().getFullYear();
 })();
+
+// Peek inside the report: open a sample page bigger, close on button, backdrop or Esc
+(function () {
+  const view = document.getElementById("peek-view");
+  const img = view.querySelector("img");
+  document.querySelectorAll("[data-peek]").forEach(b => b.addEventListener("click", () => {
+    img.src = b.dataset.peek;
+    view.showModal();
+  }));
+  view.addEventListener("click", e => { if (e.target === view || e.target.closest(".peek-close")) view.close(); });
+})();
 </script>
+<dialog class="peek-view" id="peek-view" aria-label="Sample report page"><button type="button" class="peek-close">Close ✕</button><img alt="Sample report page"></dialog>
 </body>
 </html>
