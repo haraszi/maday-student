@@ -312,6 +312,10 @@ p { margin: 0; }
 .two { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
 .mini { border: 3px solid var(--ink); border-radius: 20px; padding: 18px; background: var(--card); display: flex; flex-direction: column; gap: 8px; min-width: 0; }
 .mini .eyebrow { color: var(--muted); }
+.mini-good { background: #DDF7E6; border-color: #15803D; color: #1E1033; }
+.mini-good .eyebrow { color: #0F6B32; }
+.mini-watch { background: #FDE1DF; border-color: #C42520; color: #1E1033; }
+.mini-watch .eyebrow { color: #A91F1B; }
 .note-box { border: 3px dashed var(--ink); border-radius: 20px; padding: 16px 18px; background: var(--surface); font-size: .98rem; }
 /* career examples on the result page */
 .careers { display: flex; flex-direction: column; gap: 14px; }
@@ -602,8 +606,8 @@ p { margin: 0; }
       </div>
       <p class="lede" id="r-blend"></p>
       <div class="two">
-        <div class="mini"><span class="eyebrow">Your strength</span><p id="r-strength"></p></div>
-        <div class="mini"><span class="eyebrow">Watch out for</span><p id="r-watch"></p></div>
+        <div class="mini mini-good"><span class="eyebrow">Your strength</span><p id="r-strength"></p></div>
+        <div class="mini mini-watch"><span class="eyebrow">Watch out for</span><p id="r-watch"></p></div>
       </div>
       <div class="careers">
         <span class="eyebrow" style="color:var(--pink-text)">Careers that often suit your style</span>
