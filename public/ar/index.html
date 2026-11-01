@@ -312,8 +312,12 @@ p { margin: 0; }
 .mini-watch { background: #FDE1DF; border-color: #C42520; color: #1E1033; }
 .mini-watch .eyebrow { color: #A91F1B; }
 .note-box { border: 3px dashed var(--ink); border-radius: 20px; padding: 16px 18px; background: var(--surface); font-size: .98rem; }
-.skip-link { font-weight: 700; color: var(--on-yellow); text-decoration: underline; text-underline-offset: 3px; }
-.skip-link:hover { text-decoration-thickness: 3px; }
+.fast-lane { background: var(--plum-deep); color: #FBF8F5; border-bottom: 3px solid var(--ink); }
+.fast-lane-row { display: flex; align-items: center; justify-content: space-between; gap: 12px 20px; padding-block: 18px; flex-wrap: wrap; }
+.fast-lane p { font-size: 1.08rem; }
+.fast-lane b { color: var(--yellow); }
+.fast-btn { background: var(--yellow); color: #1E1033; border: 3px solid #1E1033; border-radius: 999px; padding: 10px 22px; font: 800 1.02rem var(--font-display); text-decoration: none; white-space: nowrap; box-shadow: 3px 3px 0 #000; transition: transform .12s ease; }
+.fast-btn:hover { transform: translate(-2px, -2px); }
 .buy-direct { align-self: flex-start; text-decoration: none; }
 .returning { border: 3px solid var(--ink); border-radius: 18px; padding: 14px 18px; background: var(--surface); font-size: 1rem; max-width: 34em; }
 .returning a { font-weight: 800; color: var(--ink); white-space: nowrap; }
@@ -434,7 +438,6 @@ body { line-height: 1.75; }
         <div class="cta-row">
           <button class="btn" data-start>اكتشف أسلوبك: اختبار مجاني من 12 سؤال</button>
           <p style="font-weight:500">مجاني. بدون تسجيل. نتيجتك خلال دقايق.</p>
-          <a class="skip-link" href="deep-dive.html?p=bundle">جاهز للتقييم الكامل؟ تخطّ الاختبار المجاني واطلب التعمّق &larr;</a>
         </div>
       </div>
       <ul class="tiles" aria-label="الأساليب الأربعة">
@@ -443,6 +446,14 @@ body { line-height: 1.75; }
         <li class="tile s"><b>S</b><span>السند</span><em>هادئ، وفي، وثابت</em></li>
         <li class="tile c"><b>C</b><span>المهندس</span><em>دقيق، منطقي، ومنظّم</em></li>
       </ul>
+    </div>
+  </section>
+
+  <!-- Fast lane: for visitors who already know they want the full report -->
+  <section class="fast-lane">
+    <div class="inner fast-lane-row">
+      <p><b>جاد بالموضوع؟</b> تخطّ الاختبار المجاني وروح مباشرة لتقرير DISC الكامل.</p>
+      <a class="fast-btn" href="deep-dive.html?p=bundle">المسار السريع &larr;</a>
     </div>
   </section>
 
