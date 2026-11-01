@@ -24,7 +24,10 @@ export default {
     } catch (err) {
       console.error(err);
       // While in test mode, show the technical reason to help set things up.
-      const detail = env.ZIINA_TEST === "true" ? String(err.message || err).replace(/Bearer\s+\S+/g, "Bearer ***") : undefined;
+      const detail = env.ZIINA_TEST === "true"
+        ? String(err.message || err).replace(/Bearer\s+\S+/g, "Bearer ***") +
+          ` | key lengths: ziina=${cleanKey(env.ZIINA_API_KEY).length}, resend=${cleanKey(env.RESEND_API_KEY).length}`
+        : undefined;
       return json({ error: "Something went wrong on our side. Please try again, or email hello@maday.ae.", detail }, 500);
     }
     if (url.pathname.startsWith("/api/")) return json({ error: "Not found" }, 404);
