@@ -1,10 +1,29 @@
 // Cloudflare settings for this site.
-// It tells Cloudflare: "this is a plain website, the files are in the public folder".
+// The pages are plain files in the public folder; src/index.js handles
+// orders (/api/...) and checks pending payments every 5 minutes.
+// Secrets (Ziina key, Resend key, assessment links) are added in the
+// Cloudflare dashboard, never in this file: it is stored on GitHub.
 {
   "name": "maday-student",
+  "main": "src/index.js",
   "compatibility_date": "2026-10-01",
   "assets": {
     "directory": "./public",
-    "not_found_handling": "single-page-application"
-  }
+    "binding": "ASSETS",
+    "not_found_handling": "single-page-application",
+    "run_worker_first": ["/api/*"]
+  },
+  "kv_namespaces": [
+    { "binding": "ORDERS", "id": "31cde3f832cb412fbec5f679114bf11f" }
+  ],
+  "triggers": { "crons": ["*/5 * * * *"] },
+  "vars": {
+    "SITE_URL": "https://maday.ae",
+    "FROM_EMAIL": "Ildi at maday.ae <hello@maday.ae>",
+    "OWNER_EMAIL": "hello@maday.ae",
+    "CAL_DEBRIEF_URL": "https://cal.com/maday/disc-career-debrief-session",
+    // "true" = Ziina test payments (no real money). Switch to "false" to go live.
+    "ZIINA_TEST": "true"
+  },
+  "observability": { "enabled": true }
 }

@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Thank you · maday.ae</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@700;800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root { --bg: #FFFFFF; --ink: #1E1033; --muted: #5B4E6E; --yellow: #FFD21F; --red: #E5322D; --card: #FFFFFF; color-scheme: light; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --bg: #150E22; --ink: #FFF6DC; --muted: #C4B8D6; --card: #1D1330; color-scheme: dark; } }
+:root[data-theme="dark"] { --bg: #150E22; --ink: #FFF6DC; --muted: #C4B8D6; --card: #1D1330; color-scheme: dark; }
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 1.0625rem/1.6 "DM Sans", system-ui, sans-serif; }
+a { color: inherit; }
+.bar { border-bottom: 2px solid var(--ink); }
+.in { max-width: 680px; margin: 0 auto; padding: 0 16px; }
+.bar .in { padding-block: 12px; }
+.brand { font: 800 1.5rem "Bricolage Grotesque", sans-serif; color: var(--ink); text-decoration: none; letter-spacing: -0.03em; }
+.brand img { height: 36px; width: auto; display: block; }
+main { padding-block: clamp(40px, 8vw, 88px); }
+.card { border: 3px solid var(--ink); border-radius: 24px; padding: clamp(22px, 5vw, 36px); background: var(--card); box-shadow: 6px 6px 0 var(--ink); display: flex; flex-direction: column; gap: 16px; }
+.badge { width: 72px; height: 72px; border: 3px solid var(--ink); border-radius: 22px; display: grid; place-items: center; font: 800 2.2rem "Bricolage Grotesque", sans-serif; background: var(--yellow); color: #1E1033; transform: rotate(-5deg); }
+h1 { font: 800 clamp(2rem, 6vw, 3rem)/1.05 "Bricolage Grotesque", sans-serif; letter-spacing: -0.02em; margin: 0; }
+p { margin: 0; }
+.muted { color: var(--muted); }
+.spin { display: inline-block; width: 18px; height: 18px; border: 3px solid var(--muted); border-top-color: transparent; border-radius: 50%; animation: s 1s linear infinite; vertical-align: -3px; margin-right: 8px; }
+@keyframes s { to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) { .spin { animation: none; } }
+</style>
+</head>
+<body>
+<header class="bar"><div class="in"><a class="brand" href="/"><img src="/images/brand/maday-logo.svg" alt="maday" width="114" height="36"></a></div></header>
+<main class="in">
+  <div class="card" aria-live="polite">
+    <div class="badge" id="badge" aria-hidden="true">…</div>
+    <h1 id="title">Confirming your payment</h1>
+    <p id="msg"><span class="spin" aria-hidden="true"></span>This usually takes a few seconds. Please keep this page open.</p>
+    <p class="muted" id="foot">Questions? Email <a href="mailto:hello@maday.ae">hello@maday.ae</a>.</p>
+  </div>
+</main>
+<script>
+(function () {
+  var order = new URLSearchParams(location.search).get("order") || "";
+  var tries = 0;
+  function show(badge, title, html) {
+    document.getElementById("badge").textContent = badge;
+    document.getElementById("title").textContent = title;
+    document.getElementById("msg").innerHTML = html;
+  }
+  function esc(s) { return String(s).replace(/[&<>"']/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]; }); }
+  function check() {
+    tries++;
+    fetch("/api/confirm", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ order: order }) })
+      .then(function (r) { return r.json(); })
+      .then(function (j) {
+        if (j.status === "paid") {
+          show("✓", "Thank you, you're all set!", "Your payment is confirmed. I've emailed your next steps to <b>" + esc(j.email) + "</b>. If you can't see it in a few minutes, check your spam folder.");
+        } else if (j.status === "failed" || j.status === "canceled") {
+          show("!", "Your payment didn't go through", "You haven't been charged. <a href=\"/deep-dive.html\">Try again</a>, or email hello@maday.ae if you need help.");
+        } else if (j.status === "unknown") {
+          show("?", "We couldn't find your order", "If you've paid, don't worry: email hello@maday.ae and I'll sort it out straight away.");
+        } else if (tries < 12) {
+          setTimeout(check, 4000);
+        } else {
+          show("✓", "Thank you!", "Your payment is still being confirmed. Your email with the next steps will arrive within about 10 minutes. If it doesn't, email hello@maday.ae.");
+        }
+      })
+      .catch(function () { if (tries < 12) setTimeout(check, 4000); });
+  }
+  check();
+})();
+</script>
+</body>
+</html>
