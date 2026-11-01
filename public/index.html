@@ -324,8 +324,7 @@ p { margin: 0; }
 .fast-btn { background: var(--yellow); color: #1E1033; border: 3px solid #1E1033; border-radius: 999px; padding: 10px 22px; font: 800 1.02rem var(--font-display); text-decoration: none; white-space: nowrap; box-shadow: 3px 3px 0 #000; transition: transform .12s ease; }
 .fast-btn:hover { transform: translate(-2px, -2px); }
 .buy-direct { align-self: flex-start; text-decoration: none; }
-.returning { border: 3px solid var(--ink); border-radius: 18px; padding: 14px 18px; background: var(--surface); font-size: 1rem; max-width: 34em; }
-.returning a { font-weight: 800; color: var(--ink); white-space: nowrap; }
+.fast-lane-return { border-top: 3px solid var(--ink); border-bottom: 0; }
 .taster-note { color: #D4271F; font-weight: 700; font-size: 1.05rem; margin-top: -12px; }
 /* career examples on the result page */
 .careers { display: flex; flex-direction: column; gap: 14px; }
@@ -496,12 +495,19 @@ p { margin: 0; }
         <h2>Want to feel even surer?</h2>
         <p class="lede">Your free result is the taster. The deep dive adds careers, work environments and next steps that match your style. Available in English or Arabic.</p>
         <a class="btn pink buy-direct" href="deep-dive.html?p=bundle">Get the full deep dive</a>
-        <p class="returning"><b>Already have your full report?</b> Turn it into next steps with a one-to-one debrief. <a href="deep-dive.html?p=debrief">Book a debrief for 217 AED</a></p>
       </div>
       <div class="stack">
         <h3>Parents: they're scared too.</h3>
         <p class="lede">Your child fears letting you down as much as choosing wrong. Give them words for who they are, and you both get a calmer conversation about the future.</p>
       </div>
+    </div>
+  </section>
+
+  <!-- Returning customers: already have the report, add a debrief -->
+  <section class="fast-lane fast-lane-return">
+    <div class="inner fast-lane-row">
+      <p><b>Already have your full report?</b> Turn it into next steps with a one-to-one debrief, 217 AED.</p>
+      <a class="fast-btn" href="deep-dive.html?p=debrief">Book a debrief &rarr;</a>
     </div>
   </section>
 
