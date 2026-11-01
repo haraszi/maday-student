@@ -317,6 +317,7 @@ p { margin: 0; }
 .mini-watch { background: #FDE1DF; border-color: #C42520; color: #1E1033; }
 .mini-watch .eyebrow { color: #A91F1B; }
 .note-box { border: 3px dashed var(--ink); border-radius: 20px; padding: 16px 18px; background: var(--surface); font-size: .98rem; }
+.taster-note { color: #D4271F; font-weight: 700; font-size: 1.05rem; margin-top: -12px; }
 /* career examples on the result page */
 .careers { display: flex; flex-direction: column; gap: 14px; }
 .career-list { list-style: none; margin: 0; padding: 0 0 8px; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 12px; align-items: stretch; }
@@ -607,6 +608,7 @@ p { margin: 0; }
         <div id="r-chart" class="stack" style="gap:14px"></div>
         <p class="muted" style="font-size:.9rem">Each bar shows how strongly that style came through in your answers.</p>
       </div>
+      <p class="taster-note">This is a taster, not the full certified assessment. Your deep dive goes much further.</p>
       <p class="lede" id="r-blend"></p>
       <div class="two">
         <div class="mini mini-good"><span class="eyebrow">Your strength</span><p id="r-strength"></p></div>
@@ -623,9 +625,6 @@ p { margin: 0; }
           <li><a href="https://gulfnews.com/business/UAE-needs-1-million-more-workers-by-2030-here-are-the-top-sectors-driving-the-hiring-surge-1.500382341" target="_blank" rel="noopener">A 2025 UAE workforce forecast</a>: energy (+33%) and education (+31%) are the fastest-growing UAE sectors to 2030, which is why roles in renewable energy and teaching carry the tag.</li>
         </ul>
       </div>
-      <p class="lede"><b>Scared of choosing wrong? Start here. Knowing how you work turns a guess into a decision.</b></p>
-      <div class="note-box">This is a taster, not the full certified assessment. Your deep dive goes much further.</div>
-      <p id="r-cta" class="lede"></p>
     </div>
   </div>
 
@@ -942,7 +941,6 @@ p { margin: 0; }
       if (c[2]) { var f = document.createElement("em"); f.className = "future-chip"; f.style.fontStyle = "normal"; f.textContent = "Growing fast"; li.appendChild(f); }
       cl.appendChild(li);
     });
-    $("r-cta").textContent = S.cta;
     $("r-blend").textContent = "Your second strongest style is " + STYLES[second].name + ", so you also bring a touch of " + STYLES[second].blend + ".";
     var chart = $("r-chart");
     chart.innerHTML = "";

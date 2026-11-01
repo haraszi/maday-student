@@ -312,6 +312,7 @@ p { margin: 0; }
 .mini-watch { background: #FDE1DF; border-color: #C42520; color: #1E1033; }
 .mini-watch .eyebrow { color: #A91F1B; }
 .note-box { border: 3px dashed var(--ink); border-radius: 20px; padding: 16px 18px; background: var(--surface); font-size: .98rem; }
+.taster-note { color: #D4271F; font-weight: 700; font-size: 1.05rem; margin-top: -12px; }
 /* career examples on the result page */
 .careers { display: flex; flex-direction: column; gap: 14px; }
 .career-list { list-style: none; margin: 0; padding: 0 0 8px; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 12px; align-items: stretch; }
@@ -637,6 +638,7 @@ body { line-height: 1.75; }
         <div id="r-chart" class="stack" style="gap:14px"></div>
         <p class="muted" style="font-size:.9rem">كل شريط يوضح قد إيش ظهر هذا الأسلوب في أجوبتك.</p>
       </div>
+      <p class="taster-note">هذا مجرد طعم بسيط، مو التقييم المعتمد الكامل. التعمّق يروح أبعد بوايد.</p>
       <p class="lede" id="r-blend"></p>
       <div class="two">
         <div class="mini mini-good"><span class="eyebrow">نقطة قوتك</span><p id="r-strength"></p></div>
@@ -653,9 +655,6 @@ body { line-height: 1.75; }
           <li><a href="https://gulfnews.com/business/UAE-needs-1-million-more-workers-by-2030-here-are-the-top-sectors-driving-the-hiring-surge-1.500382341" target="_blank" rel="noopener">توقعات القوى العاملة في الإمارات 2025</a>: قطاعا الطاقة (+33%) والتعليم (+31%) هما الأسرع نموًا في الإمارات حتى 2030، وعشان كذا مهن الطاقة المتجددة والتعليم عليها هالعلامة.</li>
         </ul>
       </div>
-      <p class="lede"><b>خايف تختار غلط؟ ابدأ من هني. لما تعرف طريقتك في الشغل، التخمين يتحوّل لقرار.</b></p>
-      <div class="note-box">هذا مجرد طعم بسيط، مو التقييم المعتمد الكامل. التعمّق يروح أبعد بوايد.</div>
-      <p id="r-cta" class="lede"></p>
     </div>
   </div>
 
@@ -971,7 +970,6 @@ body { line-height: 1.75; }
       if (c[2]) { var f = document.createElement("em"); f.className = "future-chip"; f.style.fontStyle = "normal"; f.textContent = "مطلوبة بقوة"; li.appendChild(f); }
       cl.appendChild(li);
     });
-    $("r-cta").textContent = S.cta;
     $("r-blend").textContent = "ثاني أقوى أسلوب عندك هو " + STYLES[second].name + "، يعني بعد عندك لمسة من " + STYLES[second].blend + ".";
     var chart = $("r-chart");
     chart.innerHTML = "";
