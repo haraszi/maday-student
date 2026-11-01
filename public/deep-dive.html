@@ -137,6 +137,8 @@ footer { border-top: 2px solid var(--ink); padding-block: 24px; color: var(--mut
         <label class="opt"><input type="radio" name="product" value="report"><span class="t"><b>Deep dive report</b><span>Your full DISC report</span></span><span class="price">187 AED</span></label>
         <label class="opt"><span class="tag">Save 55 AED</span><input type="radio" name="product" value="bundle" checked><span class="t"><b>Deep dive + debrief</b><span>Your full DISC report and a one-to-one debrief</span></span><span class="price">349 AED<s>404</s></span></label>
         <label class="opt"><input type="radio" name="product" value="debrief"><span class="t"><b>Debrief only</b><span>Already have your report? Book a one-to-one debrief</span></span><span class="price">217 AED</span></label>
+        <label class="opt"><input type="radio" name="product" value="family"><span class="t"><b>Family package</b><span>Full report, student debrief and a 50-minute family session</span></span><span class="price">549 AED<s>653</s></span></label>
+        <label class="opt"><input type="radio" name="product" value="familyonly"><span class="t"><b>Family session only</b><span>Your child already has their report? Book a 50-minute family session</span></span><span class="price">249 AED</span></label>
       </div>
     </fieldset>
 
@@ -191,7 +193,7 @@ footer { border-top: 2px solid var(--ink); padding-block: 24px; color: var(--mut
 
 <script>
 (function () {
-  var PRICES = { report: "187 AED", bundle: "349 AED", debrief: "217 AED" };
+  var PRICES = { report: "187 AED", bundle: "349 AED", debrief: "217 AED", family: "549 AED", familyonly: "249 AED" };
   var STYLE_NAMES = { D: "a Driver", I: "a Spark", S: "an Anchor", C: "an Architect" };
   var form = document.getElementById("checkout");
   var params = new URLSearchParams(location.search);
@@ -220,7 +222,7 @@ footer { border-top: 2px solid var(--ink); padding-block: 24px; color: var(--mut
   function sync() {
     var p = product();
     document.getElementById("pay-amount").textContent = PRICES[p];
-    var noLang = p === "debrief";
+    var noLang = p === "debrief" || p === "familyonly";
     document.getElementById("lang-step").hidden = noLang;
     form.querySelectorAll(".step-n[data-n]").forEach(function (el) {
       el.textContent = noLang ? Number(el.dataset.n) - 1 : el.dataset.n;
@@ -238,7 +240,7 @@ footer { border-top: 2px solid var(--ink); padding-block: 24px; color: var(--mut
     var f = form.elements, err = document.getElementById("err"), btn = document.getElementById("pay");
     var data = {
       product: product(),
-      lang: product() === "debrief" ? "en" : form.querySelector('input[name="lang"]:checked').value,
+      lang: (product() === "debrief" || product() === "familyonly") ? "en" : form.querySelector('input[name="lang"]:checked').value,
       q1: f.q1.value, q2: f.q2.value, q3: f.q3.value,
       name: f.name.value, email: f.email.value,
       under18: f.under18.checked, parentEmail: f.parentEmail.value, parentConsent: f.parentConsent.checked,

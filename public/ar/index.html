@@ -312,6 +312,19 @@ p { margin: 0; }
 .mini-watch { background: #FDE1DF; border-color: #C42520; color: #1E1033; }
 .mini-watch .eyebrow { color: #A91F1B; }
 .note-box { border: 3px dashed var(--ink); border-radius: 20px; padding: 16px 18px; background: var(--surface); font-size: .98rem; }
+/* parents section */
+.parents-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(28px, 5vw, 56px); align-items: center; }
+.parents-grid > * { min-width: 0; }
+.family-card { position: relative; border: 3px solid var(--ink); border-radius: 24px; padding: clamp(22px, 4vw, 30px); background: var(--card); box-shadow: 8px 8px 0 var(--pink); display: flex; flex-direction: column; gap: 14px; }
+.family-options { display: grid; gap: 12px; margin-top: 4px; }
+.fam-opt { display: grid; grid-template-columns: 1fr auto; gap: 2px 14px; align-items: center; border: 3px solid var(--ink); border-radius: 18px; padding: 14px 18px; text-decoration: none; color: var(--ink); background: var(--bg); transition: transform .12s ease; }
+.fam-opt:hover { transform: translateY(-2px); }
+.fam-opt.best { background: var(--yellow); color: #1E1033; }
+.fam-opt b { font-family: var(--font-display); font-size: 1.15rem; }
+.fam-opt span { grid-column: 1; font-size: .93rem; opacity: .85; }
+.fam-opt em { grid-column: 2; grid-row: 1 / span 2; font: normal 800 1.35rem var(--font-display); white-space: nowrap; }
+.fam-opt s { font-size: .85rem; font-weight: 500; opacity: .7; }
+@media (max-width: 760px) { .parents-grid { grid-template-columns: 1fr; } }
 .fast-lane { background: var(--plum-deep); color: #FBF8F5; border-bottom: 3px solid var(--ink); }
 .fast-lane-row { display: flex; align-items: center; justify-content: space-between; gap: 12px 20px; padding-block: 18px; flex-wrap: wrap; }
 .fast-lane p { font-size: 1.08rem; }
@@ -520,16 +533,27 @@ body { line-height: 1.75; }
     </div>
   </section>
 
-  <section class="band">
-    <div class="inner split">
+  <!-- For parents: the family debrief -->
+  <section class="band parents">
+    <div class="inner parents-grid">
       <div class="stack">
-        <h2>تبا تكون متأكد أكثر؟</h2>
-        <p class="lede">نتيجتك المجانية هي البداية. التعمّق يضيف لك المهن، وبيئات العمل، والخطوات الجاية اللي تناسب أسلوبك. متوفر بالعربي أو الإنجليزي.</p>
-        <a class="btn pink buy-direct" href="deep-dive.html?p=bundle">أبا التعمّق الكامل</a>
+        <span class="eyebrow" style="color:var(--pink-text)">للأهل</span>
+        <h2>قلقانين من اختيار ولدكم أو بنتكم؟ هم بعد قلقانين.</h2>
+        <p class="lede">ولدكم أو بنتكم يخافون يخذلونكم بقدر ما يخافون من الاختيار الغلط. وايد من حوارات العائلة عن المستقبل توقف بين اللي يتمناه الأهل واللي يحسّه الطالب. وجود خبيرة محايدة معاكم يغيّر هالشي.</p>
+        <ul class="gets">
+          <li>اسمعوا كيف يفكّر ولدكم أو بنتكم ويشتغل ويقرّر بطبيعته</li>
+          <li>تكلّموا بصراحة عن آمالكم، وعن آمالهم</li>
+          <li>اتفقوا على خطوات جاية الكل مقتنع فيها</li>
+        </ul>
       </div>
-      <div class="stack">
-        <h3>للأهل: هم بعد خايفين.</h3>
-        <p class="lede">ولدكم أو بنتكم يخافون يخذلونكم بقدر ما يخافون من الاختيار الغلط. عطوهم كلمات توصف حقيقتهم، وبيصير حديثكم عن المستقبل أهدأ وأريح للكل.</p>
+      <div class="family-card">
+        <span class="save">جديد</span>
+        <h3>جلسة العائلة</h3>
+        <p>جلسة أونلاين مدتها 50 دقيقة معاكم ومع ولدكم أو بنتكم، بعد تقرير DISC. أشرح لكم أسلوبهم، ووين تلتقي آمالكم مع نقاط قوتهم، والخطوات الجاية اللي تتفقون عليها مع بعض. بالعربي أو الإنجليزي.</p>
+        <div class="family-options">
+          <a class="fam-opt best" href="deep-dive.html?p=family"><b>باقة العائلة</b><span>التقرير + جلسة الطالب + جلسة العائلة</span><em>549 درهم <s>653</s></em></a>
+          <a class="fam-opt" href="deep-dive.html?p=familyonly"><b>جلسة العائلة بس</b><span>عند ولدكم أو بنتكم تقريرهم من قبل</span><em>249 درهم</em></a>
+        </div>
       </div>
     </div>
   </section>

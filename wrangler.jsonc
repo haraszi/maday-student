@@ -22,6 +22,7 @@
     "FROM_EMAIL": "Ildi at maday.ae <hello@maday.ae>",
     "OWNER_EMAIL": "hello@maday.ae",
     "CAL_DEBRIEF_URL": "https://cal.com/maday/disc-career-debrief-session",
+    "CAL_FAMILY_URL": "https://cal.com/maday/disc-family-debrief-session",
     // "true" = Ziina test payments (no real money). Switch to "false" to go live.
     "ZIINA_TEST": "false"
   },

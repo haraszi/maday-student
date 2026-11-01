@@ -10,11 +10,13 @@ const PRODUCTS = {
   report: { name: "Deep dive report", fils: 18700, assessment: true, debrief: false },
   bundle: { name: "Deep dive + debrief", fils: 34900, assessment: true, debrief: true },
   debrief: { name: "Debrief session", fils: 21700, assessment: false, debrief: true },
+  family: { name: "Family package", fils: 54900, assessment: true, debrief: true, family: true },
+  familyonly: { name: "Family session", fils: 24900, assessment: false, debrief: false, family: true },
 };
 const LANGS = { en: "English", ar: "Arabic" };
 // Arabic wording for orders placed on maday.ae/ar
 const AR = {
-  products: { report: "تقرير التعمّق", bundle: "التعمّق + جلسة شخصية", debrief: "جلسة شخصية" },
+  products: { report: "تقرير التعمّق", bundle: "التعمّق + جلسة شخصية", debrief: "جلسة شخصية", family: "باقة العائلة", familyonly: "جلسة العائلة" },
   langs: { en: "الإنجليزية", ar: "العربية" },
   serverError: "صار خطأ من جهتنا. جرّب مرة ثانية، أو راسلنا على hello@maday.ae.",
   formError: "لو سمحت تأكد من البيانات في النموذج وجرّب مرة ثانية.",
@@ -169,13 +171,14 @@ async function settle(env, order) {
 // ---------- emails ----------
 
 function customerSubject(order) {
+  const p = PRODUCTS[order.product];
   if (order.ui === "ar") {
-    return PRODUCTS[order.product].assessment
-      ? "تعمّقك في بوصلة أسلوبك المهني: ابدأ من هني"
+    return p.assessment ? "تعمّقك في بوصلة أسلوبك المهني: ابدأ من هني"
+      : p.family ? "احجزوا جلسة العائلة"
       : "احجز جلستك الشخصية";
   }
-  return PRODUCTS[order.product].assessment
-    ? "Your Career Style Compass deep dive: start here"
+  return p.assessment ? "Your Career Style Compass deep dive: start here"
+    : p.family ? "Book your family debrief session"
     : "Book your DISC career debrief";
 }
 
@@ -204,6 +207,11 @@ ${button(link, "ابدأ التقييم")}
     html += `<h2 style="font-size:20px;margin:28px 0 8px">${p.assessment ? "الخطوة الثانية: " : ""}احجز جلستك الشخصية</h2>
 <p>${p.assessment ? "بعد ما تخلّص التقييم، اختار" : "اختار"} الوقت اللي يناسبك، بالعربي أو الإنجليزي.</p>
 ${button(env.CAL_DEBRIEF_URL, "احجز جلستي")}`;
+  }
+  if (p.family) {
+    html += `<h2 style="font-size:20px;margin:28px 0 8px">${p.assessment ? "الخطوة الثالثة: " : ""}احجزوا جلسة العائلة</h2>
+<p>جلسة أونلاين مدتها 50 دقيقة للطالب وأهله. ${p.assessment ? "احجزوها بعد جلسة الطالب الشخصية، " : ""}واختاروا الوقت اللي يناسب الكل، بالعربي أو الإنجليزي.</p>
+${button(env.CAL_FAMILY_URL || env.CAL_DEBRIEF_URL, "احجز جلسة العائلة")}`;
   }
 
   html += `<p>عندك أي سؤال؟ بس رد على هالإيميل.</p>
@@ -234,6 +242,11 @@ ${button(link, "Start my assessment")}
     html += `<h2 style="font-size:20px;margin:28px 0 8px">${p.assessment ? "Step 2: " : ""}Book your one-to-one debrief</h2>
 <p>${p.assessment ? "Once you've taken the assessment, pick" : "Pick"} a time that suits you, in English or Arabic.</p>
 ${button(env.CAL_DEBRIEF_URL, "Book my debrief")}`;
+  }
+  if (p.family) {
+    html += `<h2 style="font-size:20px;margin:28px 0 8px">${p.assessment ? "Step 3: " : ""}Book your family debrief</h2>
+<p>A 50-minute online session for the student and their parents. ${p.assessment ? "Book it after the student's one-to-one debrief, and pick" : "Pick"} a time that works for everyone, in English or Arabic.</p>
+${button(env.CAL_FAMILY_URL || env.CAL_DEBRIEF_URL, "Book our family session")}`;
   }
 
   html += `<p>Any questions? Just reply to this email.</p>

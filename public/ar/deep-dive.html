@@ -158,6 +158,8 @@ input[type="email"] { direction: ltr; text-align: right; }
         <label class="opt"><input type="radio" name="product" value="report"><span class="t"><b>تقرير التعمّق</b><span>تقرير DISC الكامل</span></span><span class="price">187 درهم</span></label>
         <label class="opt"><span class="tag">وفّر 55 درهم</span><input type="radio" name="product" value="bundle" checked><span class="t"><b>التعمّق + جلسة شخصية</b><span>تقرير DISC الكامل وجلسة شخصية معاي</span></span><span class="price">349 درهم<s>404</s></span></label>
         <label class="opt"><input type="radio" name="product" value="debrief"><span class="t"><b>جلسة شخصية بس</b><span>عندك تقريرك من قبل؟ احجز جلسة شخصية</span></span><span class="price">217 درهم</span></label>
+        <label class="opt"><input type="radio" name="product" value="family"><span class="t"><b>باقة العائلة</b><span>التقرير الكامل وجلسة الطالب وجلسة عائلية مدتها 50 دقيقة</span></span><span class="price">549 درهم<s>653</s></span></label>
+        <label class="opt"><input type="radio" name="product" value="familyonly"><span class="t"><b>جلسة العائلة بس</b><span>عند ولدكم أو بنتكم تقريرهم من قبل؟ احجزوا جلسة عائلية مدتها 50 دقيقة</span></span><span class="price">249 درهم</span></label>
       </div>
     </fieldset>
 
@@ -212,7 +214,7 @@ input[type="email"] { direction: ltr; text-align: right; }
 
 <script>
 (function () {
-  var PRICES = { report: "187 درهم", bundle: "349 درهم", debrief: "217 درهم" };
+  var PRICES = { report: "187 درهم", bundle: "349 درهم", debrief: "217 درهم", family: "549 درهم", familyonly: "249 درهم" };
   var STYLE_NAMES = { D: "المبادر", I: "الشرارة", S: "السند", C: "المهندس" };
   var form = document.getElementById("checkout");
   var params = new URLSearchParams(location.search);
@@ -242,7 +244,7 @@ input[type="email"] { direction: ltr; text-align: right; }
   function sync() {
     var p = product();
     document.getElementById("pay-amount").textContent = PRICES[p];
-    var noLang = p === "debrief";
+    var noLang = p === "debrief" || p === "familyonly";
     document.getElementById("lang-step").hidden = noLang;
     form.querySelectorAll(".step-n[data-n]").forEach(function (el) {
       el.textContent = noLang ? Number(el.dataset.n) - 1 : el.dataset.n;
@@ -260,7 +262,7 @@ input[type="email"] { direction: ltr; text-align: right; }
     var f = form.elements, err = document.getElementById("err"), btn = document.getElementById("pay");
     var data = {
       product: product(),
-      lang: product() === "debrief" ? "ar" : form.querySelector('input[name="lang"]:checked').value,
+      lang: (product() === "debrief" || product() === "familyonly") ? "ar" : form.querySelector('input[name="lang"]:checked').value,
       ui: "ar",
       q1: f.q1.value, q2: f.q2.value, q3: f.q3.value,
       name: f.name.value, email: f.email.value,

@@ -317,6 +317,19 @@ p { margin: 0; }
 .mini-watch { background: #FDE1DF; border-color: #C42520; color: #1E1033; }
 .mini-watch .eyebrow { color: #A91F1B; }
 .note-box { border: 3px dashed var(--ink); border-radius: 20px; padding: 16px 18px; background: var(--surface); font-size: .98rem; }
+/* parents section */
+.parents-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(28px, 5vw, 56px); align-items: center; }
+.parents-grid > * { min-width: 0; }
+.family-card { position: relative; border: 3px solid var(--ink); border-radius: 24px; padding: clamp(22px, 4vw, 30px); background: var(--card); box-shadow: 8px 8px 0 var(--pink); display: flex; flex-direction: column; gap: 14px; }
+.family-options { display: grid; gap: 12px; margin-top: 4px; }
+.fam-opt { display: grid; grid-template-columns: 1fr auto; gap: 2px 14px; align-items: center; border: 3px solid var(--ink); border-radius: 18px; padding: 14px 18px; text-decoration: none; color: var(--ink); background: var(--bg); transition: transform .12s ease; }
+.fam-opt:hover { transform: translateY(-2px); }
+.fam-opt.best { background: var(--yellow); color: #1E1033; }
+.fam-opt b { font-family: var(--font-display); font-size: 1.15rem; }
+.fam-opt span { grid-column: 1; font-size: .93rem; opacity: .85; }
+.fam-opt em { grid-column: 2; grid-row: 1 / span 2; font: normal 800 1.35rem var(--font-display); white-space: nowrap; }
+.fam-opt s { font-size: .85rem; font-weight: 500; opacity: .7; }
+@media (max-width: 760px) { .parents-grid { grid-template-columns: 1fr; } }
 .fast-lane { background: var(--plum-deep); color: #FBF8F5; border-bottom: 3px solid var(--ink); }
 .fast-lane-row { display: flex; align-items: center; justify-content: space-between; gap: 12px 20px; padding-block: 18px; flex-wrap: wrap; }
 .fast-lane p { font-size: 1.08rem; }
@@ -489,16 +502,27 @@ p { margin: 0; }
     </div>
   </section>
 
-  <section class="band">
-    <div class="inner split">
+  <!-- For parents: the family debrief -->
+  <section class="band parents">
+    <div class="inner parents-grid">
       <div class="stack">
-        <h2>Want to feel even surer?</h2>
-        <p class="lede">Your free result is the taster. The deep dive adds careers, work environments and next steps that match your style. Available in English or Arabic.</p>
-        <a class="btn pink buy-direct" href="deep-dive.html?p=bundle">Get the full deep dive</a>
+        <span class="eyebrow" style="color:var(--pink-text)">For parents</span>
+        <h2>Worried about the choice your child is making? So are they.</h2>
+        <p class="lede">Your child fears letting you down as much as choosing wrong. Many family conversations about the future get stuck between what parents hope for and what the student feels. A neutral expert in the room changes that.</p>
+        <ul class="gets">
+          <li>Hear how your child naturally thinks, works and decides</li>
+          <li>Talk openly about your hopes, and theirs</li>
+          <li>Agree next steps you all believe in</li>
+        </ul>
       </div>
-      <div class="stack">
-        <h3>Parents: they're scared too.</h3>
-        <p class="lede">Your child fears letting you down as much as choosing wrong. Give them words for who they are, and you both get a calmer conversation about the future.</p>
+      <div class="family-card">
+        <span class="save">New</span>
+        <h3>Family debrief</h3>
+        <p>A 50-minute online session with you and your child, after their DISC report. I walk you through their style, where your hopes and their strengths meet, and the next steps you agree together. In English or Arabic.</p>
+        <div class="family-options">
+          <a class="fam-opt best" href="deep-dive.html?p=family"><b>Family package</b><span>Report + student debrief + family session</span><em>549 AED <s>653</s></em></a>
+          <a class="fam-opt" href="deep-dive.html?p=familyonly"><b>Family session only</b><span>Your child already has their report</span><em>249 AED</em></a>
+        </div>
       </div>
     </div>
   </section>
