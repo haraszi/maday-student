@@ -237,6 +237,7 @@ input[type="email"] { direction: ltr; text-align: right; }
 
 <footer><div class="inner">&copy; <span id="yr">2026</span> maday.ae مع إيلدي هاراسي · <a href="/ar/privacy.html">الخصوصية</a> · <a href="/ar/terms.html">الشروط</a> · <a href="mailto:hello@maday.ae">hello@maday.ae</a></div></footer>
 
+<dialog class="peek-view" id="peek-view" aria-label="صفحة من التقرير النموذجي"><button type="button" class="peek-close">إغلاق ✕</button><img alt="صفحة من التقرير النموذجي"></dialog>
 <script>
 (function () {
   var PRICES = { report: "187 درهم", bundle: "349 درهم", debrief: "217 درهم", family: "549 درهم", familyonly: "249 درهم" };
@@ -335,6 +336,5 @@ input[type="email"] { direction: ltr; text-align: right; }
   view.addEventListener("click", e => { if (e.target === view || e.target.closest(".peek-close")) view.close(); });
 })();
 </script>
-<dialog class="peek-view" id="peek-view" aria-label="صفحة من التقرير النموذجي"><button type="button" class="peek-close">إغلاق ✕</button><img alt="صفحة من التقرير النموذجي"></dialog>
 </body>
 </html>

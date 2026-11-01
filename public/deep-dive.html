@@ -216,6 +216,7 @@ footer { border-top: 2px solid var(--ink); padding-block: 24px; color: var(--mut
 
 <footer><div class="inner">&copy; <span id="yr">2026</span> maday.ae with Ildi Haraszi · <a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a> · <a href="mailto:hello@maday.ae">hello@maday.ae</a></div></footer>
 
+<dialog class="peek-view" id="peek-view" aria-label="Sample report page"><button type="button" class="peek-close">Close ✕</button><img alt="Sample report page"></dialog>
 <script>
 (function () {
   var PRICES = { report: "187 AED", bundle: "349 AED", debrief: "217 AED", family: "549 AED", familyonly: "249 AED" };
@@ -312,6 +313,5 @@ footer { border-top: 2px solid var(--ink); padding-block: 24px; color: var(--mut
   view.addEventListener("click", e => { if (e.target === view || e.target.closest(".peek-close")) view.close(); });
 })();
 </script>
-<dialog class="peek-view" id="peek-view" aria-label="Sample report page"><button type="button" class="peek-close">Close ✕</button><img alt="Sample report page"></dialog>
 </body>
 </html>
