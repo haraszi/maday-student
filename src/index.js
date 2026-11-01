@@ -12,6 +12,13 @@ const PRODUCTS = {
   debrief: { name: "Debrief session", fils: 21700, assessment: false, debrief: true },
 };
 const LANGS = { en: "English", ar: "Arabic" };
+// Arabic wording for orders placed on maday.ae/ar
+const AR = {
+  products: { report: "تقرير التعمّق", bundle: "التعمّق + جلسة شخصية", debrief: "جلسة شخصية" },
+  langs: { en: "الإنجليزية", ar: "العربية" },
+  serverError: "صار خطأ من جهتنا. جرّب مرة ثانية، أو راسلنا على hello@maday.ae.",
+  formError: "لو سمحت تأكد من البيانات في النموذج وجرّب مرة ثانية.",
+};
 const ZIINA_API = "https://api-v2.ziina.com/api";
 const ORDER_TTL = 60 * 60 * 24 * 365 * 2; // keep orders 2 years, then KV deletes them
 
@@ -28,7 +35,8 @@ export default {
         ? String(err.message || err).replace(/Bearer\s+\S+/g, "Bearer ***") +
           ` | key lengths: ziina=${cleanKey(env.ZIINA_API_KEY).length}, resend=${cleanKey(env.RESEND_API_KEY).length}`
         : undefined;
-      return json({ error: "Something went wrong on our side. Please try again, or email hello@maday.ae.", detail }, 500);
+      const ar = (request.headers.get("Referer") || "").includes("/ar/");
+      return json({ error: ar ? AR.serverError : "Something went wrong on our side. Please try again, or email hello@maday.ae.", detail }, 500);
     }
     if (url.pathname.startsWith("/api/")) return json({ error: "Not found" }, 404);
     return env.ASSETS.fetch(request);
@@ -50,6 +58,7 @@ async function checkout(request, env) {
   const order = {
     product: clean(body.product, 20),
     lang: clean(body.lang, 5),
+    ui: body.ui === "ar" ? "ar" : "en", // which version of the site they ordered from
     name: clean(body.name, 120),
     email: clean(body.email, 200).toLowerCase(),
     q1: clean(body.q1),
@@ -72,18 +81,21 @@ async function checkout(request, env) {
   if (order.under18 && !isEmail(order.parentEmail)) errors.push("Add your parent or guardian's email.");
   if (order.under18 && !order.parentConsent) errors.push("Confirm your parent or guardian agrees.");
   if (!order.agreedTerms) errors.push("Tick the box to accept the terms and refund policy.");
-  if (errors.length) return json({ error: errors.join(" ") }, 400);
+  if (errors.length) return json({ error: order.ui === "ar" ? AR.formError : errors.join(" ") }, 400);
 
   order.id = crypto.randomUUID();
   order.createdAt = new Date().toISOString();
   order.status = "pending";
   order.amount = product.fils / 100;
 
-  const site = env.SITE_URL;
+  const site = env.SITE_URL + (order.ui === "ar" ? "/ar" : "");
+  const message = order.ui === "ar"
+    ? `${AR.products[order.product]}${product.assessment ? ` (${AR.langs[order.lang]})` : ""} · maday.ae`
+    : `${product.name}${product.assessment ? ` (${LANGS[order.lang]})` : ""} · maday.ae`;
   const intent = await ziina(env, "POST", "/payment_intent", {
     amount: product.fils,
     currency_code: "AED",
-    message: `${product.name}${product.assessment ? ` (${LANGS[order.lang]})` : ""} · maday.ae`,
+    message,
     success_url: `${site}/thank-you.html?order=${order.id}`,
     cancel_url: `${site}/deep-dive.html?p=${order.product}&cancelled=1`,
     failure_url: `${site}/deep-dive.html?p=${order.product}&failed=1`,
@@ -157,12 +169,51 @@ async function settle(env, order) {
 // ---------- emails ----------
 
 function customerSubject(order) {
+  if (order.ui === "ar") {
+    return PRODUCTS[order.product].assessment
+      ? "تعمّقك في بوصلة أسلوبك المهني: ابدأ من هني"
+      : "احجز جلستك الشخصية";
+  }
   return PRODUCTS[order.product].assessment
     ? "Your Career Style Compass deep dive: start here"
     : "Book your DISC career debrief";
 }
 
 function customerEmail(env, order) {
+  return order.ui === "ar" ? customerEmailAr(env, order) : customerEmailEn(env, order);
+}
+
+function customerEmailAr(env, order) {
+  const p = PRODUCTS[order.product];
+  const link = order.lang === "ar" ? env.ASSESSMENT_LINK_AR : env.ASSESSMENT_LINK_EN;
+  const first = esc(order.name.split(" ")[0]);
+  const button = (href, label) =>
+    `<p style="margin:24px 0"><a href="${esc(href)}" style="background:#E5322D;color:#fff;padding:14px 24px;border-radius:999px;text-decoration:none;font-weight:700;display:inline-block">${label}</a></p>`;
+
+  let html = `<div dir="rtl" lang="ar" style="font-family:Tahoma,Arial,sans-serif;font-size:16px;line-height:1.8;color:#1E1033;max-width:560px;text-align:right">
+<p>هلا ${first}،</p>
+<p>شكرًا لك، تم تأكيد دفعتك بقيمة ${order.amount} درهم. هذي خطوتك الجاية.</p>`;
+
+  if (p.assessment) {
+    html += `<h2 style="font-size:20px;margin:28px 0 8px">الخطوة الأولى: سوِّ تقييم DISC</h2>
+<p>ياخذ تقريبًا من 15 إلى 20 دقيقة، باللغة ${AR.langs[order.lang]}. اختار وقت هادئ وجاوب بصراحة، ما في جواب صح أو غلط.</p>
+${button(link, "ابدأ التقييم")}
+<p style="font-size:14px;color:#5B4E6E">هذا الرابط خاص فيك، فلا تشاركه مع أحد لو سمحت.</p>`;
+  }
+  if (p.debrief) {
+    html += `<h2 style="font-size:20px;margin:28px 0 8px">${p.assessment ? "الخطوة الثانية: " : ""}احجز جلستك الشخصية</h2>
+<p>${p.assessment ? "بعد ما تخلّص التقييم، اختار" : "اختار"} الوقت اللي يناسبك، بالعربي أو الإنجليزي.</p>
+${button(env.CAL_DEBRIEF_URL, "احجز جلستي")}`;
+  }
+
+  html += `<p>عندك أي سؤال؟ بس رد على هالإيميل.</p>
+<p>إيلدي<br><span style="color:#5B4E6E">maday.ae · من التخمين إلى اليقين.</span></p>
+<p style="font-size:12px;color:#5B4E6E;margin-top:32px">رقم الطلب: <span dir="ltr">${esc(order.id.slice(0, 8))}</span> · ${esc(AR.products[order.product])} · ${order.amount} درهم</p>
+</div>`;
+  return html;
+}
+
+function customerEmailEn(env, order) {
   const p = PRODUCTS[order.product];
   const link = order.lang === "ar" ? env.ASSESSMENT_LINK_AR : env.ASSESSMENT_LINK_EN;
   const first = esc(order.name.split(" ")[0]);
@@ -198,7 +249,8 @@ function ownerEmail(order) {
 <h2 style="margin:0 0 12px">New paid order</h2>
 <table style="border-collapse:collapse">
 ${row("Product", esc(PRODUCTS[order.product].name) + " · " + order.amount + " AED")}
-${row("Language", LANGS[order.lang])}
+${row("Assessment language", LANGS[order.lang])}
+${row("Ordered on", order.ui === "ar" ? "Arabic site (maday.ae/ar)" : "English site")}
 ${row("Name", esc(order.name))}
 ${row("Email", esc(order.email))}
 ${row("Quiz style", esc(order.style || "not given"))}

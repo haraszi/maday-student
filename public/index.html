@@ -9,6 +9,10 @@
 <meta property="og:description" content="The 3-minute DISC quiz that shows whether you're a Driver, Spark, Anchor or Architect, and which careers fit that style.">
 <meta property="og:image" content="images/ildi.jpg">
 <link href="fonts/fonts.css" rel="stylesheet">
+<link href="fonts/fonts-ar.css" rel="stylesheet">
+<link rel="alternate" hreflang="en" href="https://maday.ae/">
+<link rel="alternate" hreflang="ar" href="https://maday.ae/ar/">
+<link rel="alternate" hreflang="x-default" href="https://maday.ae/">
 <style>
 /* A loud, sticker-bright student site. Yellow hero, pink and red accents, big type, one clear button. */
 :root {
@@ -242,6 +246,11 @@ p { margin: 0; }
 .final-collage { background: var(--paper); border-top: 3px solid var(--ink); text-align: center; position: relative; overflow: hidden; }
 .final-card { position: relative; z-index: 1; max-width: 900px; margin: 0 auto; padding: clamp(44px, 8vw, 72px) 24px; background: #fff; color: #1E1033; border: 3px solid var(--ink); border-radius: 5px; display: flex; flex-direction: column; align-items: center; gap: 18px; }
 .final-card .lede { color: #1E1033; }
+/* language switch */
+.site-header .actions { display: flex; align-items: center; gap: 10px; }
+.lang-switch { font: 700 1rem "IBM Plex Sans Arabic", var(--font-body); text-decoration: none; color: var(--ink); border: 2px solid var(--ink); border-radius: 999px; padding: 5px 14px; white-space: nowrap; }
+.lang-switch:hover { background: var(--surface); }
+@media (max-width: 560px) { .site-header #hdr-cta { display: none; } }
 /* the two paper shapes peek out above (pink) and below (yellow) the white card */
 .final-collage { padding-block: clamp(80px, 11vw, 120px); }
 .final-wrap { position: relative; max-width: 900px; margin: 0 auto; }
@@ -337,7 +346,10 @@ p { margin: 0; }
       <img src="images/brand/maday-logo.svg" alt="maday" width="114" height="36">
       <span>with Ildi Haraszi</span>
     </button>
-    <button class="btn" id="hdr-cta" data-start>Start the free quiz</button>
+    <div class="actions">
+      <a class="lang-switch" href="/ar/" hreflang="ar" lang="ar">العربية</a>
+      <button class="btn" id="hdr-cta" data-start>Start the free quiz</button>
+    </div>
   </div>
 </header>
 
@@ -636,7 +648,7 @@ p { margin: 0; }
 <footer class="footer">
   <div class="inner">
     <span>&copy; <span id="yr">2026</span> maday.ae with Ildi Haraszi</span>
-    <span><a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a> · <a href="https://cal.com/maday" target="_blank" rel="noopener">Book a call</a></span>
+    <span><a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a> · <a href="https://cal.com/maday" target="_blank" rel="noopener">Book a call</a> · <a href="/ar/" hreflang="ar" lang="ar">العربية</a></span>
   </div>
 </footer>
 

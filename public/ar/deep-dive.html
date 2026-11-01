@@ -1,0 +1,302 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>التعمّق · بوصلة أسلوبك المهني · maday.ae</title>
+<meta name="description" content="احصل على تقرير DISC المهني الكامل، والمهن اللي تناسب أسلوبك، وجلسة شخصية اختيارية مع إيلدي هاراسي. بالعربي أو الإنجليزي.">
+<link href="/fonts/fonts.css" rel="stylesheet">
+<link href="/fonts/fonts-ar.css" rel="stylesheet">
+<style>
+:root {
+  --bg: #FFFFFF; --surface: #FFF3C4; --ink: #1E1033; --muted: #5B4E6E; --line: #E6DCEF;
+  --yellow: #FFD21F; --pink: #FF4F9A; --red: #E5322D; --on-red: #FFFFFF; --card: #FFFFFF;
+  --font-display: "Bricolage Grotesque", "Arial Black", system-ui, sans-serif;
+  --font-body: "DM Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) { --bg: #150E22; --surface: #241838; --ink: #FFF6DC; --muted: #C4B8D6; --line: #3B2C54; --card: #1D1330; color-scheme: dark; }
+}
+:root[data-theme="dark"] { --bg: #150E22; --surface: #241838; --ink: #FFF6DC; --muted: #C4B8D6; --line: #3B2C54; --card: #1D1330; color-scheme: dark; }
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 1.0625rem/1.55 var(--font-body); }
+[hidden] { display: none !important; }
+h1, h2, h3 { font-family: var(--font-display); line-height: 1.05; margin: 0; letter-spacing: -0.02em; text-wrap: balance; }
+h1 { font-size: clamp(2.3rem, 7vw, 4rem); font-weight: 800; }
+h2 { font-size: clamp(1.5rem, 4vw, 2rem); font-weight: 800; }
+h3 { font-size: 1.2rem; font-weight: 700; }
+p { margin: 0; }
+a { color: inherit; }
+.inner { max-width: 1080px; margin: 0 auto; padding: 0 16px; }
+.eyebrow { font-size: .8rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+.chip { display: inline-block; background: var(--ink); color: var(--yellow); border-radius: 999px; padding: 6px 14px; width: fit-content; }
+.lede { font-size: clamp(1.1rem, 2.4vw, 1.3rem); max-width: 36em; }
+.muted { color: var(--muted); }
+.stack { display: flex; flex-direction: column; gap: 16px; }
+
+.bar { border-bottom: 2px solid var(--ink); background: var(--bg); }
+.bar .inner { display: flex; justify-content: space-between; align-items: center; padding-block: 12px; }
+.brand { display: flex; flex-direction: column; gap: 3px; text-decoration: none; line-height: 1.05; }
+.brand img { height: 36px; width: auto; }
+.brand span { font: .75rem var(--font-body); color: var(--muted); }
+.back { font-weight: 700; }
+
+.hero { background: var(--yellow); color: #1E1033; border-bottom: 3px solid var(--ink); padding-block: clamp(36px, 7vw, 72px); }
+.hero .lede { margin-top: 18px; }
+.style-note { margin-top: 18px; font-weight: 700; }
+
+.layout { display: grid; grid-template-columns: 1fr 1.35fr; gap: clamp(24px, 5vw, 56px); padding-block: clamp(36px, 6vw, 64px); align-items: start; }
+.layout > * { min-width: 0; }
+.gets { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+.gets li { display: flex; gap: 14px; align-items: flex-start; font-weight: 500; }
+.gets li::before { content: ""; flex: none; width: 20px; height: 20px; margin-top: 4px; background: var(--yellow); border: 3px solid var(--ink); border-radius: 7px; transform: rotate(8deg); }
+.aside { position: sticky; top: 16px; display: flex; flex-direction: column; gap: 24px; }
+.trust { border: 3px dashed var(--ink); border-radius: 20px; padding: 16px 18px; background: var(--surface); font-size: .98rem; }
+
+form { display: flex; flex-direction: column; gap: 32px; }
+fieldset { border: 3px solid var(--ink); border-radius: 24px; padding: clamp(18px, 4vw, 28px); margin: 0; background: var(--card); display: flex; flex-direction: column; gap: 16px; box-shadow: 6px 6px 0 var(--ink); }
+legend { font: 800 1.3rem var(--font-display); padding: 0 8px; letter-spacing: -0.02em; }
+.step-n { display: inline-grid; place-items: center; width: 34px; height: 34px; border-radius: 50%; background: var(--yellow); color: #1E1033; border: 3px solid var(--ink); font-size: 1rem; margin-right: 8px; vertical-align: middle; }
+
+.options { display: grid; gap: 12px; }
+.opt { position: relative; display: flex; gap: 14px; align-items: flex-start; border: 3px solid var(--ink); border-radius: 18px; padding: 16px 18px; cursor: pointer; background: var(--bg); }
+.opt input { margin-top: 5px; width: 20px; height: 20px; accent-color: var(--red); flex: none; }
+.opt:has(input:checked) { background: var(--yellow); color: #1E1033; }
+.opt .t { flex: 1; display: flex; flex-direction: column; gap: 2px; }
+.opt b { font: 800 1.1rem var(--font-display); }
+.opt .price { font: 800 1.4rem var(--font-display); white-space: nowrap; font-variant-numeric: tabular-nums; }
+.opt .price s { font-size: .9rem; font-weight: 500; opacity: .7; margin-left: 4px; }
+.opt .tag { position: absolute; top: -13px; right: 16px; background: var(--red); color: var(--on-red); border: 2px solid var(--ink); border-radius: 999px; padding: 2px 12px; font-size: .8rem; font-weight: 800; }
+.langs { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.langs .opt { align-items: center; }
+.ar { font-family: "Noto Sans Arabic", "Segoe UI", "Geeza Pro", Tahoma, sans-serif; font-weight: 700; font-size: 1.15rem; }
+
+label.q { font-weight: 700; display: flex; flex-direction: column; gap: 8px; }
+.input { font: inherit; font-weight: 400; font-size: 1.05rem; padding: 12px 14px; border: 3px solid var(--ink); border-radius: 14px; background: var(--bg); color: var(--ink); width: 100%; }
+textarea.input { min-height: 96px; resize: vertical; }
+.check { display: flex; gap: 12px; align-items: flex-start; font-size: 1rem; cursor: pointer; }
+.check input { flex: none; width: 22px; height: 22px; margin-top: 2px; accent-color: var(--red); }
+.parent { border-left: 4px solid var(--pink); padding-left: 16px; display: flex; flex-direction: column; gap: 14px; }
+.hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+
+.btn { font: 800 clamp(1.05rem, 3.4vw, 1.25rem) var(--font-display); border: 3px solid var(--ink); border-radius: 999px; padding: 16px 28px; min-height: 58px; cursor: pointer; background: var(--red); color: var(--on-red); box-shadow: 5px 5px 0 var(--ink); transition: transform .12s ease, box-shadow .12s ease; width: 100%; }
+.btn:hover { transform: translate(-2px, -2px); box-shadow: 7px 7px 0 var(--ink); }
+.btn[disabled] { opacity: .6; cursor: wait; transform: none; box-shadow: none; }
+:focus-visible { outline: 3px solid var(--pink); outline-offset: 3px; }
+.pay-note { text-align: center; font-size: .95rem; color: var(--muted); margin-top: 10px; }
+.err { color: var(--red); font-weight: 700; }
+:root[data-theme="dark"] .err { color: #FF8A84; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .err { color: #FF8A84; } }
+.notice { border: 3px solid var(--ink); background: var(--surface); border-radius: 16px; padding: 14px 18px; font-weight: 700; }
+footer { border-top: 2px solid var(--ink); padding-block: 24px; color: var(--muted); font-size: .9rem; }
+
+@media (max-width: 820px) {
+  .layout { grid-template-columns: 1fr; }
+  .aside { position: static; }
+}
+@media (max-width: 420px) { .langs { grid-template-columns: 1fr; } }
+/* ---- Arabic / right-to-left ---- */
+:root {
+  --font-display: "Baloo Bhaijaan 2", "Bricolage Grotesque", "Segoe UI", Tahoma, sans-serif;
+  --font-body: "IBM Plex Sans Arabic", "DM Sans", "Segoe UI", Tahoma, sans-serif;
+}
+body { line-height: 1.75; }
+h1, h2, h3, legend, .eyebrow, .btn, .opt b { letter-spacing: 0 !important; }
+.eyebrow { text-transform: none; }
+h1, h2, h3 { line-height: 1.3; }
+.latin { direction: ltr; unicode-bidi: isolate; font-family: "Bricolage Grotesque", sans-serif; }
+.step-n { margin-right: 0; margin-left: 8px; }
+.opt .price s { margin-left: 0; margin-right: 4px; }
+.opt .tag { right: auto; left: 16px; }
+.parent { border-left: 0; padding-left: 0; border-right: 4px solid var(--pink); padding-right: 16px; }
+.hp { left: auto; right: -9999px; }
+.gets li::before { transform: rotate(-8deg); }
+.bar .links { display: flex; gap: 16px; align-items: center; }
+.lang-switch { font-weight: 700; text-decoration: none; border: 2px solid var(--ink); border-radius: 999px; padding: 4px 12px; }
+input[type="email"] { direction: ltr; text-align: right; }
+</style>
+</head>
+<body>
+
+<header class="bar"><div class="inner">
+  <a class="brand" href="/ar/"><img src="/images/brand/maday-logo.svg" alt="maday" width="114" height="36"><span>مع إيلدي هاراسي</span></a>
+  <span class="links">
+    <a class="back" href="/ar/">رجوع للاختبار</a>
+    <a class="lang-switch" href="/deep-dive.html" hreflang="en" lang="en" id="to-en">English</a>
+  </span>
+</div></header>
+
+<section class="hero"><div class="inner">
+  <span class="eyebrow chip">الخطوتين R + E من منهج <span class="latin">SURE</span></span>
+  <h1 style="margin-top:18px">تعمّق أكثر مع بوصلة أسلوبك المهني الكاملة</h1>
+  <p class="lede">نتيجتك المجانية كانت البداية. التعمّق يوضح لك المهن وبيئات العمل اللي تناسب طريقتك الطبيعية في الشغل، وشو خطوتك الجاية.</p>
+  <p class="style-note" id="style-note" hidden></p>
+</div></section>
+
+<main class="inner layout">
+  <aside class="aside">
+    <div class="stack">
+      <h2>شو بتحصل</h2>
+      <ul class="gets">
+        <li>تقرير DISC المهني الكامل، من مدربة معتمدة في DISC</li>
+        <li>المهن وبيئات العمل اللي تناسب أسلوبك</li>
+        <li>مع الجلسة: جلسة شخصية تحوّل النتايج لخطوات تقدر تبدأ فيها هالأسبوع</li>
+        <li>وكل شي بالعربي أو الإنجليزي، على كيفك</li>
+      </ul>
+    </div>
+    <div class="trust">
+      <b>دفع آمن عن طريق Apple Pay أو البطاقة</b> من خلال Ziina، مزوّد دفع مرخّص في الإمارات. ما أشوف بيانات بطاقتك أبدًا. رابط التقييم يوصلك على الإيميل أول ما يتأكد الدفع.
+    </div>
+  </aside>
+
+  <form id="checkout" novalidate>
+    <p class="notice" id="notice" hidden></p>
+
+    <fieldset>
+      <legend><span class="step-n">1</span>اختار التعمّق اللي يناسبك</legend>
+      <div class="options">
+        <label class="opt"><input type="radio" name="product" value="report"><span class="t"><b>تقرير التعمّق</b><span>تقرير DISC الكامل</span></span><span class="price">187 درهم</span></label>
+        <label class="opt"><span class="tag">وفّر 55 درهم</span><input type="radio" name="product" value="bundle" checked><span class="t"><b>التعمّق + جلسة شخصية</b><span>تقرير DISC الكامل وجلسة شخصية معاي</span></span><span class="price">349 درهم<s>404</s></span></label>
+        <label class="opt"><input type="radio" name="product" value="debrief"><span class="t"><b>جلسة شخصية بس</b><span>عندك تقريرك من قبل؟ احجز جلسة شخصية</span></span><span class="price">217 درهم</span></label>
+      </div>
+    </fieldset>
+
+    <fieldset id="lang-step">
+      <legend><span class="step-n">2</span>اختار لغة التقييم</legend>
+      <p class="muted" style="font-size:.98rem">التقييم والتقرير بيكونون بهاللغة.</p>
+      <div class="langs">
+        <label class="opt"><input type="radio" name="lang" value="ar" checked><span class="t"><b>العربية</b></span></label>
+        <label class="opt"><input type="radio" name="lang" value="en"><span class="t"><b lang="en" dir="ltr">English</b></span></label>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend><span class="step-n" data-n="3">3</span>قول لي وين أنت الحين</legend>
+      <p class="muted" style="font-size:.98rem">ثلاث أسئلة. الأجوبة الصريحة تفيد أكثر من الأجوبة المنمّقة. أنا بس اللي بقراها.</p>
+      <label class="q">إذا حصلت على الوضوح اللي تبيه من التقييم، شو اللي بيتغيّر في حياتك خلال 12 شهر؟
+        <textarea class="input" name="q1" required maxlength="2000"></textarea></label>
+      <label class="q">شو الشي الوحيد اللي واقف بينك وبين هالنتيجة الحلوة الحين؟
+        <textarea class="input" name="q2" required maxlength="2000"></textarea></label>
+      <label class="q">شو اللي خلاك تدوّر على هذا الحين، بدال الفصل الجاي؟
+        <textarea class="input" name="q3" required maxlength="2000"></textarea></label>
+    </fieldset>
+
+    <fieldset>
+      <legend><span class="step-n" data-n="4">4</span>بياناتك</legend>
+      <label class="q">اسمك
+        <input class="input" name="name" autocomplete="name" required maxlength="120"></label>
+      <label class="q">إيميلك
+        <input class="input" name="email" type="email" autocomplete="email" inputmode="email" required maxlength="200">
+        <span class="muted" style="font-weight:400;font-size:.92rem">رابط التقييم بيوصلك هني، فتأكد إن الإيميل صحيح.</span></label>
+      <label class="check"><input type="checkbox" name="under18" id="under18"><span>عمري أقل من 18 سنة</span></label>
+      <div class="parent" id="parent" hidden>
+        <label class="q">إيميل ولي أمرك
+          <input class="input" name="parentEmail" type="email" inputmode="email" maxlength="200"></label>
+        <label class="check"><input type="checkbox" name="parentConsent"><span>ولي أمري موافق على هالشراء وعلى إني أسوي التقييم.</span></label>
+      </div>
+      <div class="hp" aria-hidden="true"><label>خلّ هذا فاضي <input name="website" tabindex="-1" autocomplete="off"></label></div>
+    </fieldset>
+
+    <div class="stack">
+      <label class="check"><input type="checkbox" name="agreedTerms"><span>أوافق على <a href="/ar/terms.html" target="_blank">الشروط</a> و<a href="/ar/privacy.html" target="_blank">سياسة الخصوصية</a>، وأفهم إنه <b>ما في استرجاع للمبلغ بعد ما يوصلني رابط التقييم</b>.</span></label>
+      <p class="err" id="err" role="alert"></p>
+      <div>
+        <button class="btn" type="submit" id="pay">كمّل للدفع الآمن · <span id="pay-amount">349 درهم</span></button>
+        <p class="pay-note">بعدها بتدفع على صفحة Ziina الآمنة عن طريق Apple Pay أو البطاقة.</p>
+      </div>
+    </div>
+  </form>
+</main>
+
+<footer><div class="inner">&copy; <span id="yr">2026</span> maday.ae مع إيلدي هاراسي · <a href="/ar/privacy.html">الخصوصية</a> · <a href="/ar/terms.html">الشروط</a> · <a href="mailto:hello@maday.ae">hello@maday.ae</a></div></footer>
+
+<script>
+(function () {
+  var PRICES = { report: "187 درهم", bundle: "349 درهم", debrief: "217 درهم" };
+  var STYLE_NAMES = { D: "المبادر", I: "الشرارة", S: "السند", C: "المهندس" };
+  var form = document.getElementById("checkout");
+  var params = new URLSearchParams(location.search);
+
+  // keep the chosen product when switching to the English checkout
+  document.getElementById("to-en").href = "/deep-dive.html" + location.search;
+
+  var pre = params.get("p");
+  if (PRICES[pre]) form.querySelector('input[name="product"][value="' + pre + '"]').checked = true;
+
+  var style = (params.get("style") || "").toUpperCase();
+  if (STYLE_NAMES[style]) {
+    var note = document.getElementById("style-note");
+    note.textContent = "اختبارك المجاني قال إنك " + STYLE_NAMES[style] + ". يالله نشوف شو يعني هذا لمستقبلك المهني.";
+    note.hidden = false;
+  }
+
+  if (params.get("cancelled") || params.get("failed")) {
+    var n = document.getElementById("notice");
+    n.textContent = params.get("failed")
+      ? "الدفع ما تم، وما انخصم منك شي. جرّب مرة ثانية، أو استخدم بطاقة ثانية."
+      : "ألغيت الدفع، وما انخصم منك شي. تقدر تجرّب مرة ثانية متى ما كنت جاهز.";
+    n.hidden = false;
+  }
+
+  function product() { return form.querySelector('input[name="product"]:checked').value; }
+  function sync() {
+    var p = product();
+    document.getElementById("pay-amount").textContent = PRICES[p];
+    var noLang = p === "debrief";
+    document.getElementById("lang-step").hidden = noLang;
+    form.querySelectorAll(".step-n[data-n]").forEach(function (el) {
+      el.textContent = noLang ? Number(el.dataset.n) - 1 : el.dataset.n;
+    });
+  }
+  form.querySelectorAll('input[name="product"]').forEach(function (r) { r.addEventListener("change", sync); });
+  sync();
+
+  document.getElementById("under18").addEventListener("change", function (e) {
+    document.getElementById("parent").hidden = !e.target.checked;
+  });
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    var f = form.elements, err = document.getElementById("err"), btn = document.getElementById("pay");
+    var data = {
+      product: product(),
+      lang: product() === "debrief" ? "ar" : form.querySelector('input[name="lang"]:checked').value,
+      ui: "ar",
+      q1: f.q1.value, q2: f.q2.value, q3: f.q3.value,
+      name: f.name.value, email: f.email.value,
+      under18: f.under18.checked, parentEmail: f.parentEmail.value, parentConsent: f.parentConsent.checked,
+      agreedTerms: f.agreedTerms.checked,
+      style: STYLE_NAMES[style] ? style : "",
+      website: f.website.value
+    };
+    var missing = [];
+    if (!data.q1.trim() || !data.q2.trim() || !data.q3.trim()) missing.push("جاوب على الأسئلة الثلاث");
+    if (!data.name.trim()) missing.push("اكتب اسمك");
+    if (!f.email.checkValidity() || !data.email.trim()) missing.push("تأكد من إيميلك");
+    if (data.under18 && (!data.parentEmail.trim() || !f.parentEmail.checkValidity())) missing.push("اكتب إيميل ولي أمرك");
+    if (data.under18 && !data.parentConsent) missing.push("أكّد إن ولي أمرك موافق");
+    if (!data.agreedTerms) missing.push("أشّر على الموافقة على الشروط");
+    if (missing.length) { err.textContent = "لو سمحت: " + missing.join("، ") + "."; return; }
+
+    err.textContent = "";
+    btn.disabled = true;
+    btn.textContent = "جاري فتح صفحة الدفع الآمن…";
+    fetch("/api/checkout", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(data) })
+      .then(function (r) { return r.json().then(function (j) { return { ok: r.ok, j: j }; }); })
+      .then(function (res) {
+        if (res.ok && res.j.redirect) { location.href = res.j.redirect; return; }
+        throw new Error(res.j.error || "صار خطأ.");
+      })
+      .catch(function (e2) {
+        err.textContent = (e2 && e2.message) || "صار خطأ. جرّب مرة ثانية، أو راسلنا على hello@maday.ae.";
+        btn.disabled = false;
+        btn.innerHTML = 'كمّل للدفع الآمن · <span id="pay-amount">' + PRICES[product()] + "</span>";
+      });
+  });
+
+  document.getElementById("yr").textContent = new Date().getFullYear();
+})();
+</script>
+</body>
+</html>

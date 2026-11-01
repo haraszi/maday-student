@@ -6,6 +6,7 @@
 <title>Your deep dive · The Career Style Compass · maday.ae</title>
 <meta name="description" content="Get your full professional DISC report, the careers that fit your style, and an optional one-to-one debrief with Ildi Haraszi. In English or Arabic.">
 <link href="/fonts/fonts.css" rel="stylesheet">
+<link href="/fonts/fonts-ar.css" rel="stylesheet">
 <style>
 :root {
   --bg: #FFFFFF; --surface: #FFF3C4; --ink: #1E1033; --muted: #5B4E6E; --line: #E6DCEF;
@@ -101,7 +102,7 @@ footer { border-top: 2px solid var(--ink); padding-block: 24px; color: var(--mut
 
 <header class="bar"><div class="inner">
   <a class="brand" href="/"><img src="/images/brand/maday-logo.svg" alt="maday" width="114" height="36"><span>with Ildi Haraszi</span></a>
-  <a class="back" href="/">Back to the quiz</a>
+  <span style="display:flex;gap:14px;align-items:center"><a class="back" href="/">Back to the quiz</a><a class="back" id="to-ar" href="/ar/deep-dive.html" hreflang="ar" lang="ar" style="text-decoration:none;border:2px solid currentColor;border-radius:999px;padding:3px 12px;font-family:'IBM Plex Sans Arabic',sans-serif">العربية</a></span>
 </div></header>
 
 <section class="hero"><div class="inner">
@@ -194,6 +195,8 @@ footer { border-top: 2px solid var(--ink); padding-block: 24px; color: var(--mut
   var STYLE_NAMES = { D: "a Driver", I: "a Spark", S: "an Anchor", C: "an Architect" };
   var form = document.getElementById("checkout");
   var params = new URLSearchParams(location.search);
+
+  document.getElementById("to-ar").href = "/ar/deep-dive.html" + location.search;
 
   var pre = params.get("p");
   if (PRICES[pre]) form.querySelector('input[name="product"][value="' + pre + '"]').checked = true;

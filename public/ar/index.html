@@ -1,0 +1,940 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>بوصلة أسلوبك المهني · maday.ae مع إيلدي هاراسي</title>
+<meta name="description" content="اختبار DISC في 3 دقائق يوضح لك إذا كنت المبادر أو الشرارة أو السند أو المهندس، وأي المهن تناسب أسلوبك. مجاني، مع مدربة المسار المهني إيلدي هاراسي.">
+<meta property="og:title" content="بوصلة أسلوبك المهني · maday.ae">
+<meta property="og:description" content="اختبار DISC في 3 دقائق يوضح لك أسلوبك، وأي المهن تناسبك.">
+<meta property="og:image" content="https://maday.ae/images/ildi.jpg">
+<link rel="alternate" hreflang="en" href="https://maday.ae/">
+<link rel="alternate" hreflang="ar" href="https://maday.ae/ar/">
+<link rel="alternate" hreflang="x-default" href="https://maday.ae/">
+<link href="../fonts/fonts.css" rel="stylesheet">
+<link href="../fonts/fonts-ar.css" rel="stylesheet">
+<style>
+/* A loud, sticker-bright student site. Yellow hero, pink and red accents, big type, one clear button. */
+:root {
+  --bg: #FFFFFF;
+  --surface: #FFF3C4;
+  --ink: #1E1033;
+  --muted: #5B4E6E;
+  --line: #E6DCEF;
+  --yellow: #FFD21F;
+  --pink: #FF4F9A;
+  --red: #E5322D;
+  --orange: #FF7A1A;       /* new brand colour */
+  --sure-u: #FF2E9A;       /* bright pink for the U on plum */
+  --pink-text: #D4127A;    /* pink that's readable as small text on white */
+  --plum-deep: #22172F;
+  --plum-card: #2E2240;
+  --paper: #F1E8DE;
+  --on-yellow: #1E1033;
+  --on-pink: #1E1033;
+  --on-red: #FFFFFF;
+  --card: #FFFFFF;
+  --d: #E5322D;
+  --i: #FFC21A;
+  --s: #2FB36B;
+  --c: #2A6FDB;
+  --on-d: #FFFFFF;
+  --on-i: #1E1033;
+  --on-s: #0F2A1B;
+  --on-c: #FFFFFF;
+  --font-display: "Bricolage Grotesque", "Arial Black", system-ui, sans-serif;
+  --font-body: "DM Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #150E22;
+    --surface: #241838;
+    --ink: #FFF6DC;
+    --muted: #C4B8D6;
+    --line: #3B2C54;
+    --card: #1D1330;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #150E22;
+  --surface: #241838;
+  --ink: #FFF6DC;
+  --muted: #C4B8D6;
+  --line: #3B2C54;
+  --card: #1D1330;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html { scroll-padding-top: 80px; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 1.0625rem;
+  line-height: 1.55;
+}
+img { max-width: 100%; display: block; }
+[hidden] { display: none !important; }
+h1, h2, h3 { font-family: var(--font-display); line-height: 1.02; margin: 0; text-wrap: balance; letter-spacing: -0.02em; }
+h1 { font-size: clamp(2.6rem, 9vw, 5.6rem); font-weight: 800; }
+h2 { font-size: clamp(2rem, 5.6vw, 3.4rem); font-weight: 800; }
+h3 { font-size: clamp(1.25rem, 3vw, 1.6rem); font-weight: 700; }
+p { margin: 0; }
+.eyebrow { font-size: .8rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+.inner {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+.band { padding-block: clamp(48px, 9vw, 96px); }
+.stack { display: flex; flex-direction: column; gap: 20px; }
+.stack-lg { display: flex; flex-direction: column; gap: 32px; }
+.lede { font-size: clamp(1.1rem, 2.4vw, 1.35rem); max-width: 34em; }
+.muted { color: var(--muted); }
+
+/* Buttons */
+.btn {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(1.05rem, 3.4vw, 1.3rem);
+  border: 3px solid var(--ink);
+  border-radius: 999px;
+  padding: 16px 28px;
+  cursor: pointer;
+  min-height: 56px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--red);
+  color: var(--on-red);
+  box-shadow: 5px 5px 0 var(--ink);
+  transition: transform .12s ease, box-shadow .12s ease;
+}
+.btn:hover { transform: translate(-2px, -2px); box-shadow: 7px 7px 0 var(--ink); }
+.btn:active { transform: translate(3px, 3px); box-shadow: 2px 2px 0 var(--ink); }
+.btn.yellow { background: var(--yellow); color: var(--on-yellow); }
+.btn.pink { background: var(--pink); color: var(--on-pink); }
+.btn.ghost { background: transparent; color: var(--ink); box-shadow: none; border-width: 2px; font-size: 1rem; min-height: 48px; padding: 10px 20px; }
+.btn.ghost:hover { background: var(--surface); transform: none; box-shadow: none; }
+.btn[disabled] { opacity: .45; cursor: not-allowed; box-shadow: none; transform: none; }
+:focus-visible { outline: 3px solid var(--pink); outline-offset: 3px; }
+
+/* Header */
+.site-header { position: sticky; top: 0; z-index: 20; background: var(--bg); border-bottom: 2px solid var(--ink); }
+.site-header .inner { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-block: 10px; }
+.brand { background: none; border: 0; padding: 0; cursor: pointer; text-align: left; color: var(--ink); font-family: var(--font-display); display: flex; flex-direction: column; line-height: 1.05; }
+.brand { gap: 3px; }
+.brand img { height: 36px; width: auto; }
+.brand span { font-family: var(--font-body); font-size: .75rem; color: var(--muted); }
+.site-header .btn { font-size: .95rem; min-height: 44px; padding: 8px 18px; border-width: 2px; box-shadow: 3px 3px 0 var(--ink); }
+
+/* Hero */
+.hero { background: var(--yellow); color: var(--on-yellow); border-bottom: 3px solid var(--ink); overflow: hidden; }
+.hero .inner { display: grid; grid-template-columns: 1.4fr 1fr; gap: 32px; align-items: center; }
+.hero .copy { min-width: 0; }
+.chip { display: inline-block; background: var(--ink); color: var(--yellow); border-radius: 999px; padding: 6px 14px; width: fit-content; }
+.mark { background: linear-gradient(transparent 58%, var(--pink) 58%, var(--pink) 92%, transparent 92%); padding: 0 .08em; }
+.hero .lede { color: var(--on-yellow); }
+.cta-row { display: flex; flex-direction: column; gap: 12px; align-items: flex-start; }
+.tiles { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; max-width: 380px; justify-self: center; width: 100%; margin: 0; padding: 0; list-style: none; }
+.tile { min-height: 150px; padding: 16px 10px; text-align: center; border: 3px solid var(--ink); border-radius: 22px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; font-family: var(--font-display); font-weight: 800; box-shadow: 5px 5px 0 var(--ink); }
+.tile em { font-style: normal; font-family: var(--font-body); font-weight: 500; font-size: .85rem; line-height: 1.25; margin-top: 4px; }
+.tile b { font-size: clamp(2.6rem, 8vw, 4rem); line-height: 1; }
+.tile span { font-size: .8rem; font-family: var(--font-body); font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+.tile.d { background: var(--d); color: var(--on-d); transform: rotate(-4deg); }
+.tile.i { background: var(--i); color: var(--on-i); transform: rotate(3deg); }
+.tile.s { background: var(--s); color: var(--on-s); transform: rotate(2deg); }
+.tile.c { background: var(--c); color: var(--on-c); transform: rotate(-3deg); }
+
+/* Sections */
+.worries { display: grid; gap: 14px; margin: 0; padding: 0; list-style: none; }
+.worries li { font-family: var(--font-display); font-weight: 700; font-size: clamp(1.2rem, 3.2vw, 1.7rem); line-height: 1.15; border: 3px solid var(--ink); border-radius: 22px; padding: 18px 22px; background: var(--card); box-shadow: 5px 5px 0 var(--ink); }
+.worries li:nth-child(2) { margin-left: clamp(0px, 4vw, 40px); }
+.worries li:nth-child(3) { margin-left: clamp(0px, 8vw, 80px); }
+.split { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(24px, 5vw, 56px); align-items: start; }
+.split > * { min-width: 0; }
+.pinkband { background: var(--pink); color: var(--on-pink); border-block: 3px solid var(--ink); }
+.pinkband .lede { color: var(--on-pink); }
+.gets { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+.gets li { display: flex; gap: 14px; align-items: flex-start; font-weight: 500; font-size: 1.15rem; }
+.gets li::before { content: ""; flex: none; width: 22px; height: 22px; margin-top: 4px; background: var(--yellow); border: 3px solid var(--ink); border-radius: 7px; transform: rotate(8deg); }
+.steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; margin: 0; padding: 0; list-style: none; }
+.steps li { border: 3px solid var(--ink); border-radius: 22px; padding: 22px; background: var(--card); display: flex; flex-direction: column; gap: 10px; box-shadow: 5px 5px 0 var(--ink); min-width: 0; }
+.steps .n { width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center; font-family: var(--font-display); font-weight: 800; font-size: 1.3rem; border: 3px solid var(--ink); }
+.steps li:nth-child(1) .n { background: var(--yellow); color: var(--on-yellow); }
+.steps li:nth-child(2) .n { background: var(--pink); color: var(--on-pink); }
+.steps li:nth-child(3) .n { background: var(--red); color: var(--on-red); }
+.steps li:nth-child(4) .n { background: var(--c); color: var(--on-c); }
+@media (max-width: 1000px) and (min-width: 761px) { .steps { grid-template-columns: 1fr 1fr; } }
+.softband { background: var(--surface); border-block: 3px solid var(--ink); }
+.photo { aspect-ratio: 4 / 5; max-width: 340px; width: 100%; object-fit: cover; object-position: 50% 15%; border: 3px solid var(--ink); border-radius: 28px; background: var(--card); box-shadow: 6px 6px 0 var(--ink); transform: rotate(-2deg); }
+.quotes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.quote { margin: 0; border: 3px solid var(--ink); border-radius: 22px; padding: 22px; background: var(--card); display: flex; flex-direction: column; justify-content: space-between; gap: 16px; min-width: 0; }
+.quote:nth-child(1) { background: var(--yellow); color: var(--on-yellow); }
+.quote p { font-family: var(--font-display); font-weight: 700; font-size: 1.3rem; line-height: 1.2; }
+.quote cite { font-style: normal; font-size: .9rem; font-weight: 700; }
+.logo-block { align-items: center; text-align: center; }
+.logos { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; width: 100%; margin: 0 0 12px; padding: 0; list-style: none; }
+/* Logos keep their brand colours, so tiles stay white in dark mode too */
+.logo { flex: 0 0 160px; border-radius: 14px; background: #fff; height: 84px; }
+.logo a { display: grid; place-items: center; height: 100%; padding: 14px 18px; border-radius: inherit; transition: transform .12s ease, box-shadow .12s ease; }
+.logo a:hover { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(30, 16, 51, .12); }
+.logo img { height: 44px; width: 100%; object-fit: contain; }
+@media (max-width: 420px) { .logo { flex-basis: calc(50% - 6px); } }
+.finalcta { background: var(--red); color: var(--on-red); border-top: 3px solid var(--ink); text-align: center; }
+.finalcta .inner { display: flex; flex-direction: column; align-items: center; gap: 28px; }
+
+/* ---- Collage ideas (mockup) ---- */
+.hl { background: var(--yellow); color: #1E1033; padding: 0 .15em; }
+.cut { position: absolute; pointer-events: none; z-index: 0; }
+.tex { mix-blend-mode: multiply; opacity: .28; }
+
+/* hook + worries combined */
+.hook-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: clamp(32px, 6vw, 64px); align-items: center; }
+.hook-grid > * { min-width: 0; }
+.worry-cards { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 14px; }
+.worry-cards li { background: #FBF8F5; color: #1E1033; border-radius: 5px; padding: 24px 26px; font: 700 clamp(1.15rem, 2.6vw, 1.35rem)/1.25 var(--font-display); letter-spacing: -0.02em; border-left: 8px solid var(--pink); }
+.worry-cards li:nth-child(2) { border-left-color: var(--red); margin-left: 32px; }
+.worry-cards li:nth-child(3) { border-left-color: var(--yellow); margin-left: 64px; }
+
+/* SURE in bold plum */
+/* clip sideways (the pink cut-out) but let the zigzag edges stick out top and bottom */
+.sure-dark { background: var(--plum-deep); color: #FBF8F5; position: relative; z-index: 2; overflow-x: clip; overflow-y: visible; }
+.zig { position: absolute; left: 0; width: 100%; height: 28px; display: block; }
+.zig-top { top: -27px; }
+.zig-bottom { bottom: -27px; }
+
+/* "Guessing feels risky" + "In three minutes" side by side */
+.duo { display: grid; grid-template-columns: 1fr 1fr; border-block: 3px solid var(--ink); }
+.duo-half { padding: clamp(48px, 8vw, 88px) clamp(16px, 4vw, 56px); display: flex; align-items: center; }
+.duo-half > * { max-width: 520px; }
+.duo-pink { background: var(--pink); color: var(--on-pink); justify-content: flex-end; border-right: 3px solid var(--ink); }
+.duo-pink .lede { color: var(--on-pink); }
+.duo-white { background: var(--bg); justify-content: flex-start; }
+@media (max-width: 760px) { .duo { grid-template-columns: 1fr; } .duo-pink { border-right: 0; border-bottom: 3px solid var(--ink); justify-content: flex-start; } }
+.sure-dark .lede { color: #E8DFF0; }
+.sure-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin: 0; padding: 0; list-style: none; }
+.sure-grid li { background: var(--plum-card); border-radius: 5px; padding: 28px 26px; display: flex; flex-direction: column; gap: 12px; min-width: 0; }
+.sure-grid h3 { color: #FBF8F5; font-size: 1.45rem; line-height: 1.15; }
+.sure-grid .cap { font-size: 3.6rem; line-height: .8; letter-spacing: -0.04em; margin-right: 1px; vertical-align: baseline; }
+.sure-grid p { color: #CFC4DA; }
+@media (max-width: 1000px) and (min-width: 761px) { .sure-grid { grid-template-columns: 1fr 1fr; } }
+
+/* quote bubbles, all equal */
+.bubbles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+.bubbles figure { margin: 0; min-width: 0; }
+.bubble { margin: 0; background: var(--card); border: 3px solid var(--ink); border-radius: 36px; padding: 28px 30px; position: relative; font: 700 1.3rem/1.22 var(--font-display); letter-spacing: -0.02em; }
+.bubble::after { content: ""; position: absolute; bottom: -20px; left: 44px; width: 32px; height: 32px; background: var(--card); border-right: 3px solid var(--ink); border-bottom: 3px solid var(--ink); transform: rotate(45deg) skew(12deg, 12deg); }
+.bubbles figcaption { margin: 30px 0 0 32px; font-weight: 700; font-size: .95rem; }
+.quotes-tint { background: #FFF1F7; border-top: 3px solid var(--ink); }
+.bubble { color: #1E1033; background: #fff; }
+.bubble::after { background: #fff; }
+.bubbles figure:nth-child(1) .bubble { box-shadow: 8px 8px 0 var(--pink); }
+.bubbles figure:nth-child(2) .bubble { box-shadow: 8px 8px 0 var(--orange); }
+.bubbles figure:nth-child(3) .bubble { box-shadow: 8px 8px 0 var(--yellow); }
+.quotes-tint figcaption { color: #1E1033; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .quotes-tint { background: #2A1A30; } :root:not([data-theme="light"]) .quotes-tint figcaption { color: var(--ink); } }
+
+/* collage-style final section */
+.final-collage { background: var(--paper); border-top: 3px solid var(--ink); text-align: center; position: relative; overflow: hidden; }
+.final-card { position: relative; z-index: 1; max-width: 900px; margin: 0 auto; padding: clamp(44px, 8vw, 72px) 24px; background: #fff; color: #1E1033; border: 3px solid var(--ink); border-radius: 5px; display: flex; flex-direction: column; align-items: center; gap: 18px; }
+.final-card .lede { color: #1E1033; }
+/* the two paper shapes peek out above (pink) and below (yellow) the white card */
+.final-collage { padding-block: clamp(80px, 11vw, 120px); }
+.final-wrap { position: relative; max-width: 900px; margin: 0 auto; }
+.final-pink { width: 240px; top: -84px; left: -56px; }
+.final-yellow { width: 210px; bottom: -78px; right: -48px; }
+.footer { padding-block: 28px; font-size: .9rem; color: var(--muted); }
+.footer .inner { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.footer a { color: inherit; font-weight: 700; }
+
+/* Quiz */
+.focus-view { min-height: 70vh; padding-block: clamp(28px, 6vw, 64px); }
+.col { max-width: 700px; margin: 0 auto; display: flex; flex-direction: column; gap: 22px; }
+.progress-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; font-weight: 700; }
+.bar { height: 16px; border: 3px solid var(--ink); border-radius: 999px; overflow: hidden; background: var(--card); }
+.bar > i { display: block; height: 100%; background: var(--pink); transition: width .25s ease; }
+.q-prompt { font-size: clamp(1.7rem, 5vw, 2.5rem); }
+.q-help { color: var(--muted); font-size: .98rem; }
+.stmts { display: flex; flex-direction: column; gap: 12px; }
+.stmt { border: 3px solid var(--ink); border-radius: 20px; padding: 16px 18px; background: var(--card); display: flex; flex-direction: column; gap: 12px; transition: background .12s ease; }
+.stmt.is-most { background: var(--yellow); color: var(--on-yellow); }
+.stmt.is-least { background: var(--surface); border-style: dashed; }
+.stmt-text { font-size: 1.12rem; font-weight: 500; }
+.pick { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.pbtn { font-family: var(--font-body); font-weight: 700; font-size: .95rem; min-height: 46px; border-radius: 999px; border: 2px solid var(--ink); background: transparent; color: inherit; cursor: pointer; padding: 8px 10px; }
+.pbtn:hover { background: rgba(255, 79, 154, .22); }
+.pbtn[aria-pressed="true"] { background: var(--ink); color: var(--bg); }
+.pbtn[aria-pressed="true"].m::before { content: "\2713\00a0"; }
+.pbtn[aria-pressed="true"].l::before { content: "\00d7\00a0"; }
+.nav-row { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; }
+.input { font: inherit; font-size: 1rem; padding: 14px 16px; border: 3px solid var(--ink); border-radius: 16px; background: var(--card); color: var(--ink); width: 100%; min-height: 120px; }
+
+/* Result */
+.result-hero { background: var(--yellow); color: var(--on-yellow); border-bottom: 3px solid var(--ink); }
+.badge-big { width: 96px; height: 96px; border: 3px solid var(--ink); border-radius: 26px; display: grid; place-items: center; font-family: var(--font-display); font-weight: 800; font-size: 3.4rem; box-shadow: 5px 5px 0 var(--ink); transform: rotate(-5deg); }
+.chartwrap { border: 3px solid var(--ink); border-radius: 24px; padding: clamp(18px, 4vw, 30px); background: var(--card); box-shadow: 6px 6px 0 var(--ink); display: flex; flex-direction: column; gap: 18px; }
+.row { display: grid; grid-template-columns: 48px 1fr 56px; gap: 12px; align-items: center; }
+.row .lt { width: 48px; height: 48px; border-radius: 14px; border: 3px solid var(--ink); display: grid; place-items: center; font-family: var(--font-display); font-weight: 800; font-size: 1.4rem; }
+.row .nm { font-weight: 700; font-size: .95rem; margin-bottom: 4px; }
+.track { height: 22px; border-radius: 999px; background: var(--surface); border: 2px solid var(--ink); overflow: hidden; }
+.fill { height: 100%; transform-origin: left; animation: grow .7s ease-out both; }
+@keyframes grow { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+.row .pc { font-family: var(--font-display); font-weight: 800; font-size: 1.3rem; text-align: right; font-variant-numeric: tabular-nums; }
+.two { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.mini { border: 3px solid var(--ink); border-radius: 20px; padding: 18px; background: var(--card); display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+.mini .eyebrow { color: var(--muted); }
+.note-box { border: 3px dashed var(--ink); border-radius: 20px; padding: 16px 18px; background: var(--surface); font-size: .98rem; }
+
+/* Deep dive */
+.dd { background: var(--pink); color: var(--on-pink); border-block: 3px solid var(--ink); }
+.dd .lede { color: var(--on-pink); }
+.tiers { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.tier { border: 3px solid var(--ink); border-radius: 24px; padding: 24px; background: var(--card); color: var(--ink); display: flex; flex-direction: column; gap: 14px; box-shadow: 6px 6px 0 var(--ink); min-width: 0; position: relative; }
+.tier.best { background: var(--yellow); color: var(--on-yellow); }
+.tier ul { margin: 0; padding-left: 1.2em; display: grid; gap: 6px; }
+.tier .btn { margin-top: auto; }
+.price { font-family: var(--font-display); font-weight: 800; font-size: 2.6rem; line-height: 1; font-variant-numeric: tabular-nums; }
+.price small { font-size: 1rem; font-weight: 700; }
+.price s { font-size: 1.1rem; font-weight: 500; opacity: .7; margin-left: 6px; }
+.save { position: absolute; top: -16px; right: 18px; background: var(--red); color: var(--on-red); border: 3px solid var(--ink); border-radius: 999px; padding: 4px 14px; font-weight: 800; font-size: .9rem; transform: rotate(3deg); }
+.dd a.inline { color: inherit; font-weight: 700; }
+
+@media (max-width: 760px) {
+  .hook-grid, .sure-grid, .bubbles { grid-template-columns: 1fr; }
+  .worry-cards li:nth-child(2) { margin-left: 16px; }
+  .worry-cards li:nth-child(3) { margin-left: 32px; }
+  .cut { transform: scale(.6); transform-origin: top left; }
+  /* keep the SURE corner shape clear of the heading on phones */
+  .sure-dark > .cut { width: 130px !important; top: -12px !important; right: -64px !important; transform: none; }
+  .final-collage .cut { transform: none; }
+  .final-pink { width: 150px; top: -56px; left: -24px; }
+  .final-yellow { width: 130px; bottom: -52px; right: -20px; }
+  .hero .inner, .split, .steps, .quotes, .two, .tiers { grid-template-columns: 1fr; }
+  .tiles { max-width: 360px; }
+  .photo { max-width: 260px; }
+  .tier { margin-top: 10px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; }
+}
+
+/* ---- Arabic / right-to-left ---- */
+:root {
+  --font-display: "Baloo Bhaijaan 2", "Bricolage Grotesque", "Segoe UI", Tahoma, sans-serif;
+  --font-body: "IBM Plex Sans Arabic", "DM Sans", "Segoe UI", Tahoma, sans-serif;
+}
+/* Arabic letters join up: no tracking, no capitals */
+h1, h2, h3, .eyebrow, .btn, .worry-cards li, .bubble, .q-prompt, .tile span { letter-spacing: 0 !important; }
+.eyebrow, .tile span { text-transform: none; }
+h1, h2, h3 { line-height: 1.25; }
+h1 { font-size: clamp(2.4rem, 8vw, 4.8rem); }
+body { line-height: 1.75; }
+.lang-switch { font: 700 .95rem var(--font-body); text-decoration: none; color: var(--ink); border: 2px solid var(--ink); border-radius: 999px; padding: 6px 14px; white-space: nowrap; }
+.lang-switch:hover { background: var(--surface); }
+.site-header .actions { display: flex; align-items: center; gap: 10px; }
+.latin { direction: ltr; unicode-bidi: isolate; font-family: "Bricolage Grotesque", sans-serif; }
+/* mirror things that point one way */
+.worry-cards li { border-left: 0; border-right: 8px solid var(--pink); }
+.worry-cards li:nth-child(2) { border-right-color: var(--red); margin-left: 0; margin-right: 32px; }
+.worry-cards li:nth-child(3) { border-right-color: var(--yellow); margin-left: 0; margin-right: 64px; }
+.duo-pink { border-right: 0; border-left: 3px solid var(--ink); }
+.bubble::after { left: auto; right: 44px; transform: rotate(45deg) skew(-12deg, -12deg); border-right: 0; border-left: 3px solid var(--ink); }
+.bubbles figcaption { margin: 30px 32px 0 0; }
+.sure-dark > .cut { right: auto !important; left: -60px; }
+.sure-grid .cap { margin-right: 0; margin-left: 10px; font-family: "Bricolage Grotesque", sans-serif; }
+.fill { transform-origin: right; }
+.gets li::before { transform: rotate(-8deg); }
+@media (max-width: 760px) {
+  .worry-cards li:nth-child(2) { margin-right: 16px; }
+  .worry-cards li:nth-child(3) { margin-right: 32px; }
+  .duo-pink { border-left: 0; }
+  .sure-dark > .cut { left: -64px !important; }
+  }
+@media (max-width: 560px) { .site-header #hdr-cta { display: none; }
+}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <pattern id="dots" width="9" height="9" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.6" fill="#1E1033"/></pattern>
+    <pattern id="lines" width="10" height="10" patternUnits="userSpaceOnUse" patternTransform="rotate(35)"><rect width="3" height="10" fill="#1E1033"/></pattern>
+  </defs>
+</svg>
+
+<header class="site-header">
+  <div class="inner">
+    <button class="brand" id="brand" aria-label="الصفحة الرئيسية maday.ae">
+      <img src="../images/brand/maday-logo.svg" alt="maday" width="114" height="36">
+      <span>مع إيلدي هاراسي</span>
+    </button>
+    <div class="actions">
+      <a class="lang-switch" href="/" hreflang="en" lang="en">English</a>
+      <button class="btn" id="hdr-cta" data-start>ابدأ الاختبار المجاني</button>
+    </div>
+  </div>
+</header>
+
+<main>
+<!-- HOME -->
+<div id="view-home">
+  <section class="hero">
+    <div class="inner band">
+      <div class="copy stack-lg">
+        <span class="eyebrow chip">اختبار DISC مجاني &middot; 3 دقايق</span>
+        <span class="eyebrow" style="margin-bottom:-18px">الخطوة الأولى من منهج <span class="latin">SURE</span></span>
+        <h1 id="home-h1" tabindex="-1">بوصلة <span class="mark">أسلوبك المهني</span></h1>
+        <p class="lede">اختبار DISC في 3 دقايق يوضّح لك إذا كنت المبادر، الشرارة، السند أو المهندس، وأي المهن تناسب أسلوبك.</p>
+        <div class="cta-row">
+          <button class="btn" data-start>اكتشف أسلوبك: اختبار مجاني من 12 سؤال</button>
+          <p style="font-weight:500">مجاني. بدون تسجيل. نتيجتك خلال دقايق.</p>
+        </div>
+      </div>
+      <ul class="tiles" aria-label="الأساليب الأربعة">
+        <li class="tile d"><b>D</b><span>المبادر</span><em>يقرّر بسرعة ويحب النتايج</em></li>
+        <li class="tile i"><b>I</b><span>الشرارة</span><em>ينوّر الناس والأفكار</em></li>
+        <li class="tile s"><b>S</b><span>السند</span><em>هادئ، وفي، وثابت</em></li>
+        <li class="tile c"><b>C</b><span>المهندس</span><em>دقيق، منطقي، ومنظّم</em></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Collage-style: the hook and the worries combined -->
+  <section class="band hook">
+    <div class="inner hook-grid">
+      <div class="stack">
+        <span class="eyebrow" style="color:var(--pink-text)">مو مجرد اختبار</span>
+        <h2>مو اختبار «أي وظيفة تناسبك» ثاني.</h2>
+        <p class="lede">أكيد سويت هالاختبارات قبل. عطوك قائمة طويلة من المهن، وما عطوك سبب واحد تثق فيها.</p>
+        <p class="lede">بوصلة أسلوبك المهني تبدأ من مكان ثاني: من طريقتك الطبيعية في اتخاذ القرار، والشغل، والتعامل مع الضغط. مبنية على DISC، النموذج السلوكي اللي استخدمته مع قادة وفرق في ثلاث قارات.</p>
+        <p class="lede"><b>أنت ما تخاف من الاختيار. أنت تخاف تختار <span class="hl">وأنت ما تعرف نفسك.</span></b></p>
+      </div>
+      <div class="stack">
+        <p class="muted" style="font-weight:600">هالسؤال يسهّر وايد طلاب:</p>
+        <ul class="worry-cards">
+          <li>«لو اخترت التخصص الغلط؟»</li>
+          <li>«لو ضيّعت ثلاث سنين من عمري؟»</li>
+          <li>«لو الكل كان صح وأنا الغلطان؟»</li>
+        </ul>
+        <p class="muted">فتنطر. تتصفح. تقارن نفسك بغيرك. والخوف يكبر.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- "Guessing feels risky" + "In three minutes" side by side -->
+  <section class="duo">
+    <div class="duo-half duo-pink">
+      <div class="stack">
+        <h2>التخمين مخاطرة. المعرفة أمان.</h2>
+        <p class="lede">لما تفهم طريقتك الطبيعية في الشغل، توقف المقامرة. وتبدأ تختار.</p>
+      </div>
+    </div>
+    <div class="duo-half duo-white">
+      <div class="stack-lg">
+        <h2>في ثلاث دقايق، بتشوف:</h2>
+        <ul class="gets">
+          <li>كيف تفكّر وكيف تقرّر</li>
+          <li>شو اللي يحرّكك من داخل</li>
+          <li>وين تلمع، ووين ممكن تحترق بصمت</li>
+        </ul>
+        <p class="lede"><b>هذا هو الفرق بين التخمين والقرار الصح.</b></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Collage-style: SURE in bold plum -->
+  <section class="band sure-dark">
+    <svg class="zig zig-top" viewBox="0 0 1200 28" preserveAspectRatio="none" aria-hidden="true"><path d="M0 28V14l50-8 40 10 55-9 30 7 60-11 45 12 35-6 50 8 40-10 60 9 30-5 55 10 45-12 50 11 35-7 60 9 40-10 50 8 35-6 55 11 45-9 50 6V28z" fill="var(--plum-deep)"/></svg>
+    <svg class="zig zig-bottom" viewBox="0 0 1200 28" preserveAspectRatio="none" aria-hidden="true"><path d="M0 0V16l40-6 30 10 50-9 40 12 60-11 30 7 50-8 45 11 55-10 35 6 60-9 40 13 50-12 35 5 55-8 40 10 60-11 30 6 50-7 45 12 55-11 35 5 50-7V0z" fill="var(--plum-deep)"/></svg>
+    <svg class="cut" style="top:-10px;right:-60px;width:280px" viewBox="0 0 260 260" aria-hidden="true"><path d="M130 10c60 0 120 50 120 120s-60 120-120 120S10 200 10 130 70 10 130 10z" fill="var(--pink)"/><path style="opacity:.18" d="M130 10c60 0 120 50 120 120s-60 120-120 120S10 200 10 130 70 10 130 10z" fill="url(#lines)"/></svg>
+    <div class="inner stack-lg" style="position:relative;z-index:1">
+      <div class="stack">
+        <span class="eyebrow" style="color:var(--yellow)">كيف تشتغل</span>
+        <h2>منهج <span class="latin"><span style="color:var(--yellow)">S</span><span style="color:var(--sure-u)">U</span><span style="color:var(--red)">R</span><span style="color:var(--orange)">E</span></span></h2>
+        <p class="lede"><b>من التخمين إلى اليقين،</b> في أربع خطوات.</p>
+      </div>
+      <ol class="sure-grid">
+        <li><h3><span class="cap" style="color:var(--yellow)">S</span>اكتشف أسلوبك</h3><p>سوِّ اختبار بوصلة أسلوبك المهني المجاني، 12 سؤال. ثلاث دقايق، وما في جواب غلط.</p></li>
+        <li><h3><span class="cap" style="color:var(--sure-u)">U</span>افهم شو يحرّكك</h3><p>شوف مزيج أسلوبك في رسم واضح، وبعدين تعمّق أكثر مع ملف DISC الكامل.</p></li>
+        <li><h3><span class="cap" style="color:var(--red)">R</span>اكتشف المهن اللي تناسبك</h3><p>تقرير التعمّق يوضح لك المهن وبيئات العمل اللي تناسب أسلوبك.</p></li>
+        <li><h3><span class="cap" style="color:var(--orange)">E</span>انطلق بخطواتك الجاية</h3><p>جلسة شخصية تحوّل النتايج لخطوات تقدر تبدأ فيها هالأسبوع، وكلمات تستخدمها مع أهلك.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="inner split">
+      <div class="stack">
+        <h2>تبا تكون متأكد أكثر؟</h2>
+        <p class="lede">نتيجتك المجانية هي البداية. التعمّق يضيف لك المهن، وبيئات العمل، والخطوات الجاية اللي تناسب أسلوبك. متوفر بالعربي أو الإنجليزي.</p>
+      </div>
+      <div class="stack">
+        <h3>للأهل: هم بعد خايفين.</h3>
+        <p class="lede">ولدكم أو بنتكم يخافون يخذلونكم بقدر ما يخافون من الاختيار الغلط. عطوهم كلمات توصف حقيقتهم، وبيصير حديثكم عن المستقبل أهدأ وأريح للكل.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="pinkband band">
+    <div class="inner split" style="align-items:center">
+      <img class="photo" src="../images/ildi.jpg" alt="إيلدي هاراسي، مدربة المسار المهني" width="1024" height="1024" loading="lazy">
+      <div class="stack">
+        <h2>هلا، أنا إيلدي.</h2>
+        <p class="lede">عشرين سنة وأنا أساعد الناس يمرّون بتغييرات كبيرة ومخيفة. والحين أساعد الطلاب يختارون بثقة. صريحة. عملية. ودودة. وأكيد بتضحك مرة على الأقل.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="inner stack-lg">
+      <div class="stack logo-block">
+        <h3>وين قدت التغيير</h3>
+        <span class="eyebrow muted">هني في الإمارات</span>
+        <ul class="logos">
+          <li class="logo"><a href="https://www.taqa.com/water" target="_blank" rel="noopener"><img src="../images/logos/taqa.svg" alt="TAQA Water Solutions" loading="lazy"></a></li>
+          <li class="logo"><a href="https://www.dewa.gov.ae" target="_blank" rel="noopener"><img src="../images/logos/dewa.png" alt="DEWA, Dubai Electricity and Water Authority" loading="lazy"></a></li>
+          <li class="logo"><a href="https://www.altayer.com" target="_blank" rel="noopener"><img src="../images/logos/al-tayer.png" alt="Al Tayer Group" loading="lazy"></a></li>
+        </ul>
+        <span class="eyebrow muted">حول العالم</span>
+        <ul class="logos">
+          <li class="logo"><a href="https://www.gsk.com" target="_blank" rel="noopener"><img src="../images/logos/gsk.png" alt="GSK" loading="lazy"></a></li>
+          <li class="logo"><a href="https://home.barclays" target="_blank" rel="noopener"><img src="../images/logos/barclays.svg" alt="Barclays" loading="lazy"></a></li>
+          <li class="logo"><a href="https://www.cathaypacific.com" target="_blank" rel="noopener"><img src="../images/logos/cathay-pacific.svg" alt="Cathay Pacific" loading="lazy"></a></li>
+          <li class="logo"><a href="https://www.workday.com" target="_blank" rel="noopener"><img src="../images/logos/workday.svg" alt="Workday" loading="lazy"></a></li>
+          <li class="logo"><a href="https://www.home.sandvik" target="_blank" rel="noopener"><img src="../images/logos/sandvik.svg" alt="Sandvik" loading="lazy"></a></li>
+          <li class="logo"><a href="https://www.vodafone.com" target="_blank" rel="noopener"><img src="../images/logos/vodafone.svg" alt="Vodafone" loading="lazy"></a></li>
+          <li class="logo"><a href="https://www.marksandspencer.com" target="_blank" rel="noopener"><img src="../images/logos/marks-spencer.svg" alt="Marks &amp; Spencer" loading="lazy"></a></li>
+          <li class="logo"><a href="https://tfl.gov.uk" target="_blank" rel="noopener"><img src="../images/logos/tfl.svg" alt="Transport for London" loading="lazy"></a></li>
+          <li class="logo"><a href="https://www.diageo.com" target="_blank" rel="noopener"><img src="../images/logos/diageo.svg" alt="Diageo" loading="lazy"></a></li>
+          <li class="logo"><a href="https://www.syngentagroup.com" target="_blank" rel="noopener"><img src="../images/logos/syngenta.svg" alt="Syngenta" loading="lazy"></a></li>
+          <li class="logo"><a href="https://global.abb" target="_blank" rel="noopener"><img src="../images/logos/abb.svg" alt="ABB" loading="lazy"></a></li>
+          <li class="logo"><a href="https://www.dsm-firmenich.com" target="_blank" rel="noopener"><img src="../images/logos/dsm-firmenich.svg" alt="dsm-firmenich" loading="lazy"></a></li>
+          <li class="logo"><a href="https://www.landsec.com" target="_blank" rel="noopener"><img src="../images/logos/landsec.svg" alt="Landsec" loading="lazy"></a></li>
+          <li class="logo"><a href="https://www.wittur.com" target="_blank" rel="noopener"><img src="../images/logos/wittur.png" alt="Wittur Group" loading="lazy"></a></li>
+          <li class="logo"><a href="https://www.williamslea.com" target="_blank" rel="noopener"><img src="../images/logos/williams-lea.svg" alt="Williams Lea (formerly Williams Lea Tag)" loading="lazy"></a></li>
+          <li class="logo"><a href="https://www.dentsu.com" target="_blank" rel="noopener"><img src="../images/logos/dentsu.svg" alt="dentsu" loading="lazy"></a></li>
+          <li class="logo"><a href="https://www.skyscanner.net" target="_blank" rel="noopener"><img src="../images/logos/skyscanner.svg" alt="Skyscanner" loading="lazy"></a></li>
+          <li class="logo"><a href="https://www.grantthornton.global" target="_blank" rel="noopener"><img src="../images/logos/grant-thornton.svg" alt="Grant Thornton" loading="lazy"></a></li>
+          <li class="logo"><a href="https://www.informa.com" target="_blank" rel="noopener"><img src="../images/logos/informa.png" alt="Informa" loading="lazy"></a></li>
+          <li class="logo"><a href="https://www.wilhelmsen.com" target="_blank" rel="noopener"><img src="../images/logos/wilhelmsen.svg" alt="Wilhelmsen" loading="lazy"></a></li>
+          <li class="logo"><a href="https://www.sealedair.com" target="_blank" rel="noopener"><img src="../images/logos/sealed-air.png" alt="Sealed Air" loading="lazy"></a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials: light tint, white bubbles with colour-tinted shadows -->
+  <section class="band quotes-tint">
+    <div class="inner stack-lg">
+      <div class="stack" style="align-items:center;text-align:center">
+        <span class="eyebrow" style="color:var(--pink-text)">شو يقولون الطلاب</span>
+        <h2>قصص حقيقية، وقرارات حقيقية.</h2>
+      </div>
+      <div class="bubbles">
+        <figure><blockquote class="bubble">«إحساس مريح وايد إني ما أحتاج أخمّن.»</blockquote><figcaption>فاطمة الحوسني</figcaption></figure>
+        <figure><blockquote class="bubble">«أخيرًا في أحد يفهمني.»</blockquote><figcaption>أنجلينا تيغ</figcaption></figure>
+        <figure><blockquote class="bubble">«أبا أوري هذا لأهلي.»</blockquote><figcaption>أحمد الظاهري</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- Collage-style final section -->
+  <section class="band final-collage">
+    <div class="inner">
+      <div class="final-wrap">
+      <svg class="cut final-pink" viewBox="0 0 260 240" aria-hidden="true"><path d="M30 50C80 0 200 20 230 80s0 140-80 150S-20 100 30 50z" fill="var(--pink)"/><path class="tex" d="M30 50C80 0 200 20 230 80s0 140-80 150S-20 100 30 50z" fill="url(#dots)"/></svg>
+      <svg class="cut final-yellow" viewBox="0 0 220 200" aria-hidden="true"><path d="M20 30l180 10-20 150L0 170z" fill="var(--yellow)"/><path class="tex" d="M20 30l180 10-20 150L0 170z" fill="url(#lines)"/></svg>
+      <div class="final-card">
+        <span class="eyebrow" style="color:var(--red)">الخطوة الأولى تاخذ ثلاث دقايق</span>
+        <h2>وقّف التخمين. وابدأ من نفسك.</h2>
+        <p class="lede">اعرف إذا كنت المبادر، الشرارة، السند أو المهندس، وشو يعني هذا لمستقبلك المهني. <b>من التخمين إلى اليقين.</b></p>
+        <button class="btn yellow" data-start>اكتشف أسلوبك: اختبار مجاني من 12 سؤال</button>
+      </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- QUIZ -->
+<section id="view-quiz" class="focus-view" hidden>
+  <div class="inner">
+    <div class="col">
+      <div class="progress-top"><span id="q-count" aria-live="polite">سؤال 1 من 12</span><button class="btn ghost" id="q-exit">اطلع من الاختبار</button></div>
+      <div class="bar" role="progressbar" aria-valuemin="0" aria-valuemax="12" aria-valuenow="0" id="q-bar"><i id="q-fill" style="width:0%"></i></div>
+      <h2 class="q-prompt" id="q-prompt" tabindex="-1"></h2>
+      <p class="q-help">اختار الجملة اللي تشبهك أكثر شي، والجملة اللي تشبهك أقل شي.</p>
+      <div class="stmts" id="q-stmts"></div>
+      <div class="nav-row">
+        <button class="btn ghost" id="q-back">رجوع</button>
+        <button class="btn" id="q-next" disabled>التالي</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESULT -->
+<section id="view-result" hidden>
+  <div class="result-hero">
+    <div class="inner band" style="padding-block:clamp(36px,7vw,72px)">
+      <div class="stack-lg">
+        <span class="eyebrow chip">نتيجتك المجانية</span>
+        <div style="display:flex;gap:24px;align-items:center;flex-wrap:wrap">
+          <div class="badge-big" id="r-badge" aria-hidden="true"></div>
+          <div class="stack" style="min-width:0;flex:1 1 280px">
+            <span class="eyebrow" id="r-name"></span>
+            <h1 id="r-head" tabindex="-1" style="font-size:clamp(2.4rem,8vw,4.6rem)"></h1>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="band" style="padding-block:clamp(36px,6vw,64px)">
+    <div class="inner stack-lg">
+      <p class="lede" id="r-intro"></p>
+      <div class="chartwrap">
+        <h3>مزيج أسلوبك</h3>
+        <div id="r-chart" class="stack" style="gap:14px"></div>
+        <p class="muted" style="font-size:.9rem">كل شريط يوضح قد إيش ظهر هذا الأسلوب في أجوبتك.</p>
+      </div>
+      <p class="lede" id="r-blend"></p>
+      <div class="two">
+        <div class="mini"><span class="eyebrow">نقطة قوتك</span><p id="r-strength"></p></div>
+        <div class="mini"><span class="eyebrow">انتبه من</span><p id="r-watch"></p></div>
+      </div>
+      <p class="lede"><b>خايف تختار غلط؟ ابدأ من هني. لما تعرف طريقتك في الشغل، التخمين يتحوّل لقرار.</b></p>
+      <div class="note-box">هذا مجرد طعم بسيط، مو التقييم المعتمد الكامل. التعمّق يروح أبعد بوايد.</div>
+      <p id="r-cta" class="lede"></p>
+    </div>
+  </div>
+
+  <section class="dd band" id="deepdive">
+    <div class="inner stack-lg">
+      <div class="stack">
+        <h2>تعمّق أكثر مع بوصلة أسلوبك المهني الكاملة</h2>
+        <p class="lede">نتيجتك المجانية هي البداية. التعمّق يضيف لك:</p>
+        <ul class="gets">
+          <li>تقرير DISC المهني الكامل، من مدربة معتمدة في DISC</li>
+          <li>المهن وبيئات العمل اللي تناسب أسلوبك</li>
+          <li>جلسة شخصية تحوّل النتايج لخطوات عملية</li>
+          <li>وكل شي بالعربي أو الإنجليزي، على كيفك</li>
+        </ul>
+      </div>
+      <div class="tiers">
+        <div class="tier">
+          <h3>تقرير التعمّق</h3>
+          <ul>
+            <li>تقرير DISC المهني الكامل</li>
+            <li>بالعربي أو الإنجليزي، على كيفك</li>
+          </ul>
+          <p class="price">187 <small>درهم</small></p>
+          <a class="btn pink" href="deep-dive.html?p=report" data-buy="report">أبا تقرير التعمّق</a>
+        </div>
+        <div class="tier best">
+          <span class="save">وفّر 55 درهم</span>
+          <h3>التعمّق + جلسة شخصية</h3>
+          <ul>
+            <li>تقرير DISC المهني الكامل</li>
+            <li>جلسة شخصية تحوّل النتايج لخطوات عملية</li>
+            <li>بالعربي أو الإنجليزي، على كيفك</li>
+          </ul>
+          <p class="price">349 <small>درهم</small><s>404 درهم</s></p>
+          <a class="btn" href="deep-dive.html?p=bundle" data-buy="bundle">أبا التعمّق + الجلسة</a>
+        </div>
+      </div>
+      <p style="font-size:.95rem">ادفع بأمان عن طريق Apple Pay أو البطاقة. رابط التقييم يوصلك على الإيميل مباشرة بعد الدفع. عندك تقريرك من قبل؟ <a class="inline" href="deep-dive.html?p=debrief" data-buy="debrief">أضف جلسة شخصية بـ 217 درهم.</a></p>
+    </div>
+  </section>
+
+  <section class="band" style="padding-block:clamp(36px,6vw,64px)">
+    <div class="inner stack-lg">
+      <div class="two">
+        <div class="mini">
+          <h3>شارك نتيجتك مع أهلك</h3>
+          <p>ورّهم طريقتك الطبيعية في الشغل، عشان يصير كلامكم عن المستقبل أهدأ.</p>
+          <button class="btn yellow" id="share-btn" style="align-self:flex-start;font-size:1rem">انسخ رسالة لأهلي</button>
+          <p id="share-msg" class="muted" style="font-size:.9rem" aria-live="polite"></p>
+          <textarea class="input" id="share-text" readonly rows="4" hidden></textarea>
+        </div>
+        <div class="mini">
+          <h3>ما تحس إنها أنت؟</h3>
+          <p>جاوب بطريقة مختلفة شوي وشوف شو يتغيّر. ياخذ تقريبًا ثلاث دقايق.</p>
+          <button class="btn ghost" id="retake" style="align-self:flex-start">عيد الاختبار</button>
+        </div>
+      </div>
+    </div>
+  </section>
+</section>
+</main>
+
+<footer class="footer">
+  <div class="inner">
+    <span>&copy; <span id="yr">2026</span> maday.ae مع إيلدي هاراسي</span>
+    <span><a href="privacy.html">الخصوصية</a> · <a href="terms.html">الشروط</a> · <a href="https://cal.com/maday" target="_blank" rel="noopener">احجز مكالمة</a> · <a href="/" hreflang="en" lang="en">English</a></span>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var ORDER = ["D", "I", "S", "C"];
+  var QUESTIONS = [
+    { p: "مشروع المجموعة واقف. شو أكثر شي ممكن تسويه؟", s: [
+      ["أمسك الزمام وأوزّع المهام عشان نتحرّك.", "D"],
+      ["أحمّس الكل بأفكار وطاقة حلوة.", "I"],
+      ["أتطمّن على كل واحد وأحافظ على الهدوء بيننا.", "S"],
+      ["أسوي خطة واضحة وأراجع كل تفصيل مرتين.", "C"] ] },
+    { p: "متى تحس بفخر أكثر شي في الجامعة؟", s: [
+      ["لما أتغلّب على تحدّي صعب أو أحقق هدف كبير.", "D"],
+      ["لما الناس تعجبهم فكرتي أو العرض اللي قدّمته.", "I"],
+      ["لما أساعد فريقي أو صديق يعدّي موقف صعب.", "S"],
+      ["لما يكون شغلي دقيق وبأعلى جودة.", "C"] ] },
+    { p: "موسم الامتحانات قرّب. كيف تستعد؟", s: [
+      ["أضغط على نفسي وأتسابق عشان أخلّص قبل الكل.", "D"],
+      ["أذاكر مع ربعي وأخلّي الجو ممتع.", "I"],
+      ["ألتزم بروتين ثابت وأتجنّب المفاجآت.", "S"],
+      ["أسوي جدول مفصّل وأغطّي كل المواضيع.", "C"] ] },
+    { p: "في نقاش داخل المحاضرة، متى تكون مرتاح أكثر؟", s: [
+      ["لما أقدر أتحدّى الأفكار وأدفع لأفضل جواب.", "D"],
+      ["لما أقدر أحكي قصة وأخلّي الكل يتكلّم.", "I"],
+      ["لما أقدر أسمع أول وأدعم آراء غيري.", "S"],
+      ["لما أكون محضّر زين وعارف معلوماتي.", "C"] ] },
+    { p: "لازم تقدّم عرض قدام الصف. شو تسوي؟", s: [
+      ["أبادر أول واحد وهدفي أبهرهم.", "D"],
+      ["أضيف شوية فكاهة وأخلّي الحضور يبتسمون.", "I"],
+      ["أتجهّز مع صديق عشان أحس بالدعم.", "S"],
+      ["أتدرّب لين كل شريحة وكل رقم يكون مضبوط.", "C"] ] },
+    { p: "شو اللي يخلّي يومك في الجامعة حلو؟", s: [
+      ["إني أفوز بشي، كبير أو صغير.", "D"],
+      ["إني أتعرّف على ناس جدد وسوالف حلوة.", "I"],
+      ["إني أكون مرتاح ومستقر وقريب من ناسي.", "S"],
+      ["إني أخلّص كل شي في قائمتي وبالشكل الصح.", "C"] ] },
+    { p: "أول أسبوع لك مع مجموعة جديدة من زملاء الدراسة. شو تسوي؟", s: [
+      ["أعرف بسرعة منو منو، ومنو اللي بينجز الشغل.", "D"],
+      ["أبدأ السوالف وأعرّف الناس على بعض.", "I"],
+      ["أنطر، وأسمع، وأبني الثقة على راحتي.", "S"],
+      ["أراقب أول، وأشارك لما أفهم كيف تمشي المجموعة.", "C"] ] },
+    { p: "الدكتور غيّر موعد تسليم الواجب فجأة. شو إحساسك؟", s: [
+      ["جاهز أتعامل معاه وأتحرّك بسرعة.", "D"],
+      ["عادي، دام إننا إيجابيين ونتكلّم عن الموضوع.", "I"],
+      ["متوتر شوي، لأني أحب أعرف شو اللي جاي.", "S"],
+      ["متضايق لين أعرف المطلوب الجديد بالضبط.", "C"] ] },
+    { p: "وصلتك ملاحظات على بحثك، ومو مثل ما كنت تتمنّى. شو تسوي؟", s: [
+      ["أسأل شو لازم أسوي عشان أفوز المرة الجاية.", "D"],
+      ["أتكلّم مع ربعي عن الموضوع وأرجع بسرعة.", "I"],
+      ["آخذ وقتي أفكّر، وأطلب توجيه بهدوء.", "S"],
+      ["أمرّ على كل ملاحظة وأصلّح كل نقطة بعناية.", "C"] ] },
+    { p: "شو أكثر شي بيحفّزك في وظيفتك المستقبلية؟", s: [
+      ["مسؤولية حقيقية وأهداف كبيرة.", "D"],
+      ["حرية الإبداع والشغل مع ناس حيويين.", "I"],
+      ["فريق داعم وبيئة آمنة ومستقرة.", "S"],
+      ["معايير جودة عالية وفرصة إني أصير خبير.", "C"] ] },
+    { p: "أنت وزميل اختلفتوا على طريقة تنفيذ مهمة. شو تسوي؟", s: [
+      ["أقول رأيي بصراحة وأدفع لاتخاذ قرار.", "D"],
+      ["أستخدم أسلوبي وأفكاري عشان نتفق.", "I"],
+      ["أدوّر على حل وسط عشان نحافظ على الهدوء.", "S"],
+      ["أعرض الحقائق وأخلّي الأدلة تقرّر.", "C"] ] },
+    { p: "لما تتخيّل إنك تختار مستقبلك المهني، شو أكثر شي يقلقك؟", s: [
+      ["إني أعلق في شي بطيء وما فيه تقدّم.", "D"],
+      ["إني أنتهي في وظيفة مملّة، بدون تنوّع ولا ناس.", "I"],
+      ["إني أختار غلط وأخذل الناس اللي حولي.", "S"],
+      ["إني آخذ قرار بدون معلومات كافية.", "C"] ] }
+  ];
+
+  var STYLES = {
+    D: { name: "السيطرة", head: "أنت المبادر.",
+      intro: "تحب النتايج، وتحبها الحين. عطني هدف وتلقاني تحرّكت. تقرّر بسرعة، تتكلّم بصراحة، وما تنطر أحد يعطيك الإذن.",
+      strength: "تخلّي الأشياء تصير، والباقين بعدهم يتكلّمون عنها.",
+      watch: "إنك تمشي بسرعة لدرجة إن الناس يتأخرون وراك. خفّف السرعة شوي بين فترة وفترة واسأل الباقين عن رأيهم.",
+      cta: "تقرير التعمّق يوضح لك بالضبط أي المهن تناسب اندفاعك. جاهز تروح أبعد؟",
+      blend: "القرارات الجريئة والسريعة", color: "var(--d)", on: "var(--on-d)" },
+    I: { name: "التأثير", head: "أنت الشرارة!",
+      intro: "تنوّر أي مكان تدخله، والناس يحبون يكونون حولك. تنبض بالحياة مع الأفكار والسوالف والوجوه الجديدة. ولما تتحمّس، الكل يتحمّس معاك!",
+      strength: "تلهم الناس وتحوّل أي مهمة مملّة لشي ممتع.",
+      watch: "إنك تبدأ عشر أشياء حلوة وتخلّص ثلاث منها بس. اختار المفضّلة عندك وكمّلها للنهاية.",
+      cta: "تقرير التعمّق يكشف لك المهن اللي طاقتك فيها قوة خارقة. متشوّق تشوفها؟",
+      blend: "الجاذبية والأفكار الكبيرة", color: "var(--i)", on: "var(--on-i)" },
+    S: { name: "الثبات", head: "أنت السند.",
+      intro: "تجيب الهدوء لأي مجموعة. تسمع، وتهتم، والناس يثقون فيك لأنك نفس الشخص كل يوم. تحب الإيقاع الثابت، وتعطي أحسن ما عندك لما تحس بالأمان والدعم.",
+      strength: "تبني الثقة وتجمع الفريق، حتى لما تصعب الأمور.",
+      watch: "إنك تسكت لما تكون مختلف معاهم. رأيك مهم، واللي حولك يبون يسمعونه.",
+      cta: "تقرير التعمّق يستكشف المهن والفرق اللي تقدر تنمو فيها بإيقاع يريحك. متى ما كنت جاهز، نقدر نشوفها مع بعض.",
+      blend: "الدعم الدافئ والثابت", color: "var(--s)", on: "var(--on-s)" },
+    C: { name: "الالتزام", head: "أنت المهندس.",
+      intro: "تقدّر الدقة والمنطق والجودة. تفكّر قبل لا تتصرّف، تراجع شغلك، وهدفك تسويه صح من أول مرة. الناس يعتمدون عليك لأن معاييرك عالية.",
+      strength: "تنتبه للتفصيلة اللي الكل فوّتها.",
+      watch: "إنك تنطر المعلومات الكاملة قبل لا تقرّر. أحيانًا \"زين بما يكفي\" مع التحرّك أحسن من \"مثالي\" بس متأخر.",
+      cta: "تقرير التعمّق يوضح أي المهن تناسب أسلوبك التحليلي، بالتفاصيل والأدلة الكاملة. موجود لك متى ما تبا.",
+      blend: "التفكير الدقيق والحاد", color: "var(--c)", on: "var(--on-c)" }
+  };
+
+  var $ = function (id) { return document.getElementById(id); };
+  var views = ["home", "quiz", "result"];
+  var cur = 0, picks = [], orders = [], lastResult = null;
+
+  function shuffle(a) {
+    a = a.slice();
+    for (var i = a.length - 1; i > 0; i--) {
+      var j = Math.floor(Math.random() * (i + 1));
+      var t = a[i]; a[i] = a[j]; a[j] = t;
+    }
+    return a;
+  }
+  function show(name, focusId) {
+    views.forEach(function (v) { $("view-" + v).hidden = v !== name; });
+    $("hdr-cta").hidden = name !== "home";
+    window.scrollTo(0, 0);
+    if (focusId && $(focusId)) { try { $(focusId).focus({ preventScroll: true }); } catch (e) {} }
+  }
+  function startQuiz() {
+    cur = 0;
+    picks = QUESTIONS.map(function () { return { most: null, least: null }; });
+    orders = QUESTIONS.map(function () { return shuffle([0, 1, 2, 3]); });
+    show("quiz");
+    renderQ();
+    $("q-prompt").focus({ preventScroll: true });
+  }
+
+  function renderQ(focusKey) {
+    var q = QUESTIONS[cur], p = picks[cur];
+    $("q-count").textContent = "سؤال " + (cur + 1) + " من " + QUESTIONS.length;
+    $("q-fill").style.width = (cur / QUESTIONS.length * 100) + "%";
+    $("q-bar").setAttribute("aria-valuenow", String(cur));
+    $("q-prompt").textContent = q.p;
+    var box = $("q-stmts");
+    box.innerHTML = "";
+    orders[cur].forEach(function (idx) {
+      var card = document.createElement("div");
+      card.className = "stmt" + (p.most === idx ? " is-most" : "") + (p.least === idx ? " is-least" : "");
+      var t = document.createElement("p");
+      t.className = "stmt-text";
+      t.textContent = q.s[idx][0];
+      var row = document.createElement("div");
+      row.className = "pick";
+      [["most", "يشبهني أكثر", "m"], ["least", "يشبهني أقل", "l"]].forEach(function (k) {
+        var b = document.createElement("button");
+        b.type = "button";
+        b.className = "pbtn " + k[2];
+        b.textContent = k[1];
+        b.setAttribute("aria-pressed", String(p[k[0]] === idx));
+        b.setAttribute("data-key", k[0] + idx);
+        b.addEventListener("click", function () { choose(k[0], idx); });
+        row.appendChild(b);
+      });
+      card.appendChild(t);
+      card.appendChild(row);
+      box.appendChild(card);
+    });
+    $("q-back").hidden = cur === 0;
+    $("q-next").disabled = p.most === null || p.least === null;
+    $("q-next").textContent = cur === QUESTIONS.length - 1 ? "شوف نتيجتي" : "التالي";
+    if (focusKey) {
+      var el = box.querySelector('[data-key="' + focusKey + '"]');
+      if (el) el.focus({ preventScroll: true });
+    }
+  }
+  function choose(kind, idx) {
+    var p = picks[cur], other = kind === "most" ? "least" : "most";
+    if (p[kind] === idx) { p[kind] = null; }
+    else { p[kind] = idx; if (p[other] === idx) p[other] = null; }
+    renderQ(kind + idx);
+  }
+
+  function score() {
+    var sc = { D: 0, I: 0, S: 0, C: 0 }, mc = { D: 0, I: 0, S: 0, C: 0 };
+    QUESTIONS.forEach(function (q, n) {
+      var p = picks[n];
+      if (p.most !== null) { sc[q.s[p.most][1]] += 1; mc[q.s[p.most][1]] += 1; }
+      if (p.least !== null) { sc[q.s[p.least][1]] -= 1; }
+    });
+    var list = ORDER.map(function (k) {
+      return { k: k, pct: Math.round((sc[k] + QUESTIONS.length) / (2 * QUESTIONS.length) * 100), most: mc[k] };
+    });
+    var ranked = list.slice().sort(function (a, b) {
+      return b.pct - a.pct || b.most - a.most || ORDER.indexOf(a.k) - ORDER.indexOf(b.k);
+    });
+    return { list: list, ranked: ranked };
+  }
+
+  function renderResult() {
+    var r = score(); lastResult = r;
+    document.querySelectorAll("[data-buy]").forEach(function (a) {
+      a.href = "deep-dive.html?p=" + a.getAttribute("data-buy") + "&style=" + r.ranked[0].k;
+    });
+    var top = r.ranked[0].k, second = r.ranked[1].k, S = STYLES[top];
+    var badge = $("r-badge");
+    badge.textContent = top;
+    badge.style.background = S.color; badge.style.color = S.on;
+    $("r-name").textContent = "أسلوبك الأساسي: " + S.name;
+    $("r-head").textContent = S.head;
+    $("r-intro").textContent = S.intro;
+    $("r-strength").textContent = S.strength;
+    $("r-watch").textContent = S.watch;
+    $("r-cta").textContent = S.cta;
+    $("r-blend").textContent = "ثاني أقوى أسلوب عندك هو " + STYLES[second].name + "، يعني بعد عندك لمسة من " + STYLES[second].blend + ".";
+    var chart = $("r-chart");
+    chart.innerHTML = "";
+    r.list.forEach(function (it) {
+      var st = STYLES[it.k];
+      var row = document.createElement("div");
+      row.className = "row";
+      var lt = document.createElement("div");
+      lt.className = "lt"; lt.textContent = it.k;
+      lt.style.background = st.color; lt.style.color = st.on;
+      var mid = document.createElement("div");
+      var nm = document.createElement("div"); nm.className = "nm"; nm.textContent = st.name;
+      var tr = document.createElement("div"); tr.className = "track";
+      tr.setAttribute("role", "img");
+      tr.setAttribute("aria-label", st.name + " " + it.pct + " بالمية");
+      var f = document.createElement("div"); f.className = "fill";
+      f.style.width = it.pct + "%"; f.style.background = st.color;
+      tr.appendChild(f); mid.appendChild(nm); mid.appendChild(tr);
+      var pc = document.createElement("div"); pc.className = "pc"; pc.textContent = it.pct + "%";
+      row.appendChild(lt); row.appendChild(mid); row.appendChild(pc);
+      chart.appendChild(row);
+    });
+    $("share-text").hidden = true;
+    $("share-msg").textContent = "";
+    show("result", "r-head");
+  }
+
+  function shareNote() {
+    var top = STYLES[lastResult.ranked[0].k];
+    return "هلا! سويت اختبار بوصلة أسلوبك المهني المجاني على maday.ae. أسلوبي الأساسي هو " + top.name + ": " + top.head + " " + top.strength + " يساعدني أفكر في مستقبلي، وودّي نتكلم عنه مع بعض.";
+  }
+
+  document.querySelectorAll("[data-start]").forEach(function (b) { b.addEventListener("click", startQuiz); });
+  $("brand").addEventListener("click", function () { show("home"); });
+  $("q-exit").addEventListener("click", function () { show("home"); });
+  $("q-back").addEventListener("click", function () { if (cur > 0) { cur--; renderQ(); } });
+  $("q-next").addEventListener("click", function () {
+    if (cur < QUESTIONS.length - 1) { cur++; renderQ(); $("q-prompt").focus({ preventScroll: true }); window.scrollTo(0, 0); }
+    else { renderResult(); }
+  });
+  $("retake").addEventListener("click", startQuiz);
+  $("share-btn").addEventListener("click", function () {
+    var text = shareNote();
+    var ta = $("share-text"), msg = $("share-msg");
+    function fallback() {
+      ta.value = text; ta.hidden = false; ta.focus(); ta.select();
+      msg.textContent = "انسخ هالرسالة وأرسلها لأهلك.";
+    }
+    try {
+      navigator.clipboard.writeText(text).then(function () {
+        ta.hidden = true; msg.textContent = "تم النسخ. الصقها في رسالة لأهلك.";
+      }, fallback);
+    } catch (e) { fallback(); }
+  });
+  $("yr").textContent = new Date().getFullYear();
+})();
+</script>
+
+</body>
+</html>
