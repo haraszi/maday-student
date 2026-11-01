@@ -169,9 +169,9 @@ p { margin: 0; }
 .uni-tile, .li-btn { display: inline-flex; align-items: center; gap: 12px; background: #fff; color: #1E1033; border: 3px solid #1E1033; border-radius: 16px; box-shadow: -4px 4px 0 #1E1033; text-decoration: none; transition: transform .12s ease; }
 .uni-tile { padding: 6px 8px 6px 14px; }
 .uni-tile img { height: 58px; width: auto; }
-.uni-tile span { font-size: .85rem; font-weight: 700; line-height: 1.4; }
-.li-btn { padding: 10px 12px; gap: 10px; font-weight: 700; font-size: .95rem; white-space: nowrap; min-height: 48px; }
-.li-btn b { display: inline-grid; place-items: center; width: 26px; height: 26px; border-radius: 6px; background: #0A66C2; color: #fff; font: 800 .95rem/1 Arial, sans-serif; }
+.uni-tile span, .li-btn span { font-size: .85rem; font-weight: 700; line-height: 1.4; }
+.li-btn { padding: 6px 14px; min-height: 48px; }
+.li-btn b { flex: none; display: inline-grid; place-items: center; width: 46px; height: 46px; border-radius: 10px; background: #0A66C2; color: #fff; font: 800 1.6rem/1 Arial, sans-serif; }
 .uni-tile:hover, .li-btn:hover { transform: translate(2px, -2px); }
 .gets { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
 .gets li { display: flex; gap: 14px; align-items: flex-start; font-weight: 500; font-size: 1.15rem; }
@@ -586,7 +586,7 @@ body { line-height: 1.75; }
         <p>وبعد أنا محاضِرة زائرة في جامعة أبوظبي، حرم العين، وأشارك فيها كخبيرة من سوق العمل.</p>
         <div class="about-links">
           <a class="uni-tile" href="https://www.adu.ac.ae" target="_blank" rel="noopener"><img src="../images/logos/abu-dhabi-university.png" alt="جامعة أبوظبي" width="960" height="721" loading="lazy"><span>محاضِرة زائرة<br>حرم العين</span></a>
-          <a class="li-btn" href="https://www.linkedin.com/in/ildikoharaszi/" target="_blank" rel="noopener"><b aria-hidden="true">in</b>تواصل معي على LinkedIn</a>
+          <a class="li-btn" href="https://www.linkedin.com/in/ildikoharaszi/" target="_blank" rel="noopener"><b aria-hidden="true">in</b><span>تواصل معي<br>على LinkedIn</span></a>
         </div>
       </div>
     </div>
