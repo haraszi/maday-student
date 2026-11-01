@@ -495,7 +495,7 @@ p { margin: 0; }
             <li>In English or Arabic, your choice</li>
           </ul>
           <p class="price">187 <small>AED</small></p>
-          <a class="btn pink" href="https://cal.com/maday" target="_blank" rel="noopener">Get my deep dive</a>
+          <a class="btn pink" href="deep-dive.html?p=report" data-buy="report">Get my deep dive</a>
         </div>
         <div class="tier best">
           <span class="save">Save 55 AED</span>
@@ -506,10 +506,10 @@ p { margin: 0; }
             <li>In English or Arabic, your choice</li>
           </ul>
           <p class="price">349 <small>AED</small><s>404 AED</s></p>
-          <a class="btn" href="https://cal.com/maday" target="_blank" rel="noopener">Get deep dive + debrief</a>
+          <a class="btn" href="deep-dive.html?p=bundle" data-buy="bundle">Get deep dive + debrief</a>
         </div>
       </div>
-      <p style="font-size:.95rem">Book a short call and we'll sort out your language, payment and next steps together. Already have your report? <a class="inline" href="https://cal.com/maday" target="_blank" rel="noopener">Add a debrief for 217 AED.</a></p>
+      <p style="font-size:.95rem">Pay securely with Apple Pay or card. Your assessment link arrives by email straight after payment. Already have your report? <a class="inline" href="deep-dive.html?p=debrief" data-buy="debrief">Add a debrief for 217 AED.</a></p>
     </div>
   </section>
 
@@ -537,7 +537,7 @@ p { margin: 0; }
 <footer class="footer">
   <div class="inner">
     <span>&copy; <span id="yr">2026</span> maday.ae with Ildi Haraszi</span>
-    <a href="https://cal.com/maday" target="_blank" rel="noopener">Book a call</a>
+    <span><a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a> · <a href="https://cal.com/maday" target="_blank" rel="noopener">Book a call</a></span>
   </div>
 </footer>
 
@@ -724,6 +724,9 @@ p { margin: 0; }
 
   function renderResult() {
     var r = score(); lastResult = r;
+    document.querySelectorAll("[data-buy]").forEach(function (a) {
+      a.href = "deep-dive.html?p=" + a.getAttribute("data-buy") + "&style=" + r.ranked[0].k;
+    });
     var top = r.ranked[0].k, second = r.ranked[1].k, S = STYLES[top];
     var badge = $("r-badge");
     badge.textContent = top;

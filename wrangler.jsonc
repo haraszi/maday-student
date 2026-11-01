@@ -23,7 +23,7 @@
     "OWNER_EMAIL": "hello@maday.ae",
     "CAL_DEBRIEF_URL": "https://cal.com/maday/disc-career-debrief-session",
     // "true" = Ziina test payments (no real money). Switch to "false" to go live.
-    "ZIINA_TEST": "true"
+    "ZIINA_TEST": "false"
   },
   "observability": { "enabled": true }
 }
