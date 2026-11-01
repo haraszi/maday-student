@@ -218,7 +218,7 @@ ${row("Order ref", esc(order.id))}
 async function ziina(env, method, path, body) {
   const res = await fetch(ZIINA_API + path, {
     method,
-    headers: { Authorization: `Bearer ${env.ZIINA_API_KEY}`, "Content-Type": "application/json" },
+    headers: { Authorization: `Bearer ${cleanKey(env.ZIINA_API_KEY)}`, "Content-Type": "application/json" },
     body: body ? JSON.stringify(body) : undefined,
   });
   const data = await res.json().catch(() => ({}));
@@ -229,7 +229,7 @@ async function ziina(env, method, path, body) {
 async function sendEmail(env, { to, subject, html, replyTo }) {
   const res = await fetch("https://api.resend.com/emails", {
     method: "POST",
-    headers: { Authorization: `Bearer ${env.RESEND_API_KEY}`, "Content-Type": "application/json" },
+    headers: { Authorization: `Bearer ${cleanKey(env.RESEND_API_KEY)}`, "Content-Type": "application/json" },
     body: JSON.stringify({ from: env.FROM_EMAIL, to: [to], subject, html, reply_to: replyTo || env.OWNER_EMAIL }),
   });
   if (!res.ok) throw new Error(`Resend failed (${res.status}): ${await res.text()}`);
@@ -242,6 +242,11 @@ async function getOrder(env, id) {
 
 function saveOrder(env, order) {
   return env.ORDERS.put(`order:${order.id}`, JSON.stringify(order), { expirationTtl: ORDER_TTL });
+}
+
+// Keys pasted into the dashboard sometimes carry spaces, quotes or "Bearer".
+function cleanKey(v) {
+  return String(v ?? "").trim().replace(/^["']|["']$/g, "").replace(/^Bearer\s+/i, "").trim();
 }
 
 function isEmail(v) {
