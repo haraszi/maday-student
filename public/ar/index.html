@@ -163,12 +163,14 @@ p { margin: 0; }
 .pinkband { background: var(--pink); color: var(--on-pink); border-block: 3px solid var(--ink); }
 .pinkband .lede { color: var(--on-pink); }
 /* About me: university tile and LinkedIn button (fixed colours, the pink band stays light in dark mode) */
-.about-links { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; margin-top: 4px; }
+.about-links { display: grid; grid-template-columns: repeat(2, minmax(0, 250px)); grid-auto-rows: 1fr; align-items: stretch; gap: 14px; margin-top: 4px; }
+.about-links > a { justify-content: center; min-width: 0; }
+@media (max-width: 560px) { .about-links { grid-template-columns: minmax(0, 300px); } }
 .uni-tile, .li-btn { display: inline-flex; align-items: center; gap: 12px; background: #fff; color: #1E1033; border: 3px solid #1E1033; border-radius: 16px; box-shadow: -4px 4px 0 #1E1033; text-decoration: none; transition: transform .12s ease; }
 .uni-tile { padding: 6px 8px 6px 14px; }
 .uni-tile img { height: 58px; width: auto; }
 .uni-tile span { font-size: .85rem; font-weight: 700; line-height: 1.4; }
-.li-btn { padding: 10px 16px; font-weight: 700; min-height: 48px; }
+.li-btn { padding: 10px 12px; gap: 10px; font-weight: 700; font-size: .95rem; white-space: nowrap; min-height: 48px; }
 .li-btn b { display: inline-grid; place-items: center; width: 26px; height: 26px; border-radius: 6px; background: #0A66C2; color: #fff; font: 800 .95rem/1 Arial, sans-serif; }
 .uni-tile:hover, .li-btn:hover { transform: translate(2px, -2px); }
 .gets { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
