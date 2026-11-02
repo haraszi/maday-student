@@ -97,10 +97,8 @@ footer { border-top: 2px solid var(--ink); padding-block: 24px; color: var(--mut
 .peek-track { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; scrollbar-width: none; border: 3px solid var(--ink); border-radius: 14px; background: #fff; box-shadow: 5px 5px 0 var(--pink); }
 .peek-track::-webkit-scrollbar { display: none; }
 .peek-slide { flex: 0 0 100%; scroll-snap-align: start; padding: 0; border: 0; background: #fff; color: #1E1033; cursor: zoom-in; font: inherit; }
-.peek-slide img { display: block; width: 100%; aspect-ratio: 16 / 10; object-fit: contain; padding: 12px 12px 6px; box-sizing: border-box; }
-.peek-slide span { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; padding: 8px 14px; border-top: 2px solid var(--ink); background: var(--yellow); font-size: .85rem; }
-.peek-slide b { font: 800 1rem var(--font-display); }
-.peek-arrow { position: absolute; top: calc(50% - 38px); width: 40px; height: 40px; border-radius: 50%; border: 3px solid var(--ink); background: #fff; color: #1E1033; font: 800 1.3rem/1 var(--font-display); cursor: pointer; display: grid; place-items: center; padding: 0; box-shadow: 3px 3px 0 var(--ink); }
+.peek-slide img { display: block; width: 100%; height: auto; aspect-ratio: 760 / 980; object-fit: contain; } /* whole page, same shape as the A4 screenshots */
+.peek-arrow { position: absolute; top: calc(50% - 20px); width: 40px; height: 40px; border-radius: 50%; border: 3px solid var(--ink); background: #fff; color: #1E1033; font: 800 1.3rem/1 var(--font-display); cursor: pointer; display: grid; place-items: center; padding: 0; box-shadow: 3px 3px 0 var(--ink); }
 .peek-prev { left: -12px; }
 .peek-next { right: -12px; }
 .peek-dots { display: flex; justify-content: center; gap: 8px; margin-top: 14px; }
@@ -167,9 +165,9 @@ footer { border-top: 2px solid var(--ink); padding-block: 24px; color: var(--mut
       <h3>Peek inside the report</h3>
       <div class="peek-frame">
         <div class="peek-track" aria-label="Sample report pages">
-          <button type="button" class="peek-slide" data-peek="/images/report/sample-graphs.png" aria-label="Your graphs. Open the full sample page"><img src="/images/report/crop-graphs.png" alt="Sample DISC graphs: bar charts of the D, I, S and C scores" width="595" height="350"><span><b>Your graphs</b><em>1 of 3 · tap to enlarge</em></span></button>
-          <button type="button" class="peek-slide" data-peek="/images/report/sample-application.png" aria-label="Using your style. Open the full sample page"><img src="/images/report/crop-application.png" alt="Sample page about applying your DISC style" loading="lazy" width="615" height="350"><span><b>Using your style</b><em>2 of 3 · tap to enlarge</em></span></button>
-          <button type="button" class="peek-slide" data-peek="/images/report/sample-jobs.png" aria-label="Jobs that fit. Open the full sample page"><img src="/images/report/crop-jobs.png" alt="Sample DISC style wheel and pattern graph from the job section" loading="lazy" width="500" height="272"><span><b>Jobs that fit</b><em>3 of 3 · tap to enlarge</em></span></button>
+          <button type="button" class="peek-slide" data-peek="/images/report/sample-graphs.png" aria-label="Your graphs. Open the full sample page"><img src="/images/report/sample-graphs.png" alt="Sample DISC graphs: bar charts of the D, I, S and C scores" width="747" height="961"></button>
+          <button type="button" class="peek-slide" data-peek="/images/report/sample-application.png" aria-label="Using your style. Open the full sample page"><img src="/images/report/sample-application.png" alt="Sample page about applying your DISC style" loading="lazy" width="776" height="1004"></button>
+          <button type="button" class="peek-slide" data-peek="/images/report/sample-jobs.png" aria-label="Jobs that fit. Open the full sample page"><img src="/images/report/sample-jobs.png" alt="Sample DISC style wheel and pattern graph from the job section" loading="lazy" width="671" height="867"></button>
         </div>
         <button type="button" class="peek-arrow peek-prev" data-step="-1" aria-label="Previous page">‹</button>
         <button type="button" class="peek-arrow peek-next" data-step="1" aria-label="Next page">›</button>
@@ -378,7 +376,7 @@ footer { border-top: 2px solid var(--ink); padding-block: 24px; color: var(--mut
   const dots = slides.map((s, i) => {
     const d = document.createElement("button");
     d.type = "button";
-    d.setAttribute("aria-label", s.querySelector("b").textContent);
+    d.setAttribute("aria-label", s.getAttribute("aria-label").split(".")[0]);
     d.addEventListener("click", () => go(i));
     dotsBox.appendChild(d);
     return d;
